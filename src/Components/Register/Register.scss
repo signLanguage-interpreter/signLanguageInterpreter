@@ -1,0 +1,53 @@
+.register_wrapper {
+  width: 40%;
+  margin: 0 auto;
+  .register_title {
+    text-align: center;
+  }
+  .register {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    gap: 18px;
+
+    .input {
+      outline: none;
+      border: 1px solid hsl(0, 0%, 86%);
+      border-radius: 3px;
+      height: 32px;
+      padding: 6px;
+      font-size: 1rem;
+      &:hover {
+        border: 1px solid hsl(0, 0%, 50%);
+      }
+      &:focus {
+        border: 1px solid hsl(0, 0%, 50%);
+      }
+    }
+
+    .txt {
+      text-align: center;
+      top: 50%;
+      transform: translateY(50%);
+      &::after {
+        content: "*";
+        color: red;
+      }
+    }
+    .content {
+      resize: none;
+      height: auto;
+    }
+
+    .agency {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .agency_child {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-right: 16px;
+      }
+    }
+  }
+}
