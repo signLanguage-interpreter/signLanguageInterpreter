@@ -1,0 +1,28 @@
+.login_wrapper {
+  width: 50%;
+  margin: 0 auto;
+  .login {
+    .txt {
+      padding: 8px 0;
+    }
+    .input {
+      display: block;
+      padding: 8px 18px;
+      width: 100%;
+    }
+    .loginBtn {
+      padding: 8px;
+      margin-top: 16px;
+      color: white;
+      background-color: orchid;
+      outline: none;
+      border: 1px solid orchid;
+      border-radius: 3px;
+
+      &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+    }
+  }
+}
