@@ -15,9 +15,9 @@
       .id_wrapper {
         border: 1px solid hsl(0, 0%, 80%);
         border-radius: 6px 6px 0 0;
-
         input {
           border-radius: 6px 6px 0 0;
+          font-size: 1.125rem;
           &:focus {
             border: 1px solid hsl(147, 97%, 40%);
           }
@@ -30,17 +30,16 @@
         border-radius: 0 0 6px 6px;
         input {
           border-radius: 0 0 6px 6px;
+          font-size: 1.125rem;
+          &:focus {
+            border: 1px solid hsl(147, 97%, 40%);
+          }
         }
       }
 
       :is(.id_wrapper, .pw_wrapper) {
         position: relative;
 
-        &:focus {
-          &:first-child {
-            color: black;
-          }
-        }
         .icon {
           position: absolute;
           color: hsl(0, 0%, 80%);
@@ -48,14 +47,22 @@
           left: 4%;
           transform: translateY(-50%);
         }
+        .icon_eye {
+          position: absolute;
+          color: hsl(0, 0%, 80%);
+          top: 50%;
+          right: 4%;
+          transform: translateY(-50%);
+        }
       }
 
       :is(.id_wrapper, .pw_wrapper) input {
         display: block;
         height: 50px;
-        width: 90%;
+        width: 88%;
         border: none;
-        padding-left: 10%;
+        outline: none;
+        padding-left: 12%;
       }
     }
     .loginBtn {

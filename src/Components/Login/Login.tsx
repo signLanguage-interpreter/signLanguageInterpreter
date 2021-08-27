@@ -1,26 +1,36 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { Link, RouteComponentProps } from "react-router-dom";
 import "./Login.scss";
 
-const Login = () => {
+const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+  const pw_text = useRef<HTMLInputElement>(null);
+
   const [user, setUser] = useState({
     id: "",
     pw: "",
   });
   const { id, pw } = user;
 
+  const onEyeClick = () => {
+    if (pw_text.current!.type === "password") {
+      pw_text.current!.type = "text";
+    } else {
+      pw_text.current!.type = "password";
+    }
+  };
+
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     setUser({
       ...user,
       [e.currentTarget.name]: e.currentTarget.value,
     });
-    console.log(`${e.currentTarget.name}: ${e.currentTarget.value}`);
   };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(user);
     // axios
+    history.push("/register");
   };
   return (
     <div className="login_wrapper">
@@ -41,13 +51,16 @@ const Login = () => {
           <div className="pw_wrapper">
             <i className="fas fa-unlock-alt icon"></i>
             <input
+              type="password"
               name="pw"
               placeholder="비밀번호"
               className="input"
               value={pw}
               onChange={onChange}
               autoComplete="off"
+              ref={pw_text}
             ></input>
+            <i className="fas fa-eye icon_eye" onClick={onEyeClick}></i>
           </div>
         </div>
         <button type="submit" className="loginBtn">
