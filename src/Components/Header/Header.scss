@@ -1,6 +1,14 @@
 // Mobile
 .header {
   padding: 18px 15%;
+  .link {
+    border: 1px solid black;
+    outline: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 12px;
+    padding: 8px;
+  }
 }
 // Tablet
 @media screen and (min-width: 768px) {

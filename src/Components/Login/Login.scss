@@ -1,28 +1,96 @@
 .login_wrapper {
-  width: 50%;
-  margin: 0 auto;
+  padding: 0 40px;
+  header {
+    width: 100%;
+    margin: 32px auto;
+    font-size: 5rem;
+    text-align: center;
+    color: hsl(147, 97%, 40%);
+    font-weight: 800;
+  }
   .login {
-    .txt {
-      padding: 8px 0;
-    }
-    .input {
-      display: block;
-      padding: 8px 18px;
-      width: 100%;
+    .id_pw_wrapper {
+      margin-bottom: 18px;
+
+      .id_wrapper {
+        border: 1px solid hsl(0, 0%, 80%);
+        border-radius: 6px 6px 0 0;
+
+        input {
+          border-radius: 6px 6px 0 0;
+          &:focus {
+            border: 1px solid hsl(147, 97%, 40%);
+          }
+        }
+      }
+
+      .pw_wrapper {
+        border: 1px solid hsl(0, 0%, 80%);
+        border-top: none;
+        border-radius: 0 0 6px 6px;
+        input {
+          border-radius: 0 0 6px 6px;
+        }
+      }
+
+      :is(.id_wrapper, .pw_wrapper) {
+        position: relative;
+
+        &:focus {
+          &:first-child {
+            color: black;
+          }
+        }
+        .icon {
+          position: absolute;
+          color: hsl(0, 0%, 80%);
+          top: 50%;
+          left: 4%;
+          transform: translateY(-50%);
+        }
+      }
+
+      :is(.id_wrapper, .pw_wrapper) input {
+        display: block;
+        height: 50px;
+        width: 90%;
+        border: none;
+        padding-left: 10%;
+      }
     }
     .loginBtn {
-      padding: 8px;
-      margin-top: 16px;
-      color: white;
-      background-color: orchid;
+      width: 100%;
+      height: 50px;
       outline: none;
-      border: 1px solid orchid;
-      border-radius: 3px;
-
-      &:hover {
-        opacity: 0.8;
-        cursor: pointer;
+      border: 1px solid hsl(147, 97%, 40%);
+      border-radius: 6px;
+      font-size: 1.5rem;
+      background-color: hsl(147, 97%, 40%);
+      color: hsl(0, 0%, 100%);
+    }
+  }
+  .find_join_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    .link {
+      text-decoration: none;
+      color: hsl(0, 0%, 50%);
+      &::after {
+        content: "|";
+        color: hsl(0, 0%, 80%);
+        padding: 8px;
+      }
+      &:last-child::after {
+        content: "";
       }
     }
   }
+}
+// Tablet
+@media screen and (min-width: 768px) {
+}
+
+// PC
+@media screen and (min-width: 1024px) {
 }
