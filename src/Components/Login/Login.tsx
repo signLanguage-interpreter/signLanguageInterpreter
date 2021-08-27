@@ -29,8 +29,11 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(user);
+    sessionStorage.setItem("user_id", user.id);
+    sessionStorage.setItem("user_pw", user.pw);
     // axios
-    history.push("/register");
+    sessionStorage.setItem("login", "true");
+    history.push("/");
   };
   return (
     <div className="login_wrapper">
