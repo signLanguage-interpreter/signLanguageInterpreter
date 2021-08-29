@@ -10,8 +10,9 @@
     align-items: center;
     border-bottom: 3px solid hsl(147, 97%, 40%);
   }
-  .name_phone_wrapper {
+  .name_phone_content_wrapper {
     margin-top: 16px;
+    padding: 8px 18px;
     label {
       font-size: 2rem;
     }
@@ -34,8 +35,36 @@
         padding: 8px;
       }
     }
+    .content_wrapper {
+      textarea {
+        display: block;
+        width: 90%;
+        resize: none;
+        padding: 6px;
+        border: 1px solid hsl(0, 0%, 60%);
+        font-size: 1.125rem;
+        border-radius: 3px;
+      }
+    }
   }
-  .next_btn {
+
+  .interpreters {
+    display: none;
+    margin-top: 16px;
+    padding: 8px 18px;
+    .interpreter {
+      margin-bottom: 4px;
+    }
+  }
+
+  .date_time_wrapper {
+    .date {
+    }
+    .time {
+    }
+  }
+
+  .btn {
     float: right;
     font-size: 1.5rem;
     margin-top: 18px;
@@ -48,5 +77,10 @@
     border: 1px solid hsl(147, 97%, 40%);
     font-weight: 600;
     font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .submit_btn {
+    display: none;
   }
 }

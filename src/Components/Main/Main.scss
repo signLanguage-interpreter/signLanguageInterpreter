@@ -4,12 +4,16 @@
   h2 {
     color: hsl(147, 97%, 40%);
     font-size: 5rem;
+    text-align: center;
+    margin-bottom: 3rem;
   }
   .link {
+    width: 100%;
+    margin-bottom: 3rem;
     border: 1px solid hsl(147, 97%, 40%);
     background-color: hsl(147, 97%, 40%);
     color: hsl(0, 0%, 100%);
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 600;
     outline: none;
     border-radius: 5px;

@@ -1,16 +1,25 @@
+import axios from "axios";
 import React, { useRef, useState } from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import "./Login.scss";
 
-const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
-  const pw_text = useRef<HTMLInputElement>(null);
+interface User {
+  id: string;
+  pw: string;
+}
 
-  const [user, setUser] = useState({
+const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+  // state
+  const [user, setUser] = useState<User>({
     id: "",
     pw: "",
   });
   const { id, pw } = user;
 
+  // ref
+  const pw_text = useRef<HTMLInputElement>(null);
+
+  // event
   const onEyeClick = () => {
     if (pw_text.current!.type === "password") {
       pw_text.current!.type = "text";
@@ -24,17 +33,27 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       ...user,
       [e.currentTarget.name]: e.currentTarget.value,
     });
+    console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const send = async () => {
+    try {
+      const res = await axios.post("http://localhost:5000", {
+        user,
+      });
+      // redux 사용
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(user);
-    sessionStorage.setItem("user_id", user.id);
-    sessionStorage.setItem("user_pw", user.pw);
     // axios
-    sessionStorage.setItem("login", "true");
-    history.push("/");
+    // send()
   };
+
   return (
     <div className="login_wrapper">
       <header>SLT</header>
@@ -46,9 +65,9 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
               name="id"
               placeholder="아이디"
               className="input"
-              value={id}
-              onChange={onChange}
               autoComplete="off"
+              defaultValue={id}
+              onChange={onChange}
             ></input>
           </div>
           <div className="pw_wrapper">
@@ -58,9 +77,9 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
               name="pw"
               placeholder="비밀번호"
               className="input"
-              value={pw}
-              onChange={onChange}
               autoComplete="off"
+              defaultValue={pw}
+              onChange={onChange}
               ref={pw_text}
             ></input>
             <i className="fas fa-eye icon_eye" onClick={onEyeClick}></i>

@@ -16,12 +16,8 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     }
   };
 
-  const onRegiClick = (e: any) => {
-    if (session_login === "true") {
-      history.push("/register");
-    } else if (session_login === "false") {
-      alert("로그인을 먼저 해주세요.");
-    }
+  const onRegiClick = () => {
+    history.push("/register");
   };
 
   return (
