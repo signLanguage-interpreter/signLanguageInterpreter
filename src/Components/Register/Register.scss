@@ -10,7 +10,7 @@
     align-items: center;
     border-bottom: 3px solid hsl(147, 97%, 40%);
   }
-  .name_phone_content_wrapper {
+  .name_phone_wrapper {
     margin-top: 16px;
     padding: 8px 18px;
     label {
@@ -35,6 +35,36 @@
         padding: 8px;
       }
     }
+    & > div {
+      margin-bottom: 32px;
+    }
+  }
+
+  .cc_wrapper {
+    padding: 8px 18px;
+    display: none;
+    .content_class {
+      position: relative;
+      select {
+        appearance: none;
+        width: 80px;
+        height: 50px;
+        padding-left: 16px;
+        z-index: 0;
+        &::after {
+          content: "\f0d7";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          display: inline-block;
+          position: absolute;
+          left: 30%;
+          top: 50%;
+          transform: translateY(-50%);
+          pointer-events: none;
+          z-index: 3;
+        }
+      }
+    }
     .content_wrapper {
       textarea {
         display: block;
@@ -48,7 +78,7 @@
     }
   }
 
-  .interpreters {
+  .interpreters_wrapper {
     display: none;
     margin-top: 16px;
     padding: 8px 18px;
@@ -58,6 +88,7 @@
   }
 
   .date_time_wrapper {
+    display: none;
     .date {
     }
     .time {
