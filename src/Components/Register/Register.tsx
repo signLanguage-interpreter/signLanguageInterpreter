@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-import { store } from "../../App";
+import DatePicker from "react-datepicker";
+import "react-datepicker/src/stylesheets/datepicker.scss";
 import Interpreter from "../Interpreter/Interpreter";
 import "./Register.scss";
 
@@ -35,6 +36,8 @@ const Register = () => {
     time,
   } = register;
 
+  const [startDate, setStartDate] = useState<Date | null>(new Date());
+
   // ref
   const np_wrapper = useRef<HTMLDivElement>(null);
   const cc_wrapper = useRef<HTMLDivElement>(null);
@@ -58,6 +61,18 @@ const Register = () => {
       submitBtn.current!.style.display = "block";
     }
     cnt += 1;
+  };
+
+  const onChange = (
+    e:
+      | React.FormEvent<HTMLInputElement>
+      | React.FormEvent<HTMLSelectElement>
+      | React.FormEvent<HTMLTextAreaElement>
+  ) => {
+    setRegister({
+      ...register,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
   };
 
   const onSubmit = (e: React.FormEvent) => {
@@ -109,16 +124,31 @@ const Register = () => {
         </div>
       </div>
       <div className="cc_wrapper" ref={cc_wrapper}>
-        <label htmlFor="content">내용</label>
         <div className="content_class">
-          <label htmlFor="class">분류</label>
-          <select id="class">
+          <label htmlFor="class" className="txt">
+            분류
+          </label>
+          <select
+            id="class"
+            name="content_class"
+            defaultValue={content_class}
+            onChange={onChange}
+          >
             <option defaultValue="medicine">의료</option>
             <option defaultValue="edu">교육</option>
           </select>
         </div>
         <div className="content_wrapper">
-          <textarea rows={10} id="content"></textarea>
+          <label htmlFor="content" className="txt">
+            내용
+          </label>
+          <textarea
+            rows={10}
+            id="content"
+            name="content"
+            onChange={onChange}
+            defaultValue={content}
+          ></textarea>
         </div>
       </div>
       <div className="interpreters_wrapper" ref={inter_wrapper}>
@@ -137,6 +167,11 @@ const Register = () => {
       </div>
       <div className="date_time_wrapper" ref={dt_wrapper}>
         <div className="date">date</div>
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          inline
+        />
         <div className="time">time</div>
       </div>
       <button

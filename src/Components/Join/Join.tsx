@@ -118,7 +118,7 @@ const Join = () => {
               value={birth}
               onChange={onChange}
               autoComplete="off"
-              placeholder="생일"
+              placeholder="생년월일 예) 000102"
             ></input>
           </div>
           <div className="gender_wrapper">
