@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
+import { store } from "../../App";
 import "./Login.scss";
 
 interface User {
@@ -36,6 +37,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
+  /*
   const send = async () => {
     try {
       const res = await axios.post("http://localhost:5000", {
@@ -46,12 +48,39 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       console.error(e);
     }
   };
+  */
+
+  // example
+  const human = {
+    username: "민경호",
+    password: "qweqwe",
+    email: "1736s@naver.com",
+    userNickName: "민경호",
+    cellphone: "01051301736",
+    birth: "990210",
+    gender: "true",
+  };
+
+  const login_action = (user: Record<string, string>, logged: Boolean) => {
+    return {
+      type: "LOGIN",
+      payload: {
+        user: user,
+        logged: logged,
+      },
+    };
+  };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     console.log(user);
     // axios
     // send()
+
+    // example
+    store.dispatch(login_action(human, true));
+    history.push("/");
   };
 
   return (
