@@ -34,7 +34,8 @@ const Join = () => {
   const send = async () => {
     try {
       await axios.post("http://localhost:5000/join", {
-        user,
+        ...user,
+        gender: Boolean(gender),
       });
     } catch (e) {
       console.error(e);
@@ -43,7 +44,7 @@ const Join = () => {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // send();
+    send();
     console.log(user);
   };
 
