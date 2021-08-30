@@ -39,7 +39,6 @@
 
       :is(.id_wrapper, .pw_wrapper) {
         position: relative;
-
         .icon {
           position: absolute;
           color: hsl(0, 0%, 80%);
@@ -55,7 +54,6 @@
           transform: translateY(-50%);
         }
       }
-
       :is(.id_wrapper, .pw_wrapper) input {
         display: block;
         height: 50px;

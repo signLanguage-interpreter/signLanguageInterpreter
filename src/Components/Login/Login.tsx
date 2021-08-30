@@ -40,7 +40,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   /*
   const send = async () => {
     try {
-      const res = await axios.post("http://localhost:5000", {
+      const res = await axios.post("http://localhost:5000/login", {
         user,
       });
       // redux 사용
