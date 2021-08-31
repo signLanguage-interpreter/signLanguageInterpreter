@@ -1,6 +1,4 @@
 import React, { useRef, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/src/stylesheets/datepicker.scss";
 import Interpreter from "../Interpreter/Interpreter";
 import "./Register.scss";
 
