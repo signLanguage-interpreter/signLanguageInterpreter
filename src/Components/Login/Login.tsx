@@ -37,28 +37,16 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
-  /*
   const send = async () => {
     try {
       const res = await axios.post("http://localhost:5000/login", {
         user,
       });
       // redux 사용
+      store.dispatch(login_action(res.data, true));
     } catch (e) {
       console.error(e);
     }
-  };
-  */
-
-  // example
-  const human = {
-    username: "민경호",
-    password: "qweqwe",
-    email: "1736s@naver.com",
-    userNickName: "민경호",
-    cellphone: "01051301736",
-    birth: "990210",
-    gender: "true",
   };
 
   const login_action = (user: Record<string, string>, logged: Boolean) => {
@@ -76,10 +64,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
     console.log(user);
     // axios
-    // send()
-
-    // example
-    store.dispatch(login_action(human, true));
+    send();
     history.push("/");
   };
 
