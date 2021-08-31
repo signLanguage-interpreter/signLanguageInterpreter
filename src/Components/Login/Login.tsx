@@ -37,26 +37,27 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
+  const login_action = (jwt_token: string, logged: Boolean) => {
+    return {
+      type: "LOGIN",
+      payload: {
+        jwt_token: jwt_token,
+        logged: logged,
+      },
+    };
+  };
+
   const send = async () => {
     try {
       const res = await axios.post("http://localhost:5000/login", {
         user,
       });
+      console.log(res.headers.Authorization);
       // redux 사용
-      store.dispatch(login_action(res.data, true));
+      store.dispatch(login_action(res.headers.Authorization, true));
     } catch (e) {
       console.error(e);
     }
-  };
-
-  const login_action = (user: Record<string, string>, logged: Boolean) => {
-    return {
-      type: "LOGIN",
-      payload: {
-        user: user,
-        logged: logged,
-      },
-    };
   };
 
   const onSubmit = (e: React.FormEvent) => {

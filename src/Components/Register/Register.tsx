@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import Interpreter from "../Interpreter/Interpreter";
 import "./Register.scss";
 
@@ -15,9 +16,10 @@ interface Register {
 const Register = () => {
   // state
   let cnt = 1;
+  const [loading, setLoading] = useState(false);
   const [register, setRegister] = useState<Register>({
-    username: JSON.parse(sessionStorage.getItem("user")!).user.userNickName,
-    cellphone: JSON.parse(sessionStorage.getItem("user")!).user.cellphone,
+    username: "",
+    cellphone: "",
     content_class: "",
     content: "",
     interpreter: 0,
@@ -41,6 +43,29 @@ const Register = () => {
   const dt_wrapper = useRef<HTMLDivElement>(null);
   const nextBtn = useRef<HTMLButtonElement>(null);
   const submitBtn = useRef<HTMLButtonElement>(null);
+
+  // useEffect
+  useEffect(() => {
+    const fetch = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get("http://localhost:5000/register");
+        setRegister({
+          ...register,
+          username: res.data.username,
+          cellphone: res.data.cellphone,
+        });
+      } catch (e) {
+        console.error(e);
+      }
+      setLoading(false);
+    };
+    fetch();
+  }, [register]);
+
+  if (loading) {
+    return;
+  }
 
   // event
   const onNextBtnClick = () => {

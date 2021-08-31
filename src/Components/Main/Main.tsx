@@ -8,11 +8,10 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const login_text = useRef<HTMLButtonElement>(null);
 
   // logout_action
-  const logout_action = (user: Record<string, string>, logged: Boolean) => {
+  const logout_action = (logged: Boolean) => {
     return {
       type: "LOGOUT",
       payload: {
-        user: user,
         logged: logged,
       },
     };
@@ -25,34 +24,22 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       history.push("/login");
     } else if (btn_txt === "로그아웃") {
       login_text.current!.innerText = "로그인";
-      store.dispatch(
-        logout_action(
-          {
-            username: "",
-            password: "",
-            email: "",
-            userNickName: "",
-            cellphone: "",
-            birth: "",
-            gender: "",
-          },
-          false
-        )
-      );
+      store.dispatch(logout_action(false));
     }
   };
 
   const onRegiClick = () => {
-    sessionStorage.getItem("user") !== null
-      ? history.push("/register")
-      : alert("로그인이 필요합니다.");
+    sessionStorage.getItem("jwt_token") === null
+      ? alert("로그인이 필요합니다.")
+      : history.push("/register");
+    // history.push("/register");
   };
 
   return (
     <main className="main">
       <h2>SLT</h2>
       <button className="link" onClick={onLoginClick} ref={login_text}>
-        {sessionStorage.getItem("user") !== null ? "로그아웃" : "로그인"}
+        {sessionStorage.getItem("jwt_token") === null ? "로그인" : "로그아웃"}
       </button>
       <button className="link" onClick={onRegiClick}>
         신청

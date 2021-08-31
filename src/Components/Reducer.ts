@@ -1,53 +1,30 @@
-interface User {
-  username: string;
-  password: string;
-  email: string;
-  userNickName: string;
-  cellphone: string;
-  birth: string;
-  gender: string;
-}
-
 interface state {
-  user: User;
+  jwt_token: string | null;
   logged: Boolean;
 }
 
 const initialState: state = {
-  user: {
-    username: "",
-    password: "",
-    email: "",
-    userNickName: "",
-    cellphone: "",
-    birth: "",
-    gender: "",
-  },
+  jwt_token: null,
   logged: false,
 };
 
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case "LOGIN":
-      sessionStorage.setItem("user", JSON.stringify(action.payload));
+      sessionStorage.setItem(
+        "jwt_token",
+        JSON.stringify(action.payload.jwt_token)
+      );
       return {
         ...state,
-        user: action.payload.user,
+        jwt_token: action.payload.jwt_token,
         logged: action.payload.logged,
       };
     case "LOGOUT":
       sessionStorage.clear();
       return {
         ...state,
-        user: {
-          username: "",
-          password: "",
-          email: "",
-          userNickName: "",
-          cellphone: "",
-          birth: "",
-          gender: "",
-        },
+        jwt_token: null,
         logged: false,
       };
     default:

@@ -12,34 +12,18 @@ var __assign = (this && this.__assign) || function () {
 };
 exports.__esModule = true;
 var initialState = {
-    user: {
-        username: "",
-        password: "",
-        email: "",
-        userNickName: "",
-        cellphone: "",
-        birth: "",
-        gender: ""
-    },
+    jwt_token: null,
     logged: false
 };
 var reducer = function (state, action) {
     if (state === void 0) { state = initialState; }
     switch (action.type) {
         case "LOGIN":
-            sessionStorage.setItem("user", JSON.stringify(action.payload));
-            return __assign(__assign({}, state), { user: action.payload.user, logged: action.payload.logged });
+            sessionStorage.setItem("jwt_token", JSON.stringify(action.payload.jwt_token));
+            return __assign(__assign({}, state), { jwt_token: action.payload.jwt_token, logged: action.payload.logged });
         case "LOGOUT":
             sessionStorage.clear();
-            return __assign(__assign({}, state), { user: {
-                    username: "",
-                    password: "",
-                    email: "",
-                    userNickName: "",
-                    cellphone: "",
-                    birth: "",
-                    gender: ""
-                }, logged: false });
+            return __assign(__assign({}, state), { jwt_token: null, logged: false });
         default:
             return state;
     }
