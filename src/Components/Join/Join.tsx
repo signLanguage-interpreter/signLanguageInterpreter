@@ -70,7 +70,7 @@ const Join = () => {
             <i className="fas fa-signature icon"></i>
             <input
               className="input"
-              name="name"
+              name="userNickName"
               value={userNickName}
               onChange={onChange}
               autoComplete="off"
@@ -81,7 +81,7 @@ const Join = () => {
             <i className="fas fa-portrait icon"></i>
             <input
               className="input"
-              name="id"
+              name="username"
               value={username}
               onChange={onChange}
               autoComplete="off"
@@ -93,7 +93,7 @@ const Join = () => {
             <input
               type="password"
               className="input"
-              name="pw"
+              name="password"
               value={password}
               onChange={onChange}
               ref={pw_text}
@@ -106,7 +106,7 @@ const Join = () => {
             <i className="fas fa-phone icon"></i>
             <input
               className="input"
-              name="phone"
+              name="cellphone"
               value={cellphone}
               onChange={onChange}
               autoComplete="off"
@@ -117,7 +117,7 @@ const Join = () => {
             <i className="fas fa-at icon"></i>
             <input
               className="input"
-              name="email"
+              name="eMail"
               value={eMail}
               onChange={onChange}
               autoComplete="off"

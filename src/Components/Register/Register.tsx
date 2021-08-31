@@ -165,7 +165,6 @@ const Register = () => {
       </div>
       <div className="date_time_wrapper" ref={dt_wrapper}>
         <div className="date">date</div>
-
         <div className="time">time</div>
       </div>
       <button
