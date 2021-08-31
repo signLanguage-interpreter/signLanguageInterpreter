@@ -34,7 +34,6 @@
           border: 1px solid hsl(0, 0%, 80%);
           outline: none;
           padding-left: 12%;
-
           &:focus {
             border: 1px solid hsl(147, 97%, 40%);
           }
@@ -44,7 +43,6 @@
         border-radius: 6px 6px 0 0;
         input {
           border-radius: 6px 6px 0 0;
-
           &:focus {
             border: 1px solid hsl(147, 97%, 40%);
           }
@@ -52,9 +50,15 @@
       }
       .gender_wrapper {
         border-radius: 0 0 6px 6px;
-        input {
+        select {
+          box-sizing: content-box;
+          width: 88%;
+          height: 50px;
+          border: 1px solid hsl(0, 0%, 80%);
+          outline: none;
           border-radius: 0 0 6px 6px;
-
+          padding-left: 12%;
+          color: hsl(0, 0%, 50%);
           &:focus {
             border: 1px solid hsl(147, 97%, 40%);
           }
