@@ -5,17 +5,17 @@ import { store } from "../../App";
 import "./Login.scss";
 
 interface User {
-  id: string;
-  pw: string;
+  username: string;
+  password: string;
 }
 
 const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   // state
   const [user, setUser] = useState<User>({
-    id: "",
-    pw: "",
+    username: "",
+    password: "",
   });
-  const { id, pw } = user;
+  const { username, password } = user;
 
   // ref
   const pw_text = useRef<HTMLInputElement>(null);
@@ -61,7 +61,6 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     console.log(user);
     // axios
     send();
@@ -76,11 +75,11 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
           <div className="id_wrapper">
             <i className="far fa-user icon"></i>
             <input
-              name="id"
+              name="username"
               placeholder="아이디"
               className="input"
               autoComplete="off"
-              defaultValue={id}
+              defaultValue={username}
               onChange={onChange}
             ></input>
           </div>
@@ -88,11 +87,11 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
             <i className="fas fa-unlock-alt icon"></i>
             <input
               type="password"
-              name="pw"
+              name="password"
               placeholder="비밀번호"
               className="input"
               autoComplete="off"
-              defaultValue={pw}
+              defaultValue={password}
               onChange={onChange}
               ref={pw_text}
             ></input>
