@@ -3,19 +3,23 @@ import React, { useRef, useState } from "react";
 import "./Join.scss";
 
 const Join = () => {
+  // ref
   const pw_text = useRef<HTMLInputElement>(null);
 
+  // state
   const [user, setUser] = useState({
-    name: "",
-    id: "",
-    pw: "",
-    phone: "",
-    email: "",
+    username: "",
+    password: "",
+    eMail: "",
+    userNickName: "",
+    cellphone: "",
     birth: "",
     gender: "",
   });
-  const { name, id, pw, phone, email, birth, gender } = user;
+  const { userNickName, username, password, cellphone, eMail, birth, gender } =
+    user;
 
+  // event
   const onEyeClick = () => {
     if (pw_text.current!.type === "password") {
       pw_text.current!.type = "text";
@@ -29,12 +33,22 @@ const Join = () => {
       ...user,
       [e.currentTarget.name]: e.currentTarget.value,
     });
+    console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
+  };
+
+  const onSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+    setUser({
+      ...user,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+    console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
   const send = async () => {
     try {
       await axios.post("http://localhost:5000/join", {
-        user,
+        ...user,
+        gender: Boolean(gender),
       });
     } catch (e) {
       console.error(e);
@@ -43,7 +57,7 @@ const Join = () => {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // send();
+    send();
     console.log(user);
   };
 
@@ -57,7 +71,7 @@ const Join = () => {
             <input
               className="input"
               name="name"
-              value={name}
+              value={userNickName}
               onChange={onChange}
               autoComplete="off"
               placeholder="이름"
@@ -68,7 +82,7 @@ const Join = () => {
             <input
               className="input"
               name="id"
-              value={id}
+              value={username}
               onChange={onChange}
               autoComplete="off"
               placeholder="아이디"
@@ -80,7 +94,7 @@ const Join = () => {
               type="password"
               className="input"
               name="pw"
-              value={pw}
+              value={password}
               onChange={onChange}
               ref={pw_text}
               autoComplete="off"
@@ -93,7 +107,7 @@ const Join = () => {
             <input
               className="input"
               name="phone"
-              value={phone}
+              value={cellphone}
               onChange={onChange}
               autoComplete="off"
               placeholder="전화번호 예)01012345678"
@@ -104,7 +118,7 @@ const Join = () => {
             <input
               className="input"
               name="email"
-              value={email}
+              value={eMail}
               onChange={onChange}
               autoComplete="off"
               placeholder="이메일 예) 123123@abc.com"
@@ -118,19 +132,20 @@ const Join = () => {
               value={birth}
               onChange={onChange}
               autoComplete="off"
-              placeholder="생년월일 예) 000102"
+              placeholder="생일 예) 000102"
             ></input>
           </div>
           <div className="gender_wrapper">
             <i className="fas fa-venus-mars icon"></i>
-            <input
-              className="input"
+            <select
               name="gender"
-              value={gender}
-              onChange={onChange}
-              autoComplete="off"
-              placeholder="성별"
-            ></input>
+              defaultValue={gender}
+              onChange={onSelectChange}
+              className="input"
+            >
+              <option value="true">남성</option>
+              <option value="false">여성</option>
+            </select>
           </div>
         </div>
         <button type="submit" className="joinBtn">
