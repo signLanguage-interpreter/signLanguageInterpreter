@@ -36,8 +36,6 @@ const Register = () => {
     time,
   } = register;
 
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-
   // ref
   const np_wrapper = useRef<HTMLDivElement>(null);
   const cc_wrapper = useRef<HTMLDivElement>(null);
@@ -167,11 +165,7 @@ const Register = () => {
       </div>
       <div className="date_time_wrapper" ref={dt_wrapper}>
         <div className="date">date</div>
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          inline
-        />
+
         <div className="time">time</div>
       </div>
       <button
