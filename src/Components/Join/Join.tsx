@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { RouteComponentProps } from "react-router-dom";
 import "./Join.scss";
 
-const Join = () => {
+const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   // ref
   const pw_text = useRef<HTMLInputElement>(null);
 
@@ -58,6 +59,7 @@ const Join = () => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     send();
+    history.push("/");
     console.log(user);
   };
 
