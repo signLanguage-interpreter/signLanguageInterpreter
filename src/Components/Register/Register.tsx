@@ -8,6 +8,7 @@ import "./Register.scss";
 // import example2 from "../img/example2.jpg";
 
 interface Register {
+  id: string;
   username: string;
   cellphone: string;
   content_class: string;
@@ -23,6 +24,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   const [cnt, setCnt] = useState(1);
   // const [loading, setLoading] = useState(false);
   const [register, setRegister] = useState<Register>({
+    id: "",
     username: "",
     cellphone: "",
     content_class: "",
@@ -30,8 +32,15 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
     content: "",
     date_time: "",
   });
-  const { username, cellphone, content_class, subject, content, date_time } =
-    register;
+  const {
+    id,
+    username,
+    cellphone,
+    content_class,
+    subject,
+    content,
+    date_time,
+  } = register;
 
   // ref
   const np_wrapper = useRef<HTMLDivElement>(null);
@@ -115,6 +124,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
     <form className="register_wrapper" onSubmit={onSubmit}>
       <header className="register_header">SLT 수어 통역 신청</header>
       <div className="name_phone_wrapper" ref={np_wrapper}>
+        <input type="hidden" name="id" defaultValue={id}></input>
         <div className="name_wrapper">
           <label htmlFor="name">신청인</label>
           <div>
