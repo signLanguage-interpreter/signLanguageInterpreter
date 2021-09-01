@@ -50,11 +50,13 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const send = async () => {
     try {
       const res = await axios.post("http://localhost:5000/login", {
-        user,
+        username,
+        password,
       });
-      console.log(res.headers.Authorization);
+      // error
+      console.log(res);
       // redux 사용
-      store.dispatch(login_action(res.headers.Authorization, true));
+      store.dispatch(login_action(document.cookie, true));
     } catch (e) {
       console.error(e);
     }

@@ -1,40 +1,34 @@
-import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+// import axios from "axios";
+import React, { useRef, useState } from "react";
+import { RouteComponentProps } from "react-router-dom";
 import Interpreter from "../Interpreter/Interpreter";
 import "./Register.scss";
+
+// import example1 from "../img/example1.jpg";
+// import example2 from "../img/example2.jpg";
 
 interface Register {
   username: string;
   cellphone: string;
   content_class: string;
   content: string;
-  interpreter: number;
-  date: string;
-  time: string;
+  date_time: string;
 }
 
-const Register = () => {
+const Register: React.FunctionComponent<RouteComponentProps> = ({
+  history,
+}) => {
   // state
-  let cnt = 1;
-  const [loading, setLoading] = useState(false);
+  const [cnt, setCnt] = useState(1);
+  // const [loading, setLoading] = useState(false);
   const [register, setRegister] = useState<Register>({
     username: "",
     cellphone: "",
     content_class: "",
     content: "",
-    interpreter: 0,
-    date: "",
-    time: "",
+    date_time: "",
   });
-  const {
-    username,
-    cellphone,
-    content_class,
-    content,
-    interpreter,
-    date,
-    time,
-  } = register;
+  const { username, cellphone, content_class, content, date_time } = register;
 
   // ref
   const np_wrapper = useRef<HTMLDivElement>(null);
@@ -45,11 +39,17 @@ const Register = () => {
   const submitBtn = useRef<HTMLButtonElement>(null);
 
   // useEffect
+  /* 
   useEffect(() => {
+    const config = {
+      headers: {
+        Authorization: sessionStorage.getItem("jwt_token"),
+      },
+    };
     const fetch = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:5000/register");
+        const res = await axios.get("http://localhost:5000/register", config);
         setRegister({
           ...register,
           username: res.data.username,
@@ -66,22 +66,26 @@ const Register = () => {
   if (loading) {
     return;
   }
+  */
 
   // event
   const onNextBtnClick = () => {
     if (cnt === 1) {
       np_wrapper.current!.style.display = "none";
       cc_wrapper.current!.style.display = "block";
+      setCnt(2);
     } else if (cnt === 2) {
       cc_wrapper.current!.style.display = "none";
       inter_wrapper.current!.style.display = "block";
+      setCnt(3);
     } else if (cnt === 3) {
       inter_wrapper.current!.style.display = "none";
       dt_wrapper.current!.style.display = "block";
       nextBtn.current!.style.display = "none";
       submitBtn.current!.style.display = "block";
     }
-    cnt += 1;
+
+    console.log(cnt);
   };
 
   const onChange = (
@@ -94,11 +98,14 @@ const Register = () => {
       ...register,
       [e.currentTarget.name]: e.currentTarget.value,
     });
+    console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setCnt(1);
     console.log(register);
+    history.push("/");
   };
 
   return (
@@ -155,8 +162,9 @@ const Register = () => {
             defaultValue={content_class}
             onChange={onChange}
           >
-            <option defaultValue="medicine">의료</option>
-            <option defaultValue="edu">교육</option>
+            <option value="default">-선택-</option>
+            <option value="medical">의료</option>
+            <option value="edu">교육</option>
           </select>
         </div>
         <div className="content_wrapper">
@@ -173,22 +181,40 @@ const Register = () => {
         </div>
       </div>
       <div className="interpreters_wrapper" ref={inter_wrapper}>
-        <div className="interpreter">
-          <input type="radio" id="1" value="1" name="interpreter_list"></input>
+        <div className="interpreter_list">
+          <input
+            type="radio"
+            id="1"
+            value="1"
+            name="interpreter"
+            onChange={onChange}
+          ></input>
           <label htmlFor="1">
             <Interpreter></Interpreter>
           </label>
         </div>
-        <div className="interpreter">
-          <input type="radio" id="2" value="2" name="interpreter_list"></input>
+        <div className="interpreter_list">
+          <input
+            type="radio"
+            id="2"
+            value="2"
+            name="interpreter"
+            onChange={onChange}
+          ></input>
           <label htmlFor="2">
             <Interpreter></Interpreter>
           </label>
         </div>
       </div>
       <div className="date_time_wrapper" ref={dt_wrapper}>
-        <div className="date">date</div>
-        <div className="time">time</div>
+        <div className="time">
+          <input
+            type="datetime-local"
+            name="date_time"
+            value={date_time}
+            onChange={onChange}
+          ></input>
+        </div>
       </div>
       <button
         type="button"

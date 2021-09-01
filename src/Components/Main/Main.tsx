@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { store } from "../../App";
 import "./Main.scss";
@@ -29,21 +29,23 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   };
 
   const onRegiClick = () => {
-    sessionStorage.getItem("jwt_token") === null
-      ? alert("로그인이 필요합니다.")
-      : history.push("/register");
-    // history.push("/register");
+    // sessionStorage.getItem("jwt_token") === null
+    //   ? alert("로그인이 필요합니다.")
+    //   : history.push("/register");
+    history.push("/register");
   };
 
   return (
     <main className="main">
       <h2>SLT</h2>
       <button className="link" onClick={onLoginClick} ref={login_text}>
-        {sessionStorage.getItem("jwt_token") === null ? "로그인" : "로그아웃"}
+        {/* {sessionStorage.getItem("jwt_token") === null ? "로그인" : "로그아웃"} */}
+        로그인
       </button>
       <button className="link" onClick={onRegiClick}>
         신청
       </button>
+      <button className="link">관리</button>
     </main>
   );
 };
