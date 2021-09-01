@@ -11,6 +11,7 @@ interface Register {
   username: string;
   cellphone: string;
   content_class: string;
+  subject: string;
   content: string;
   date_time: string;
 }
@@ -25,10 +26,12 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
     username: "",
     cellphone: "",
     content_class: "",
+    subject: "",
     content: "",
     date_time: "",
   });
-  const { username, cellphone, content_class, content, date_time } = register;
+  const { username, cellphone, content_class, subject, content, date_time } =
+    register;
 
   // ref
   const np_wrapper = useRef<HTMLDivElement>(null);
@@ -168,6 +171,17 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
           </select>
         </div>
         <div className="content_wrapper">
+          <div>
+            <label htmlFor="subject" className="txt">
+              제목
+            </label>
+            <input
+              id="subject"
+              name="subject"
+              value={subject}
+              onChange={onChange}
+            ></input>
+          </div>
           <label htmlFor="content" className="txt">
             내용
           </label>
