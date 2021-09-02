@@ -1,0 +1,66 @@
+.cc_wrapper {
+  display: none;
+  .classi_subject_wrapper {
+    .classi_wrapper {
+      label {
+        font-size: 2rem;
+        font-weight: 600;
+        display: block;
+      }
+
+      select {
+        padding: 8px;
+        font-size: 2rem;
+        font-weight: 500;
+        outline: none;
+        border: 2px solid #000;
+        &:focus {
+          outline: none;
+          border: 2px solid hsl(147, 97%, 40%);
+        }
+      }
+    }
+
+    .subject_wrapper {
+      label {
+        font-size: 2rem;
+        font-weight: 600;
+        display: block;
+      }
+
+      input {
+        padding: 8px;
+        font-size: 2rem;
+        font-weight: 500;
+        outline: none;
+        border: 2px solid #000;
+        &:focus {
+          outline: none;
+          border: 2px solid hsl(147, 97%, 40%);
+        }
+      }
+    }
+
+    .content_wrapper {
+      label {
+        font-size: 2rem;
+        font-weight: 600;
+        display: block;
+      }
+
+      textarea {
+        padding: 8px;
+        width: 100%;
+        font-size: 1.5rem;
+        font-weight: 500;
+        outline: none;
+        border: 2px solid #000;
+        resize: none;
+        &:focus {
+          outline: none;
+          border: 2px solid hsl(147, 97%, 40%);
+        }
+      }
+    }
+  }
+}

@@ -45,7 +45,7 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       <button className="link" onClick={onRegiClick}>
         신청
       </button>
-      <button className="link">관리</button>
+      <button className="link">통역사 등록</button>
     </main>
   );
 };

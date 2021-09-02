@@ -1,256 +1,118 @@
 // import axios from "axios";
 import React, { useRef, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
-import Interpreter from "../Interpreter/Interpreter";
+import CcWrapper from "./CcWrapper/CcWrapper";
+import DtWrapper from "./DtWrapper/DtWrapper";
+import InterWrapper from "./InterWrapper/InterWrapper";
+import NpWrapper from "./NpWrapper/NpWrapper";
 import "./Register.scss";
 
-// import example1 from "../img/example1.jpg";
-// import example2 from "../img/example2.jpg";
-
-interface Register {
-  id: string;
-  username: string;
-  cellphone: string;
-  content_class: string;
+interface Regi {
+  classification: string;
   subject: string;
   content: string;
-  date_time: string;
+  interpreter: string;
+  receptionDate: string;
 }
 
 const Register: React.FunctionComponent<RouteComponentProps> = ({
   history,
 }) => {
   // state
-  const [cnt, setCnt] = useState(1);
-  // const [loading, setLoading] = useState(false);
-  const [register, setRegister] = useState<Register>({
-    id: "",
-    username: "",
-    cellphone: "",
-    content_class: "",
+  const [id, username, cellphone] = ["1", "민경호", "01051301736"];
+  const [regi, setRegi] = useState<Regi>({
+    classification: "",
     subject: "",
     content: "",
-    date_time: "",
+    interpreter: "",
+    receptionDate: "",
   });
-  const {
-    id,
-    username,
-    cellphone,
-    content_class,
-    subject,
-    content,
-    date_time,
-  } = register;
+
+  const [cnt, setCnt] = useState(1);
 
   // ref
-  const np_wrapper = useRef<HTMLDivElement>(null);
-  const cc_wrapper = useRef<HTMLDivElement>(null);
-  const inter_wrapper = useRef<HTMLDivElement>(null);
-  const dt_wrapper = useRef<HTMLDivElement>(null);
+  const np = useRef<HTMLDivElement>(null);
+  const cc = useRef<HTMLDivElement>(null);
+  const inter = useRef<HTMLDivElement>(null);
+  const dt = useRef<HTMLDivElement>(null);
   const nextBtn = useRef<HTMLButtonElement>(null);
   const submitBtn = useRef<HTMLButtonElement>(null);
-
-  // useEffect
-  /* 
-  useEffect(() => {
-    const config = {
-      headers: {
-        Authorization: sessionStorage.getItem("jwt_token"),
-      },
-    };
-    const fetch = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get("http://localhost:5000/register", config);
-        setRegister({
-          ...register,
-          username: res.data.username,
-          cellphone: res.data.cellphone,
-        });
-      } catch (e) {
-        console.error(e);
-      }
-      setLoading(false);
-    };
-    fetch();
-  }, [register]);
-
-  if (loading) {
-    return;
-  }
-  */
 
   // event
   const onNextBtnClick = () => {
     if (cnt === 1) {
-      np_wrapper.current!.style.display = "none";
-      cc_wrapper.current!.style.display = "block";
+      np.current!.style.display = "none";
+      cc.current!.style.display = "block";
       setCnt(2);
     } else if (cnt === 2) {
-      cc_wrapper.current!.style.display = "none";
-      inter_wrapper.current!.style.display = "block";
+      cc.current!.style.display = "none";
+      inter.current!.style.display = "block";
       setCnt(3);
     } else if (cnt === 3) {
-      inter_wrapper.current!.style.display = "none";
-      dt_wrapper.current!.style.display = "block";
+      inter.current!.style.display = "none";
+      dt.current!.style.display = "block";
       nextBtn.current!.style.display = "none";
       submitBtn.current!.style.display = "block";
+      setCnt(4);
     }
-
-    console.log(cnt);
   };
 
-  const onChange = (
-    e:
-      | React.FormEvent<HTMLInputElement>
-      | React.FormEvent<HTMLSelectElement>
-      | React.FormEvent<HTMLTextAreaElement>
-  ) => {
-    setRegister({
-      ...register,
-      [e.currentTarget.name]: e.currentTarget.value,
-    });
-    console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
+  const onPrevBtnClick = () => {
+    if (cnt === 2) {
+      np.current!.style.display = "block";
+      cc.current!.style.display = "none";
+      setCnt(1);
+    } else if (cnt === 3) {
+      cc.current!.style.display = "block";
+      inter.current!.style.display = "none";
+      setCnt(2);
+    } else if (cnt === 4) {
+      inter.current!.style.display = "block";
+      dt.current!.style.display = "none";
+      nextBtn.current!.style.display = "block";
+      submitBtn.current!.style.display = "none";
+      setCnt(3);
+    }
   };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setCnt(1);
-    console.log(register);
+    console.log(regi);
     history.push("/");
   };
-
   return (
     <form className="register_wrapper" onSubmit={onSubmit}>
       <header className="register_header">SLT 수어 통역 신청</header>
-      <div className="name_phone_wrapper" ref={np_wrapper}>
-        <input type="hidden" name="id" defaultValue={id}></input>
-        <div className="name_wrapper">
-          <label htmlFor="name">신청인</label>
-          <div>
-            <input
-              id="name"
-              className="name input"
-              autoComplete="off"
-              defaultValue={username}
-              readOnly
-            ></input>
-          </div>
-        </div>
-        <div className="phone_wrapper">
-          <label htmlFor="phone">핸드폰 번호</label>
-          <div>
-            <input
-              id="phone"
-              className="phone input"
-              placeholder="예) 010"
-              defaultValue={cellphone.substring(0, 3)}
-              readOnly
-            ></input>
-            -
-            <input
-              className="phone input"
-              placeholder="예) 1234"
-              defaultValue={cellphone.substring(3, 7)}
-              readOnly
-            ></input>
-            -
-            <input
-              className="phone input"
-              placeholder="예) 1234"
-              defaultValue={cellphone.substring(7, 11)}
-              readOnly
-            ></input>
-          </div>
-        </div>
+      <div className="signUp">
+        <NpWrapper
+          id={id}
+          username={username}
+          cellphone={cellphone}
+          np={np}
+        ></NpWrapper>
+        <CcWrapper regi={regi} setRegi={setRegi} cc={cc}></CcWrapper>
+        <InterWrapper
+          regi={regi}
+          setRegi={setRegi}
+          inter={inter}
+        ></InterWrapper>
+        <DtWrapper regi={regi} setRegi={setRegi} dt={dt}></DtWrapper>
+        <button type="submit" className="submitBtn btn" ref={submitBtn}>
+          신청
+        </button>
+        <button
+          type="button"
+          className="nextBtn btn"
+          ref={nextBtn}
+          onClick={onNextBtnClick}
+        >
+          다음
+        </button>
+        <button type="button" className="btn" onClick={onPrevBtnClick}>
+          이전
+        </button>
       </div>
-      <div className="cc_wrapper" ref={cc_wrapper}>
-        <div className="content_class">
-          <label htmlFor="class" className="txt">
-            분류
-          </label>
-          <select
-            id="class"
-            name="content_class"
-            defaultValue={content_class}
-            onChange={onChange}
-          >
-            <option value="default">-선택-</option>
-            <option value="medical">의료</option>
-            <option value="edu">교육</option>
-          </select>
-        </div>
-        <div className="content_wrapper">
-          <div>
-            <label htmlFor="subject" className="txt">
-              제목
-            </label>
-            <input
-              id="subject"
-              name="subject"
-              value={subject}
-              onChange={onChange}
-            ></input>
-          </div>
-          <label htmlFor="content" className="txt">
-            내용
-          </label>
-          <textarea
-            rows={10}
-            id="content"
-            name="content"
-            onChange={onChange}
-            defaultValue={content}
-          ></textarea>
-        </div>
-      </div>
-      <div className="interpreters_wrapper" ref={inter_wrapper}>
-        <div className="interpreter_list">
-          <input
-            type="radio"
-            id="1"
-            value="1"
-            name="interpreter"
-            onChange={onChange}
-          ></input>
-          <label htmlFor="1">
-            <Interpreter></Interpreter>
-          </label>
-        </div>
-        <div className="interpreter_list">
-          <input
-            type="radio"
-            id="2"
-            value="2"
-            name="interpreter"
-            onChange={onChange}
-          ></input>
-          <label htmlFor="2">
-            <Interpreter></Interpreter>
-          </label>
-        </div>
-      </div>
-      <div className="date_time_wrapper" ref={dt_wrapper}>
-        <div className="time">
-          <input
-            type="datetime-local"
-            name="date_time"
-            value={date_time}
-            onChange={onChange}
-          ></input>
-        </div>
-      </div>
-      <button
-        type="button"
-        className="next_btn btn"
-        ref={nextBtn}
-        onClick={onNextBtnClick}
-      >
-        다음
-      </button>
-      <button type="submit" className="submit_btn btn" ref={submitBtn}>
-        신청
-      </button>
     </form>
   );
 };

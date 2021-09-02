@@ -1,0 +1,18 @@
+.np_wrapper {
+  display: block;
+  & > div {
+    label {
+      font-size: 2rem;
+      font-weight: 600;
+      display: block;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 2rem;
+      font-weight: 500;
+      outline: none;
+      border: 2px solid #000;
+    }
+  }
+}

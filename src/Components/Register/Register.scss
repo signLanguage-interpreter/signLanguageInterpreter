@@ -1,120 +1,37 @@
-.register_wrapper {
-  .register_header {
-    color: hsl(0, 0%, 100%);
-    background-color: hsl(147, 97%, 40%);
-    font-size: 3rem;
-    font-weight: 500;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 3px solid hsl(147, 97%, 40%);
-  }
-  .name_phone_wrapper {
-    margin-top: 16px;
-    padding: 8px 18px;
-    label {
-      font-size: 2rem;
-    }
-    :is(.name_wrapper, .phone_wrapper) .input {
-      border: 1px solid hsl(0, 0%, 60%);
-      border-radius: 6px;
-      outline: none;
-      &:focus {
-        border-color: hsl(147, 97%, 40%);
-      }
-    }
-    .name_wrapper {
-      .name {
-        padding: 8px;
-      }
-    }
-    .phone_wrapper {
-      .phone {
-        width: 20%;
-        padding: 8px;
-      }
-    }
-    & > div {
-      margin-bottom: 32px;
-    }
-  }
+// mobile
+@media screen and (max-width: 767px) {
+}
 
-  .cc_wrapper {
-    padding: 18px;
-    display: none;
-    & .txt {
-      font-size: 1.6rem;
+// tablet + desktop
+@media screen and (min-width: 1024px) {
+  .register_wrapper {
+    .register_header {
+      background-color: hsl(147, 97%, 40%);
+      color: hsl(0, 0%, 100%);
+      font-size: 5rem;
+      font-weight: 700;
+      text-align: center;
     }
-    .content_class {
-      position: relative;
-      select {
-        appearance: none;
-        width: 80px;
-        height: 40px;
-        padding-left: 16px;
-        margin-left: 16px;
+
+    .signUp {
+      padding: 8px 30%;
+
+      .btn {
+        float: right;
+        margin-top: 18px;
+        margin-left: 18px;
+        font-size: 2rem;
+        color: hsl(0, 0%, 100%);
+        border: none;
+        outline: none;
+        background-color: hsl(147, 97%, 40%);
+        border-radius: 6px;
+        cursor: pointer;
       }
-      margin-bottom: 24px;
-      &::after {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 32%;
-        content: "\f0d7";
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        font-size: 1.85rem;
-        pointer-events: none;
-      }
-    }
-    .content_wrapper {
-      textarea {
-        display: block;
-        width: 90%;
-        resize: none;
-        padding: 6px;
-        border: 1px solid hsl(0, 0%, 60%);
-        font-size: 1.125rem;
-        border-radius: 3px;
+
+      .submitBtn {
+        display: none;
       }
     }
-  }
-
-  .interpreters_wrapper {
-    display: none;
-    margin-top: 16px;
-    padding: 8px 18px;
-    .interpreter_list {
-      margin-bottom: 4px;
-    }
-  }
-
-  .date_time_wrapper {
-    display: none;
-    .date {
-    }
-    .time {
-    }
-  }
-
-  .btn {
-    float: right;
-    font-size: 1.5rem;
-    margin-top: 18px;
-    margin-right: 18px;
-    border-radius: 6px;
-    padding: 18px;
-    background-color: hsl(147, 97%, 40%);
-    color: hsl(0, 0%, 100%);
-    outline: none;
-    border: 1px solid hsl(147, 97%, 40%);
-    font-weight: 600;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-
-  .submit_btn {
-    display: none;
   }
 }

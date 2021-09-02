@@ -1,0 +1,10 @@
+.interpreters_wrapper {
+  display: none;
+  .interp {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 4fr;
+    input {
+      margin: auto;
+    }
+  }
+}
