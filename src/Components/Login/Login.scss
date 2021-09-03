@@ -99,9 +99,9 @@
     header {
       width: 100%;
       margin: 32px auto;
-      font-size: 5rem;
       text-align: center;
       color: hsl(147, 97%, 40%);
+      font-size: 5rem;
       font-weight: 800;
     }
     .login {
@@ -156,7 +156,7 @@
           display: block;
           height: 50px;
           width: 88%;
-          border: none;
+          border: 1px solid hsl(0, 0%, 0%);
           outline: none;
           padding-left: 12%;
         }
@@ -170,6 +170,7 @@
         font-size: 1.5rem;
         background-color: hsl(147, 97%, 40%);
         color: hsl(0, 0%, 100%);
+        cursor: pointer;
       }
     }
     .find_join_wrapper {

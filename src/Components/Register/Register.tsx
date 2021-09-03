@@ -79,13 +79,13 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(regi);
+    console.log(regi);
     setCnt(1);
     history.push("/");
   };
   return (
     <form className="register_wrapper" onSubmit={onSubmit}>
-      <header className="register_header">SLT 수어 통역 신청</header>
+      <header className="register_header">SLT</header>
       <div className="signUp">
         <NpWrapper
           id={id}

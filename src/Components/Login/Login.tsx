@@ -47,6 +47,8 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     };
   };
 
+  // regex
+
   const send = async () => {
     try {
       const res = await axios.post("http://localhost:5000/login", {
@@ -56,7 +58,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       // error
       console.log(res);
       // redux 사용
-      store.dispatch(login_action(document.cookie, true));
+      store.dispatch(login_action(res.data.jwt, true));
     } catch (e) {
       console.error(e);
     }
