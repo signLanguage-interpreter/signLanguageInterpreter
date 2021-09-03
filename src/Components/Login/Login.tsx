@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { store } from "../../App";
+import Header from "../Header/Heaer";
 import "./Login.scss";
 
 interface User {
@@ -74,7 +75,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   return (
     <div className="login_wrapper">
-      <header>SLT</header>
+      <Header></Header>
       <form className="login" onSubmit={onSubmit}>
         <div className="id_pw_wrapper">
           <div className="id_wrapper">

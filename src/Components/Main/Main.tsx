@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { store } from "../../App";
+import Header from "../Header/Heaer";
 import "./Main.scss";
 
 const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
@@ -41,7 +42,7 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   return (
     <main className="main">
-      <h2>SLT</h2>
+      <Header></Header>
       <button className="link" onClick={onLoginClick} ref={login_text}>
         {/* {sessionStorage.getItem("jwt_token") === null ? "로그인" : "로그아웃"} */}
         로그인

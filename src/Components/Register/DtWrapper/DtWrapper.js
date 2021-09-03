@@ -7,13 +7,15 @@ const DtWrapper = ({ regi, setRegi, dt }) => {
   };
   return (
     <div className="dt_wrapper" ref={dt}>
-      <label htmlFor="receptionDate">날짜/시간</label>
-      <input
-        type="datetime-local"
-        id="receptionDate"
-        name="receptionDate"
-        onChange={onChange}
-      ></input>
+      <div>
+        <label htmlFor="receptionDate">날짜/시간</label>
+        <input
+          type="datetime-local"
+          id="receptionDate"
+          name="receptionDate"
+          onChange={onChange}
+        ></input>
+      </div>
     </div>
   );
 };

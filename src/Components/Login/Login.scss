@@ -1,13 +1,6 @@
 .login_wrapper {
   padding: 0 40px;
-  header {
-    width: 100%;
-    margin: 32px auto;
-    font-size: 5rem;
-    text-align: center;
-    color: hsl(147, 97%, 40%);
-    font-weight: 800;
-  }
+
   .login {
     .id_pw_wrapper {
       margin-bottom: 18px;
@@ -95,15 +88,8 @@
 // Tablet
 @media screen and (min-width: 768px) {
   .login_wrapper {
-    padding: 0 40px;
-    header {
-      width: 100%;
-      margin: 32px auto;
-      text-align: center;
-      color: hsl(147, 97%, 40%);
-      font-size: 5rem;
-      font-weight: 800;
-    }
+    padding: 18px 30%;
+
     .login {
       width: 450px;
       margin: auto;
@@ -156,7 +142,7 @@
           display: block;
           height: 50px;
           width: 88%;
-          border: 1px solid hsl(0, 0%, 0%);
+          border: none;
           outline: none;
           padding-left: 12%;
         }
@@ -170,7 +156,6 @@
         font-size: 1.5rem;
         background-color: hsl(147, 97%, 40%);
         color: hsl(0, 0%, 100%);
-        cursor: pointer;
       }
     }
     .find_join_wrapper {
@@ -196,15 +181,8 @@
 // PC
 @media screen and (min-width: 1024px) {
   .login_wrapper {
-    padding: 0 40px;
-    header {
-      width: 100%;
-      margin: 32px auto;
-      font-size: 5rem;
-      text-align: center;
-      color: hsl(147, 97%, 40%);
-      font-weight: 800;
-    }
+    padding: 18px 30%;
+
     .login {
       width: 450px;
       margin: auto;

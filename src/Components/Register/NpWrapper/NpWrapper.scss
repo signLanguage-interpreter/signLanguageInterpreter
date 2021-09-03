@@ -1,18 +1,69 @@
-.np_wrapper {
-  display: block;
-  & > div {
-    label {
-      font-size: 2rem;
-      font-weight: 600;
-      display: block;
-    }
-    input {
-      width: 95%;
-      padding: 8px;
-      font-size: 2rem;
-      font-weight: 500;
+@media screen and (max-width: 767px) {
+  .np_wrapper {
+    display: block;
+
+    :is(.name_wrapper, .phone_wrapper) {
+      border: 1px solid #000;
       outline: none;
-      border: 2px solid #000;
+      width: 100%;
+      position: relative;
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 1.5rem;
+        padding: 8px 10%;
+      }
+
+      .fas {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .name_wrapper {
+      border-radius: 6px 6px 0 0;
+    }
+    .phone_wrapper {
+      border-radius: 0 0 6px 6px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .np_wrapper {
+    display: block;
+
+    :is(.name_wrapper, .phone_wrapper) {
+      border: 1px solid #000;
+      outline: none;
+      width: 100%;
+      position: relative;
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 1.5rem;
+        padding: 8px 10%;
+      }
+
+      .fas {
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .name_wrapper {
+      border-radius: 6px 6px 0 0;
+    }
+    .phone_wrapper {
+      border-radius: 0 0 6px 6px;
     }
   }
 }

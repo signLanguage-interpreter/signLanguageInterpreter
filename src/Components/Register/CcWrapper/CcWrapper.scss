@@ -1,19 +1,24 @@
 .cc_wrapper {
   display: none;
   .classi_subject_wrapper {
+    border: none;
+    outline: none;
     .classi_wrapper {
-      label {
-        font-size: 2rem;
-        font-weight: 600;
-        display: block;
-      }
-
+      border: none;
+      outline: none;
       select {
+        width: 100%;
         padding: 8px;
         font-size: 2rem;
         font-weight: 500;
         outline: none;
-        border: 2px solid #000;
+        border: 1px solid hsl(0, 0%, 0%);
+        border-bottom: none;
+        border-radius: 6px 6px 0 0;
+        &:hover {
+          outline: none;
+          border: 1px solid hsl(147, 97%, 40%);
+        }
         &:focus {
           outline: none;
           border: 2px solid hsl(147, 97%, 40%);
@@ -22,43 +27,48 @@
     }
 
     .subject_wrapper {
-      label {
-        font-size: 2rem;
-        font-weight: 600;
-        display: block;
-      }
+      position: relative;
 
       input {
+        width: 100%;
+        box-sizing: border-box;
         padding: 8px;
         font-size: 2rem;
         font-weight: 500;
         outline: none;
-        border: 2px solid #000;
+        border: 1px solid hsl(0, 0%, 0%);
+
+        &:hover {
+          outline: none;
+          border: 1px solid hsl(147, 97%, 40%);
+        }
+
         &:focus {
           outline: none;
-          border: 2px solid hsl(147, 97%, 40%);
+          border: 1px solid hsl(147, 97%, 40%);
         }
       }
     }
 
     .content_wrapper {
-      label {
-        font-size: 2rem;
-        font-weight: 600;
-        display: block;
-      }
-
       textarea {
-        padding: 8px;
+        box-sizing: border-box;
         width: 100%;
         font-size: 1.5rem;
         font-weight: 500;
         outline: none;
-        border: 2px solid #000;
+        border: 1px soli d #000;
         resize: none;
+        border-radius: 0 0 6px 6px;
+        border-top: none;
+        padding: 8px;
+        &:hover {
+          outline: none;
+          border: 1px solid hsl(147, 97%, 40%);
+        }
         &:focus {
           outline: none;
-          border: 2px solid hsl(147, 97%, 40%);
+          border: 1px solid hsl(147, 97%, 40%);
         }
       }
     }

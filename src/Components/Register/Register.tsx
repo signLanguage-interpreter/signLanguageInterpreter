@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
+import Header from "../Header/Heaer";
 import CcWrapper from "./CcWrapper/CcWrapper";
 import DtWrapper from "./DtWrapper/DtWrapper";
 import InterWrapper from "./InterWrapper/InterWrapper";
@@ -102,7 +103,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   };
   return (
     <form className="register_wrapper" onSubmit={onSubmit}>
-      <header className="register_header">SLT</header>
+      <Header></Header>
       <div className="signUp">
         <NpWrapper
           id={id}
@@ -117,20 +118,26 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
           inter={inter}
         ></InterWrapper>
         <DtWrapper regi={regi} setRegi={setRegi} dt={dt}></DtWrapper>
-        <button type="submit" className="submitBtn btn" ref={submitBtn}>
-          신청
-        </button>
-        <button
-          type="button"
-          className="nextBtn btn"
-          ref={nextBtn}
-          onClick={onNextBtnClick}
-        >
-          다음
-        </button>
-        <button type="button" className="btn" onClick={onPrevBtnClick}>
-          이전
-        </button>
+        <div className="btn_wrapper">
+          <button
+            type="button"
+            className="prevBtn btn"
+            onClick={onPrevBtnClick}
+          >
+            이전
+          </button>
+          <button
+            type="button"
+            className="nextBtn btn"
+            ref={nextBtn}
+            onClick={onNextBtnClick}
+          >
+            다음
+          </button>
+          <button type="submit" className="submitBtn btn" ref={submitBtn}>
+            신청
+          </button>
+        </div>
       </div>
     </form>
   );

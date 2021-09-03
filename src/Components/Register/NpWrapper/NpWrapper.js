@@ -5,10 +5,9 @@ const NpWrapper = ({ id, username, cellphone, np }) => {
     <div className="np_wrapper" ref={np}>
       <input type="hidden" name="id" value={id}></input>
       <div className="name_wrapper">
-        <label htmlFor="username">신청인</label>
+        <i className="fas fa-user"></i>
         <input
           type="text"
-          id="username"
           className="name_input"
           value={username}
           autoComplete="off"
@@ -16,10 +15,9 @@ const NpWrapper = ({ id, username, cellphone, np }) => {
         ></input>
       </div>
       <div className="phone_wrapper">
-        <label htmlFor="cellphone">핸드폰 번호</label>
+        <i className="fas fa-phone"></i>
         <input
           type="text"
-          id="cellphone"
           className="phone_input"
           value={cellphone}
           autoComplete="off"

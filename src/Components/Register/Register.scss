@@ -1,35 +1,100 @@
 // mobile
 @media screen and (max-width: 767px) {
+  .register_wrapper {
+    padding: 18px 30%;
+
+    .signUp {
+      .btn_wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border: 1px solid hsl(147, 97%, 40%);
+        outline: none;
+        border-radius: 6px;
+        margin-top: 8px;
+
+        .btn {
+          cursor: pointer;
+          background-color: hsl(0, 0%, 100%);
+          width: 100%;
+          border: none;
+          outline: none;
+          font-size: 1.5rem;
+          font-weight: 600;
+          padding: 8px;
+
+          &:hover {
+            color: hsl(0, 0%, 100%);
+            background-color: hsl(147, 97%, 40%);
+          }
+        }
+
+        .prevBtn {
+          flex: 1;
+          border-right: 1px solid hsl(147, 97%, 40%);
+          border-radius: 6px 0 0 6px;
+        }
+
+        .nextBtn {
+          flex: 1;
+          border-radius: 0 6px 6px 0;
+        }
+        .submitBtn {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 // tablet + desktop
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .register_wrapper {
-    .register_header {
-      color: hsl(147, 97%, 40%);
-      font-size: 5rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
+    padding: 18px 30%;
 
     .signUp {
-      padding: 8px 30%;
-      .btn {
-        float: right;
-        margin-top: 18px;
-        margin-left: 18px;
-        font-size: 2rem;
-        color: hsl(0, 0%, 100%);
+      .btn_wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         border: none;
         outline: none;
-        background-color: hsl(147, 97%, 40%);
         border-radius: 6px;
-        cursor: pointer;
-      }
+        margin-top: 8px;
 
-      .submitBtn {
-        display: none;
+        .btn {
+          cursor: pointer;
+          background-color: hsl(0, 0%, 100%);
+          width: 100%;
+          border: 1px solid hsl(147, 97%, 40%);
+          outline: none;
+          font-size: 1.5rem;
+          font-weight: 600;
+          padding: 8px;
+
+          &:hover {
+            color: hsl(0, 0%, 100%);
+            background-color: hsl(147, 97%, 40%);
+          }
+        }
+
+        .prevBtn {
+          flex: 1;
+          border-right: 1px solid hsl(147, 97%, 40%);
+          border-radius: 6px 0 0 6px;
+        }
+
+        .nextBtn {
+          flex: 1;
+          border-radius: 0 6px 6px 0;
+        }
+        .submitBtn {
+          display: none;
+          flex: 1;
+          border-radius: 0 6px 6px 0;
+        }
       }
     }
   }
