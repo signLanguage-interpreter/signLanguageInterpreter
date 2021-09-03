@@ -28,6 +28,10 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     }
   };
 
+  const onMangerClick = () => {
+    history.push("/manager");
+  };
+
   const onRegiClick = () => {
     // sessionStorage.getItem("jwt_token") === null
     //   ? alert("로그인이 필요합니다.")
@@ -45,7 +49,9 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       <button className="link" onClick={onRegiClick}>
         신청
       </button>
-      <button className="link">통역사 등록</button>
+      <button className="link" onClick={onMangerClick}>
+        통역사 등록
+      </button>
     </main>
   );
 };

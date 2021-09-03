@@ -58,7 +58,9 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   };
 
   const onPrevBtnClick = () => {
-    if (cnt === 2) {
+    if (cnt === 1) {
+      history.push("/");
+    } else if (cnt === 2) {
       np.current!.style.display = "block";
       cc.current!.style.display = "none";
       setCnt(1);
@@ -77,8 +79,8 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    alert(regi);
     setCnt(1);
-    console.log(regi);
     history.push("/");
   };
   return (
