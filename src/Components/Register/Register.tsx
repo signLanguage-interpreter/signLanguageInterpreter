@@ -1,4 +1,5 @@
 // import axios from "axios";
+import axios from "axios";
 import React, { useRef, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import CcWrapper from "./CcWrapper/CcWrapper";
@@ -27,6 +28,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
     interpreter: "",
     receptionDate: "",
   });
+  const { classification, subject, content, interpreter, receptionDate } = regi;
 
   const [cnt, setCnt] = useState(1);
 
@@ -77,9 +79,24 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
     }
   };
 
+  const send = async () => {
+    try {
+      await axios.post("http://localhost:5000/user/reception", {
+        classification,
+        subject,
+        content,
+        interpreter,
+        receptionDate,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(regi);
+    send();
     setCnt(1);
     history.push("/");
   };
