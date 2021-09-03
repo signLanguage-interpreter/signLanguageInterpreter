@@ -13,11 +13,11 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     password: "",
     eMail: "",
     userNickName: "",
-    cellphone: "",
+    cellPhone: "",
     birth: "",
     gender: "",
   });
-  const { userNickName, username, password, cellphone, eMail, birth, gender } =
+  const { userNickName, username, password, cellPhone, eMail, birth, gender } =
     user;
 
   // event
@@ -109,7 +109,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
             <input
               className="input"
               name="cellphone"
-              value={cellphone}
+              value={cellPhone}
               onChange={onChange}
               autoComplete="off"
               placeholder="전화번호 예)01012345678"
@@ -134,7 +134,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
               value={birth}
               onChange={onChange}
               autoComplete="off"
-              placeholder="생일 예) 000102"
+              placeholder="생일 예) 0000-00-00"
             ></input>
           </div>
           <div className="gender_wrapper">
@@ -145,6 +145,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
               onChange={onSelectChange}
               className="input"
             >
+              <option value="default">-선택-</option>
               <option value="true">남성</option>
               <option value="false">여성</option>
             </select>
