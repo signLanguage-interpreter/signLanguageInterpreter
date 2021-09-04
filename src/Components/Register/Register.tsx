@@ -55,7 +55,12 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
       try {
         const res = await axios.get("http://localhost:5000/user/reception", {
           headers: {
-            Authorization: sessionStorage.getItem("authorization"),
+            Authorization: sessionStorage
+              .getItem("authorization")
+              ?.substring(
+                1,
+                sessionStorage.getItem("authorization")!.length - 1
+              ),
           },
         });
         console.log(res);
