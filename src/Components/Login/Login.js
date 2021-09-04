@@ -55,6 +55,7 @@ const Login = ({ history }) => {
       console.log(res);
       // redux 사용
       store.dispatch(login_action(res.headers.authorization, true));
+      history.push("/");
     } catch (e) {
       console.error(e);
     }
@@ -65,7 +66,6 @@ const Login = ({ history }) => {
     console.log(user);
     // axios
     send();
-    history.push("/");
   };
 
   return (
