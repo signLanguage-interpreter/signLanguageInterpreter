@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { store } from "../../App";
-import Header from "../Header/Heaer";
+import Header from "../Header/Header";
 import "./Login.scss";
 
 interface User {
@@ -50,12 +50,20 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   // regex
 
+  const headers = {
+    "Access-Control-Expose-Headers": "*,Authorization",
+  };
+
   const send = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/login", {
-        username,
-        password,
-      });
+      const res = await axios.post(
+        "http://localhost:5000/login",
+        {
+          username,
+          password,
+        },
+        { headers }
+      );
       // error
       console.log(res);
       // redux 사용
