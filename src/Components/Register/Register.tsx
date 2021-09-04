@@ -40,6 +40,14 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
 
   const [cnt, setCnt] = useState(1);
 
+  // ref
+  const np = useRef<HTMLDivElement>(null);
+  const cc = useRef<HTMLDivElement>(null);
+  const inter = useRef<HTMLDivElement>(null);
+  const dt = useRef<HTMLDivElement>(null);
+  const nextBtn = useRef<HTMLButtonElement>(null);
+  const submitBtn = useRef<HTMLButtonElement>(null);
+
   // useEffect
   useEffect(() => {
     const fetch = async () => {
@@ -64,14 +72,6 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   if (loading) {
     return <div>loading</div>;
   }
-
-  // ref
-  const np = useRef<HTMLDivElement>(null);
-  const cc = useRef<HTMLDivElement>(null);
-  const inter = useRef<HTMLDivElement>(null);
-  const dt = useRef<HTMLDivElement>(null);
-  const nextBtn = useRef<HTMLButtonElement>(null);
-  const submitBtn = useRef<HTMLButtonElement>(null);
 
   // event
   const onNextBtnClick = () => {
