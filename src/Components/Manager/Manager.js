@@ -58,23 +58,25 @@ const Manager = () => {
             onChange={onImgChange}
           ></input>
         </div>
-        <div className="position_wrapper">
-          <input
-            type="text"
-            name="position"
-            className="position"
-            onChange={onChange}
-            placeholder="직책"
-          ></input>
-        </div>
-        <div className="introduce_wrapper">
-          <input
-            type="text"
-            name="introduce"
-            className="introduce"
-            onChange={onChange}
-            placeholder="소개말"
-          ></input>
+        <div className="manager_detail">
+          <div className="position_wrapper">
+            <input
+              type="text"
+              name="position"
+              className="position"
+              onChange={onChange}
+              placeholder="직책"
+            ></input>
+          </div>
+          <div className="introduce_wrapper">
+            <input
+              type="text"
+              name="introduce"
+              className="introduce"
+              onChange={onChange}
+              placeholder="소개말"
+            ></input>
+          </div>
         </div>
       </form>
     </div>

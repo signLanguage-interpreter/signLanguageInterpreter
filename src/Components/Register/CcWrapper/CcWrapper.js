@@ -15,8 +15,10 @@ const CcWrapper = ({ regi, setRegi, cc }) => {
         <div className="classi_wrapper">
           <select name="classification" onChange={onChange}>
             <option value="default">-선택-</option>
-            <option value="medical">의료</option>
-            <option value="edu">교육</option>
+            <option value="Medical">의료</option>
+            <option value="Education">교육</option>
+            <option value="Law">법률</option>
+            <option value="Life">생활</option>
           </select>
         </div>
         <div className="subject_wrapper">

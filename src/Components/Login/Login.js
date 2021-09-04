@@ -1,36 +1,31 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { store } from "../../App";
 import Header from "../Header/Header";
 import "./Login.scss";
 
-interface User {
-  username: string;
-  password: string;
-}
-
-const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+const Login = ({ history }) => {
   // state
-  const [user, setUser] = useState<User>({
+  const [user, setUser] = useState({
     username: "",
     password: "",
   });
   const { username, password } = user;
 
   // ref
-  const pw_text = useRef<HTMLInputElement>(null);
+  const pw_text = useRef(null);
 
   // event
   const onEyeClick = () => {
-    if (pw_text.current!.type === "password") {
-      pw_text.current!.type = "text";
+    if (pw_text.current.type === "password") {
+      pw_text.current.type = "text";
     } else {
-      pw_text.current!.type = "password";
+      pw_text.current.type = "password";
     }
   };
 
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const onChange = (e) => {
     setUser({
       ...user,
       [e.currentTarget.name]: e.currentTarget.value,
@@ -38,7 +33,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
-  const login_action = (jwt_token: string, logged: Boolean) => {
+  const login_action = (jwt_token, logged) => {
     return {
       type: "LOGIN",
       payload: {
@@ -50,20 +45,12 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   // regex
 
-  const headers = {
-    "Access-Control-Expose-Headers": "*,Authorization",
-  };
-
   const send = async () => {
     try {
-      const res = await axios.post(
-        "http://localhost:5000/login",
-        {
-          username,
-          password,
-        },
-        { headers }
-      );
+      const res = await axios.post("http://localhost:5000/login", {
+        username,
+        password,
+      });
       // error
       console.log(res);
       // redux 사용
@@ -73,7 +60,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     }
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     console.log(user);
     // axios

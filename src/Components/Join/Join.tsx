@@ -108,7 +108,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
             <i className="fas fa-phone icon"></i>
             <input
               className="input"
-              name="cellphone"
+              name="cellPhone"
               value={cellPhone}
               onChange={onChange}
               autoComplete="off"

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { store } from "../../App";
-import Header from "../Header/Heaer";
+import Header from "../Header/Header";
 import "./Main.scss";
 
 const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {

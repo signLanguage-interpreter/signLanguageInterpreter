@@ -1,0 +1,80 @@
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media screen and (min-width: 1024px) {
+  .modify_wrapper {
+    width: 500px;
+    margin: auto;
+    .modify {
+      .modify_detail {
+        margin-bottom: 18px;
+        & > div {
+          position: relative;
+          .icon {
+            position: absolute;
+            color: hsl(0, 0%, 80%);
+            top: 50%;
+            left: 4%;
+            transform: translateY(-50%);
+          }
+          .icon_eye {
+            position: absolute;
+            color: hsl(0, 0%, 80%);
+            top: 50%;
+            right: 4%;
+            transform: translateY(-50%);
+          }
+          & > input {
+            display: block;
+            height: 50px;
+            width: 88%;
+            border: 1px solid hsl(0, 0%, 80%);
+            outline: none;
+            padding-left: 12%;
+            &:focus {
+              border: 1px solid hsl(147, 97%, 40%);
+            }
+          }
+        }
+        .name_wrapper {
+          border-radius: 6px 6px 0 0;
+          input {
+            border-radius: 6px 6px 0 0;
+            &:focus {
+              border: 1px solid hsl(147, 97%, 40%);
+            }
+          }
+        }
+        .gender_wrapper {
+          border-radius: 0 0 6px 6px;
+          select {
+            box-sizing: content-box;
+            width: 88%;
+            height: 50px;
+            border: 1px solid hsl(0, 0%, 80%);
+            outline: none;
+            border-radius: 0 0 6px 6px;
+            padding-left: 12%;
+            color: hsl(0, 0%, 50%);
+            &:focus {
+              border: 1px solid hsl(147, 97%, 40%);
+            }
+          }
+        }
+      }
+      .modifyBtn {
+        width: 100%;
+        height: 50px;
+        outline: none;
+        border: 1px solid hsl(147, 97%, 40%);
+        border-radius: 6px;
+        font-size: 1.5rem;
+        background-color: hsl(147, 97%, 40%);
+        color: hsl(0, 0%, 100%);
+      }
+    }
+  }
+}

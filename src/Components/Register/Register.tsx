@@ -1,8 +1,8 @@
 // import axios from "axios";
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
-import Header from "../Header/Heaer";
+import Header from "../Header/Header";
 import CcWrapper from "./CcWrapper/CcWrapper";
 import DtWrapper from "./DtWrapper/DtWrapper";
 import InterWrapper from "./InterWrapper/InterWrapper";
@@ -21,7 +21,12 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   history,
 }) => {
   // state
-  const [id, username, cellphone] = ["1", "민경호", "01051301736"];
+  const [user, setUser] = useState({
+    id: "",
+    userNickName: "",
+    cellPhone: "",
+  });
+  const { id, userNickName, cellPhone } = user;
   const [regi, setRegi] = useState<Regi>({
     classification: "",
     subject: "",
@@ -32,6 +37,25 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   const { classification, subject, content, interpreter, receptionDate } = regi;
 
   const [cnt, setCnt] = useState(1);
+
+  // useEffect
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/user/reception");
+        console.log(res);
+        setUser({
+          ...user,
+          id: res.data.id,
+          userNickName: res.data.userNickName,
+          cellPhone: res.data.cellPhone,
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetch();
+  }, [user]);
 
   // ref
   const np = useRef<HTMLDivElement>(null);
@@ -107,8 +131,8 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
       <div className="signUp">
         <NpWrapper
           id={id}
-          username={username}
-          cellphone={cellphone}
+          username={userNickName}
+          cellphone={cellPhone}
           np={np}
         ></NpWrapper>
         <CcWrapper regi={regi} setRegi={setRegi} cc={cc}></CcWrapper>

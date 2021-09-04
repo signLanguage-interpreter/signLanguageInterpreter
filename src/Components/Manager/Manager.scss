@@ -30,29 +30,35 @@
         display: none;
       }
     }
-    .position_wrapper {
-      text-align: center;
-      .position {
-        padding: 6px;
-        font-size: 0.875rem;
-        margin-bottom: 1.5rem;
-        outline: none;
-        border: 1px solid #000;
-        &:focus {
+    .manager_detail {
+      border: none;
+      outline: none;
+      .position_wrapper {
+        .position {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 6px;
+          font-size: 0.875rem;
           outline: none;
-          border: 1px solid hsl(147, 97%, 40%);
+          border: 1px solid hsl(0, 0%, 0%);
+          border-radius: 6px 6px 0 0;
+          &:focus {
+            outline: none;
+            border: 1px solid hsl(147, 97%, 40%);
+          }
         }
       }
-    }
-    .introduce_wrapper {
-      .introduce {
-        width: 100%;
-        padding: 6px;
-        outline: none;
-        border: 1px solid #000;
-        &:focus {
+      .introduce_wrapper {
+        .introduce {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 6px;
           outline: none;
-          border: 1px solid hsl(147, 97%, 40%);
+          border: 1px solid hsl(0, 0%, 0%);
+          &:focus {
+            outline: none;
+            border: 1px solid hsl(147, 97%, 40%);
+          }
         }
       }
     }

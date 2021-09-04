@@ -15,7 +15,7 @@ const InterWrapper = ({ regi, setRegi, inter }) => {
         <input
           type="radio"
           id="kim"
-          value="kim"
+          value={1}
           name="interpreter"
           className="radioBtn"
           onChange={onChange}
@@ -26,7 +26,7 @@ const InterWrapper = ({ regi, setRegi, inter }) => {
         <input
           type="radio"
           id="park"
-          value="park"
+          value={2}
           name="interpreter"
           className="radioBtn"
           onChange={onChange}
@@ -37,7 +37,7 @@ const InterWrapper = ({ regi, setRegi, inter }) => {
         <input
           type="radio"
           id="son"
-          value="son"
+          value={3}
           name="interpreter"
           className="radioBtn"
           onChange={onChange}
