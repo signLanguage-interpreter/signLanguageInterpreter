@@ -1,6 +1,6 @@
 import "./NpWrapper.scss";
 
-const NpWrapper = ({ id, username, cellphone, np }) => {
+const NpWrapper = ({ id, userNickName, cellPhone, np }) => {
   return (
     <div className="np_wrapper" ref={np}>
       <input type="hidden" name="id" value={id}></input>
@@ -9,7 +9,7 @@ const NpWrapper = ({ id, username, cellphone, np }) => {
         <input
           type="text"
           className="name_input"
-          value={username}
+          value={userNickName}
           autoComplete="off"
           disabled
         ></input>
@@ -19,7 +19,7 @@ const NpWrapper = ({ id, username, cellphone, np }) => {
         <input
           type="text"
           className="phone_input"
-          value={cellphone}
+          value={cellPhone}
           autoComplete="off"
           disabled
         ></input>

@@ -21,6 +21,8 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   history,
 }) => {
   // state
+  const [loading, setLoading] = useState(false);
+
   const [user, setUser] = useState({
     id: "",
     userNickName: "",
@@ -41,6 +43,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   // useEffect
   useEffect(() => {
     const fetch = async () => {
+      setLoading(true);
       try {
         const res = await axios.get("http://localhost:5000/user/reception");
         console.log(res);
@@ -50,12 +53,17 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
           userNickName: res.data.userNickName,
           cellPhone: res.data.cellPhone,
         });
+        setLoading(false);
       } catch (e) {
         console.error(e);
       }
     };
     fetch();
   }, [user]);
+
+  if (loading) {
+    return <div>loading</div>;
+  }
 
   // ref
   const np = useRef<HTMLDivElement>(null);
@@ -131,8 +139,8 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
       <div className="signUp">
         <NpWrapper
           id={id}
-          username={userNickName}
-          cellphone={cellPhone}
+          userNickName={userNickName}
+          cellPhone={cellPhone}
           np={np}
         ></NpWrapper>
         <CcWrapper regi={regi} setRegi={setRegi} cc={cc}></CcWrapper>
