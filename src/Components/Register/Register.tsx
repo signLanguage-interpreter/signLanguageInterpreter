@@ -55,7 +55,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
       try {
         const res = await axios.get("http://localhost:5000/user/reception", {
           headers: {
-            authorization: sessionStorage.getItem("authorization"),
+            Authorization: sessionStorage.getItem("authorization"),
           },
         });
         console.log(res);
@@ -118,13 +118,21 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
 
   const send = async () => {
     try {
-      await axios.post("http://localhost:5000/user/reception", {
-        classification,
-        subject,
-        content,
-        interpreter,
-        receptionDate,
-      });
+      await axios.post(
+        "http://localhost:5000/user/reception",
+        {
+          classification,
+          subject,
+          content,
+          interpreter,
+          receptionDate,
+        },
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("authorization"),
+          },
+        }
+      );
     } catch (e) {
       console.error(e);
     }

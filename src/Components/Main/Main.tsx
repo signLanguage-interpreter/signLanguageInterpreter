@@ -48,7 +48,7 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     <main className="main">
       <Header></Header>
       <button className="link" onClick={onLoginClick} ref={login_text}>
-        {sessionStorage.getItem("authorization") === null
+        {sessionStorage.getItem("authorization") === null || "undefined"
           ? "로그인"
           : "로그아웃"}
       </button>
