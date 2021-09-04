@@ -53,7 +53,11 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
     const fetch = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:5000/user/reception");
+        const res = await axios.get("http://localhost:5000/user/reception", {
+          headers: {
+            authorization: sessionStorage.getItem("authorization"),
+          },
+        });
         console.log(res);
         setUser({
           ...user,
