@@ -33,11 +33,11 @@ const Login = ({ history }) => {
     console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
-  const login_action = (jwt_token, logged) => {
+  const login_action = (authorization, logged) => {
     return {
       type: "LOGIN",
       payload: {
-        jwt_token: jwt_token,
+        authorization: authorization,
         logged: logged,
       },
     };
@@ -54,7 +54,7 @@ const Login = ({ history }) => {
       // error
       console.log(res);
       // redux 사용
-      store.dispatch(login_action(res.data.jwt, true));
+      store.dispatch(login_action(res.headers.authorization, true));
     } catch (e) {
       console.error(e);
     }

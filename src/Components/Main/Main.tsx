@@ -38,18 +38,19 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   };
 
   const onRegiClick = () => {
-    // sessionStorage.getItem("jwt_token") === null
-    //   ? alert("로그인이 필요합니다.")
-    //   : history.push("/register");
-    history.push("/register");
+    sessionStorage.getItem("authorization") === null
+      ? alert("로그인이 필요합니다.")
+      : history.push("/register");
+    // history.push("/register");
   };
 
   return (
     <main className="main">
       <Header></Header>
       <button className="link" onClick={onLoginClick} ref={login_text}>
-        {/* {sessionStorage.getItem("jwt_token") === null ? "로그인" : "로그아웃"} */}
-        로그인
+        {sessionStorage.getItem("authorization") === null
+          ? "로그인"
+          : "로그아웃"}
       </button>
       <button className="link" onClick={onRegiClick}>
         신청
