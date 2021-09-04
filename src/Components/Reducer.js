@@ -19,7 +19,7 @@ var reducer = function (state, action) {
     if (state === void 0) { state = initialState; }
     switch (action.type) {
         case "LOGIN":
-            sessionStorage.setItem("authorization", JSON.stringify(action.payload.authorization));
+            sessionStorage.setItem("authorization", action.payload.authorization);
             return __assign(__assign({}, state), { authorization: action.payload.authorization, logged: action.payload.logged });
         case "LOGOUT":
             sessionStorage.clear();

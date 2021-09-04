@@ -11,10 +11,7 @@ const initialState: state = {
 const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case "LOGIN":
-      sessionStorage.setItem(
-        "authorization",
-        JSON.stringify(action.payload.authorization)
-      );
+      sessionStorage.setItem("authorization", action.payload.authorization);
       return {
         ...state,
         authorization: action.payload.authorization,
