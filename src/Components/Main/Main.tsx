@@ -20,6 +20,7 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   let login_out_btn;
   let manager_regi_btn;
+  let manager_modify_btn;
   let modify_btn;
 
   // event
@@ -74,6 +75,16 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   }
 
   if (sessionStorage.getItem("authorization") === null) {
+    manager_modify_btn = null;
+  } else {
+    manager_modify_btn = (
+      <button className="link manager_regi" onClick={onMangerClick}>
+        통역사 수정
+      </button>
+    );
+  }
+
+  if (sessionStorage.getItem("authorization") === null) {
     modify_btn = null;
   } else {
     modify_btn = (
@@ -90,8 +101,9 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       <button className="link" onClick={onRegiClick}>
         신청
       </button>
-      {manager_regi_btn}
       {modify_btn}
+      {manager_regi_btn}
+      {manager_modify_btn}
     </main>
   );
 };
