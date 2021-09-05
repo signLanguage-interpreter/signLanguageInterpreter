@@ -51,6 +51,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
         ...user,
         gender: Boolean(gender),
       });
+      history.push("/main");
     } catch (e) {
       console.error(e);
     }
@@ -59,7 +60,6 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     send();
-    history.push("/");
     console.log(user);
   };
 
