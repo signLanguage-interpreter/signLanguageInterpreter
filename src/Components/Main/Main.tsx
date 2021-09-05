@@ -38,10 +38,9 @@ const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   };
 
   const onRegiClick = () => {
-    sessionStorage.getItem("authorization") === null
+    sessionStorage.getItem("authorization") === null || "undefined"
       ? alert("로그인이 필요합니다.")
       : history.push("/register");
-    // history.push("/register");
   };
 
   return (
