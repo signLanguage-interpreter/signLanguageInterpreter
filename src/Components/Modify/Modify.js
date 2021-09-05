@@ -19,6 +19,12 @@ const Modify = () => {
     const fetch = async () => {
       try {
         const res = await axios.get("http://localhost:5000/manager/modifyInfo");
+        setManager({
+          ...manager,
+          id: res.data.id,
+          userNickName: res.data.userNickName,
+          username: res.data.username,
+        });
       } catch (e) {
         console.error(e);
       }
