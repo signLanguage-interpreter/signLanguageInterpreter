@@ -134,10 +134,17 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
         },
         {
           headers: {
-            Authorization: sessionStorage.getItem("authorization"),
+            Authorization: sessionStorage
+              .getItem("authorization")
+              ?.substring(
+                1,
+                sessionStorage.getItem("authorization")!.length - 1
+              ),
           },
         }
       );
+      setCnt(1);
+      history.push("/main");
     } catch (e) {
       console.error(e);
     }
@@ -147,8 +154,6 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
     e.preventDefault();
     console.log(regi);
     send();
-    setCnt(1);
-    history.push("/");
   };
   return (
     <form className="register_wrapper" onSubmit={onSubmit}>
