@@ -1,13 +1,6 @@
 .login_wrapper {
   padding: 0 40px;
-  header {
-    width: 100%;
-    margin: 32px auto;
-    font-size: 5rem;
-    text-align: center;
-    color: hsl(147, 97%, 40%);
-    font-weight: 800;
-  }
+
   .login {
     .id_pw_wrapper {
       margin-bottom: 18px;
@@ -94,8 +87,187 @@
 }
 // Tablet
 @media screen and (min-width: 768px) {
+  .login_wrapper {
+    padding: 18px 30%;
+
+    .login {
+      width: 450px;
+      margin: auto;
+      .id_pw_wrapper {
+        margin-bottom: 18px;
+
+        .id_wrapper {
+          border: 1px solid hsl(0, 0%, 80%);
+          border-radius: 6px 6px 0 0;
+          input {
+            border-radius: 6px 6px 0 0;
+            font-size: 1.125rem;
+            &:focus {
+              border: 1px solid hsl(147, 97%, 40%);
+            }
+          }
+        }
+
+        .pw_wrapper {
+          border: 1px solid hsl(0, 0%, 80%);
+          border-top: none;
+          border-radius: 0 0 6px 6px;
+          input {
+            border-radius: 0 0 6px 6px;
+            font-size: 1.125rem;
+            &:focus {
+              border: 1px solid hsl(147, 97%, 40%);
+            }
+          }
+        }
+
+        :is(.id_wrapper, .pw_wrapper) {
+          position: relative;
+          .icon {
+            position: absolute;
+            color: hsl(0, 0%, 80%);
+            top: 50%;
+            left: 4%;
+            transform: translateY(-50%);
+          }
+          .icon_eye {
+            position: absolute;
+            color: hsl(0, 0%, 80%);
+            top: 50%;
+            right: 4%;
+            transform: translateY(-50%);
+          }
+        }
+        :is(.id_wrapper, .pw_wrapper) input {
+          display: block;
+          height: 50px;
+          width: 88%;
+          border: none;
+          outline: none;
+          padding-left: 12%;
+        }
+      }
+      .loginBtn {
+        width: 100%;
+        height: 50px;
+        outline: none;
+        border: 1px solid hsl(147, 97%, 40%);
+        border-radius: 6px;
+        font-size: 1.5rem;
+        background-color: hsl(147, 97%, 40%);
+        color: hsl(0, 0%, 100%);
+      }
+    }
+    .find_join_wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
+      .link {
+        text-decoration: none;
+        color: hsl(0, 0%, 50%);
+        &::after {
+          content: "|";
+          color: hsl(0, 0%, 80%);
+          padding: 8px;
+        }
+        &:last-child::after {
+          content: "";
+        }
+      }
+    }
+  }
 }
 
 // PC
 @media screen and (min-width: 1024px) {
+  .login_wrapper {
+    padding: 18px 30%;
+
+    .login {
+      width: 450px;
+      margin: auto;
+      .id_pw_wrapper {
+        margin-bottom: 18px;
+
+        .id_wrapper {
+          border: 1px solid hsl(0, 0%, 80%);
+          border-radius: 6px 6px 0 0;
+          input {
+            border-radius: 6px 6px 0 0;
+            font-size: 1.125rem;
+            &:focus {
+              border: 1px solid hsl(147, 97%, 40%);
+            }
+          }
+        }
+
+        .pw_wrapper {
+          border: 1px solid hsl(0, 0%, 80%);
+          border-top: none;
+          border-radius: 0 0 6px 6px;
+          input {
+            border-radius: 0 0 6px 6px;
+            font-size: 1.125rem;
+            &:focus {
+              border: 1px solid hsl(147, 97%, 40%);
+            }
+          }
+        }
+
+        :is(.id_wrapper, .pw_wrapper) {
+          position: relative;
+          .icon {
+            position: absolute;
+            color: hsl(0, 0%, 80%);
+            top: 50%;
+            left: 4%;
+            transform: translateY(-50%);
+          }
+          .icon_eye {
+            position: absolute;
+            color: hsl(0, 0%, 80%);
+            top: 50%;
+            right: 4%;
+            transform: translateY(-50%);
+          }
+        }
+        :is(.id_wrapper, .pw_wrapper) input {
+          display: block;
+          height: 50px;
+          width: 88%;
+          border: none;
+          outline: none;
+          padding-left: 12%;
+        }
+      }
+      .loginBtn {
+        width: 100%;
+        height: 50px;
+        outline: none;
+        border: 1px solid hsl(147, 97%, 40%);
+        border-radius: 6px;
+        font-size: 1.5rem;
+        background-color: hsl(147, 97%, 40%);
+        color: hsl(0, 0%, 100%);
+        cursor: pointer;
+      }
+    }
+    .find_join_wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
+      .link {
+        text-decoration: none;
+        color: hsl(0, 0%, 50%);
+        &::after {
+          content: "|";
+          color: hsl(0, 0%, 80%);
+          padding: 8px;
+        }
+        &:last-child::after {
+          content: "";
+        }
+      }
+    }
+  }
 }

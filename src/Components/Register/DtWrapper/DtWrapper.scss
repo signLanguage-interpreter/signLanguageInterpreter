@@ -1,0 +1,33 @@
+.dt_wrapper {
+  display: none;
+  div {
+    display: flex;
+    border: none;
+    outline: none;
+    label {
+      flex: 1;
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      outline: none;
+      border: none;
+    }
+
+    input {
+      flex: 1;
+      box-sizing: border-box;
+      font-size: 1rem;
+      font-weight: 500;
+      outline: none;
+      border: 1x solid #000;
+      &:hover {
+        outline: none;
+        border: 1px solid hsl(147, 97%, 40%);
+      }
+      &:focus {
+        outline: none;
+        border: 1px solid hsl(147, 97%, 40%);
+      }
+    }
+  }
+}

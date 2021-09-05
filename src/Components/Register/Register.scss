@@ -1,117 +1,101 @@
-.register_wrapper {
-  .register_header {
-    color: hsl(0, 0%, 100%);
-    background-color: hsl(147, 97%, 40%);
-    font-size: 3rem;
-    font-weight: 500;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 3px solid hsl(147, 97%, 40%);
-  }
-  .name_phone_wrapper {
-    margin-top: 16px;
-    padding: 8px 18px;
-    label {
-      font-size: 2rem;
-    }
-    :is(.name_wrapper, .phone_wrapper) .input {
-      border: 1px solid hsl(0, 0%, 60%);
-      border-radius: 6px;
-      outline: none;
-      &:focus {
-        border-color: hsl(147, 97%, 40%);
-      }
-    }
-    .name_wrapper {
-      .name {
-        padding: 8px;
-      }
-    }
-    .phone_wrapper {
-      .phone {
-        width: 20%;
-        padding: 8px;
-      }
-    }
-    & > div {
-      margin-bottom: 32px;
-    }
-  }
+// mobile
+@media screen and (max-width: 767px) {
+  .register_wrapper {
+    padding: 18px 30%;
 
-  .cc_wrapper {
-    padding: 8px 18px;
-    display: none;
-    .content_class {
-      position: relative;
-      select {
-        appearance: none;
-        width: 80px;
-        height: 50px;
-        padding-left: 16px;
-        z-index: 0;
-        &::after {
-          content: "\f0d7";
-          font-family: "Font Awesome 5 Free";
-          font-weight: 900;
-          display: inline-block;
-          position: absolute;
-          left: 30%;
-          top: 50%;
-          transform: translateY(-50%);
-          pointer-events: none;
-          z-index: 3;
+    .signUp {
+      .btn_wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border: 1px solid hsl(147, 97%, 40%);
+        outline: none;
+        border-radius: 6px;
+        margin-top: 8px;
+
+        .btn {
+          cursor: pointer;
+          background-color: hsl(0, 0%, 100%);
+          width: 100%;
+          border: none;
+          outline: none;
+          font-size: 1.5rem;
+          font-weight: 600;
+          padding: 8px;
+
+          &:hover {
+            color: hsl(0, 0%, 100%);
+            background-color: hsl(147, 97%, 40%);
+          }
+        }
+
+        .prevBtn {
+          flex: 1;
+          border-right: 1px solid hsl(147, 97%, 40%);
+          border-radius: 6px 0 0 6px;
+        }
+
+        .nextBtn {
+          flex: 1;
+          border-radius: 0 6px 6px 0;
+        }
+        .submitBtn {
+          display: none;
         }
       }
     }
-    .content_wrapper {
-      textarea {
-        display: block;
-        width: 90%;
-        resize: none;
-        padding: 6px;
-        border: 1px solid hsl(0, 0%, 60%);
-        font-size: 1.125rem;
-        border-radius: 3px;
+  }
+}
+
+// tablet + desktop
+@media screen and (min-width: 768px) {
+  .register_wrapper {
+    padding: 18px 30%;
+
+    .signUp {
+      .btn_wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        margin-top: 8px;
+
+        .btn {
+          cursor: pointer;
+          background-color: hsl(0, 0%, 100%);
+          width: 100%;
+          border: 1px solid hsl(147, 97%, 40%);
+          outline: none;
+          font-size: 1.5rem;
+          font-weight: 600;
+          padding: 8px;
+
+          &:hover {
+            color: hsl(0, 0%, 100%);
+            background-color: hsl(147, 97%, 40%);
+          }
+        }
+
+        .prevBtn {
+          flex: 1;
+          border-right: 1px solid hsl(147, 97%, 40%);
+          border-radius: 6px 0 0 6px;
+        }
+
+        .nextBtn {
+          flex: 1;
+          border-radius: 0 6px 6px 0;
+        }
+        .submitBtn {
+          display: none;
+          flex: 1;
+          border-radius: 0 6px 6px 0;
+        }
       }
     }
-  }
-
-  .interpreters_wrapper {
-    display: none;
-    margin-top: 16px;
-    padding: 8px 18px;
-    .interpreter {
-      margin-bottom: 4px;
-    }
-  }
-
-  .date_time_wrapper {
-    display: none;
-    .date {
-    }
-    .time {
-    }
-  }
-
-  .btn {
-    float: right;
-    font-size: 1.5rem;
-    margin-top: 18px;
-    margin-right: 18px;
-    border-radius: 6px;
-    padding: 18px;
-    background-color: hsl(147, 97%, 40%);
-    color: hsl(0, 0%, 100%);
-    outline: none;
-    border: 1px solid hsl(147, 97%, 40%);
-    font-weight: 600;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-
-  .submit_btn {
-    display: none;
   }
 }

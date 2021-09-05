@@ -1,35 +1,31 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-import { Link, RouteComponentProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { store } from "../../App";
+import Header from "../Header/Header";
 import "./Login.scss";
 
-interface User {
-  id: string;
-  pw: string;
-}
-
-const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+const Login = ({ history }) => {
   // state
-  const [user, setUser] = useState<User>({
-    id: "",
-    pw: "",
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
   });
-  const { id, pw } = user;
+  const { username, password } = user;
 
   // ref
-  const pw_text = useRef<HTMLInputElement>(null);
+  const pw_text = useRef(null);
 
   // event
   const onEyeClick = () => {
-    if (pw_text.current!.type === "password") {
-      pw_text.current!.type = "text";
+    if (pw_text.current.type === "password") {
+      pw_text.current.type = "text";
     } else {
-      pw_text.current!.type = "password";
+      pw_text.current.type = "password";
     }
   };
 
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const onChange = (e) => {
     setUser({
       ...user,
       [e.currentTarget.name]: e.currentTarget.value,
@@ -37,50 +33,67 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
-  const send = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/login", {
-        user,
-      });
-      // redux 사용
-      store.dispatch(login_action(res.data, true));
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const login_action = (user: Record<string, string>, logged: Boolean) => {
+<<<<<<< HEAD:src/Components/Login/Login.tsx
+=======
+  const login_action = (authorization, logged) => {
     return {
       type: "LOGIN",
       payload: {
-        user: user,
+        authorization: authorization,
         logged: logged,
       },
     };
   };
 
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  // regex
 
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7:src/Components/Login/Login.js
+  const send = async () => {
+    try {
+      const res = await axios.post("http://localhost:5000/login", {
+        username,
+        password,
+      });
+      // redux 사용
+<<<<<<< HEAD:src/Components/Login/Login.tsx
+      store.dispatch(login_action(res.data, true));
+=======
+      if (res.headers.authorization) {
+        store.dispatch(login_action(res.headers.authorization, true));
+        history.push("/main");
+      } else {
+        alert("아이디나 비밀번호가 틀립니다.");
+      }
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7:src/Components/Login/Login.js
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
     console.log(user);
     // axios
     send();
+<<<<<<< HEAD:src/Components/Login/Login.tsx
     history.push("/");
+=======
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7:src/Components/Login/Login.js
   };
 
   return (
     <div className="login_wrapper">
-      <header>SLT</header>
+      <Header></Header>
       <form className="login" onSubmit={onSubmit}>
         <div className="id_pw_wrapper">
           <div className="id_wrapper">
             <i className="far fa-user icon"></i>
             <input
-              name="id"
+              name="username"
               placeholder="아이디"
               className="input"
               autoComplete="off"
-              defaultValue={id}
+              defaultValue={username}
               onChange={onChange}
             ></input>
           </div>
@@ -88,11 +101,11 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
             <i className="fas fa-unlock-alt icon"></i>
             <input
               type="password"
-              name="pw"
+              name="password"
               placeholder="비밀번호"
               className="input"
               autoComplete="off"
-              defaultValue={pw}
+              defaultValue={password}
               onChange={onChange}
               ref={pw_text}
             ></input>

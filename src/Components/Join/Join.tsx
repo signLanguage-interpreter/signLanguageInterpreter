@@ -1,8 +1,13 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { RouteComponentProps } from "react-router-dom";
 import "./Join.scss";
 
+<<<<<<< HEAD
 const Join = () => {
+=======
+const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
   // ref
   const pw_text = useRef<HTMLInputElement>(null);
 
@@ -12,11 +17,19 @@ const Join = () => {
     password: "",
     eMail: "",
     userNickName: "",
+<<<<<<< HEAD
     cellphone: "",
     birth: "",
     gender: "",
   });
   const { userNickName, username, password, cellphone, eMail, birth, gender } =
+=======
+    cellPhone: "",
+    birth: "",
+    gender: "",
+  });
+  const { userNickName, username, password, cellPhone, eMail, birth, gender } =
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
     user;
 
   // event
@@ -50,6 +63,7 @@ const Join = () => {
         ...user,
         gender: Boolean(gender),
       });
+      history.push("/main");
     } catch (e) {
       console.error(e);
     }
@@ -70,7 +84,11 @@ const Join = () => {
             <i className="fas fa-signature icon"></i>
             <input
               className="input"
+<<<<<<< HEAD
               name="name"
+=======
+              name="userNickName"
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
               value={userNickName}
               onChange={onChange}
               autoComplete="off"
@@ -81,7 +99,11 @@ const Join = () => {
             <i className="fas fa-portrait icon"></i>
             <input
               className="input"
+<<<<<<< HEAD
               name="id"
+=======
+              name="username"
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
               value={username}
               onChange={onChange}
               autoComplete="off"
@@ -93,7 +115,11 @@ const Join = () => {
             <input
               type="password"
               className="input"
+<<<<<<< HEAD
               name="pw"
+=======
+              name="password"
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
               value={password}
               onChange={onChange}
               ref={pw_text}
@@ -106,8 +132,13 @@ const Join = () => {
             <i className="fas fa-phone icon"></i>
             <input
               className="input"
+<<<<<<< HEAD
               name="phone"
               value={cellphone}
+=======
+              name="cellPhone"
+              value={cellPhone}
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
               onChange={onChange}
               autoComplete="off"
               placeholder="전화번호 예)01012345678"
@@ -117,7 +148,11 @@ const Join = () => {
             <i className="fas fa-at icon"></i>
             <input
               className="input"
+<<<<<<< HEAD
               name="email"
+=======
+              name="eMail"
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
               value={eMail}
               onChange={onChange}
               autoComplete="off"
@@ -132,7 +167,11 @@ const Join = () => {
               value={birth}
               onChange={onChange}
               autoComplete="off"
+<<<<<<< HEAD
               placeholder="생일 예) 000102"
+=======
+              placeholder="생일 예) 0000-00-00"
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
             ></input>
           </div>
           <div className="gender_wrapper">
@@ -143,6 +182,10 @@ const Join = () => {
               onChange={onSelectChange}
               className="input"
             >
+<<<<<<< HEAD
+=======
+              <option value="default">-선택-</option>
+>>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7
               <option value="true">남성</option>
               <option value="false">여성</option>
             </select>
