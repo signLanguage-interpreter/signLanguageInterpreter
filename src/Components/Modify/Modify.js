@@ -13,7 +13,8 @@ const Modify = () => {
     cellPhone: "",
     eMail: "",
   });
-  // post: manager/modifyInfo/{id}
+  const { id, userNickName, username, password, cellPhone, eMail } = manager;
+
   // useEffect (Mount)
   useEffect(() => {
     const fetch = async () => {
@@ -31,16 +32,52 @@ const Modify = () => {
     };
     fetch();
   });
+
+  // post: manager/modifyInfo/{id}
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const send = async () => {
+      try {
+        axios.post(
+          `http://localhost:5000/modifyInfo/${id}`,
+          { manager },
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
+        );
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    send();
+  };
+
+  const onChange = (e) => {
+    setManager({
+      ...manager,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className="modify_wrapper">
       <Header></Header>
-      <form className="modify">
+      <form className="modify" onSubmit={onSubmit}>
         <div className="modify_detail">
           <div className="name_wrapper">
             <i className="fas fa-signature icon"></i>
             <input
               className="input"
               name="userNickName"
+              value={userNickName}
+              onChange={onChange}
               autoComplete="off"
               placeholder="이름"
             ></input>
@@ -50,6 +87,8 @@ const Modify = () => {
             <input
               className="input"
               name="username"
+              value={username}
+              onChange={onChange}
               autoComplete="off"
               placeholder="아이디"
             ></input>
@@ -60,6 +99,8 @@ const Modify = () => {
               type="password"
               className="input"
               name="password"
+              value={password}
+              onChange={onChange}
               autoComplete="off"
               placeholder="비밀번호"
             ></input>
@@ -70,6 +111,8 @@ const Modify = () => {
             <input
               className="input"
               name="cellPhone"
+              value={cellPhone}
+              onChange={onChange}
               autoComplete="off"
               placeholder="전화번호 예)01012345678"
             ></input>
@@ -79,6 +122,8 @@ const Modify = () => {
             <input
               className="input"
               name="eMail"
+              value={eMail}
+              onChange={onChange}
               autoComplete="off"
               placeholder="이메일 예) 123123@abc.com"
             ></input>
@@ -90,11 +135,12 @@ const Modify = () => {
               name="birth"
               autoComplete="off"
               placeholder="생일 예) 0000-00-00"
+              disabled
             ></input>
           </div>
           <div className="gender_wrapper">
             <i className="fas fa-venus-mars icon"></i>
-            <select name="gender" className="input">
+            <select name="gender" className="input" disabled>
               <option value="default">-선택-</option>
               <option value="true">남성</option>
               <option value="false">여성</option>

@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
-import Header from "../Header/Header";
-import "./Manager.scss";
+import "./ManagerModify.scss";
 
 const Manager = () => {
   // ref
@@ -39,8 +38,10 @@ const Manager = () => {
   };
 
   return (
-    <div className="manager_wrapper">
-      <Header></Header>
+    <div className="managerModify_wrapper">
+      <header>
+        <h3>SLT</h3>
+      </header>
       <form className="manager_regist_wrapper">
         <div className="imgPath_wrapper">
           <div className="img_icon" ref={img_icon} onClick={onImgClick}>
