@@ -1,108 +1,63 @@
 .join_wrapper {
-  padding: 0 40px;
-  .join {
-    .join_detail {
-      margin-bottom: 18px;
-      & > div {
-        position: relative;
-        .icon {
-          position: absolute;
-          color: hsl(0, 0%, 80%);
-          top: 50%;
-          left: 4%;
-          transform: translateY(-50%);
-        }
-        .icon_eye {
-          position: absolute;
-          color: hsl(0, 0%, 80%);
-          top: 50%;
-          right: 4%;
-          transform: translateY(-50%);
-        }
-        & > input {
-          display: block;
-          height: 50px;
-          width: 88%;
-          border: 1px solid hsl(0, 0%, 80%);
-          outline: none;
-          padding-left: 12%;
-          &:focus {
-            border: 1px solid hsl(147, 97%, 40%);
-          }
-        }
-      }
-      .name_wrapper {
-        border-radius: 6px 6px 0 0;
-        input {
-          border-radius: 6px 6px 0 0;
-          &:focus {
-            border: 1px solid hsl(147, 97%, 40%);
-          }
-        }
-      }
-      .gender_wrapper {
-        border-radius: 0 0 6px 6px;
-        select {
-          box-sizing: content-box;
-          width: 88%;
-          height: 50px;
-          border: 1px solid hsl(0, 0%, 80%);
-          outline: none;
-          border-radius: 0 0 6px 6px;
-          padding-left: 12%;
-          color: hsl(0, 0%, 50%);
-          &:focus {
-            border: 1px solid hsl(147, 97%, 40%);
-          }
-        }
-      }
-    }
-    .joinBtn {
-      width: 100%;
-      height: 50px;
-      outline: none;
-      border: 1px solid hsl(147, 97%, 40%);
-      border-radius: 6px;
-      font-size: 1.5rem;
-      background-color: hsl(147, 97%, 40%);
-      color: hsl(0, 0%, 100%);
-    }
+  display: flex;
+  height: 100vh;
+  .join_img {
+    flex: 5.5;
+    background-color: var(--main-color);
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
   }
-}
-
-@media screen and (min-width: 768px) {
-  .join_wrapper {
-    width: 500px;
-    margin: auto;
-
+  .form_wrapper {
+    flex: 4.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     .join {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       .join_detail {
-        margin-bottom: 18px;
+        width: 100%;
+        margin-bottom: 12px;
         & > div {
+          border: none;
+          outline: none;
           position: relative;
           .icon {
             position: absolute;
-            color: hsl(0, 0%, 80%);
             top: 50%;
-            left: 4%;
-            transform: translateY(-50%);
+            left: 5%;
+            transform: translate(-50%, -50%);
+            color: var(--grey-color);
+            font-size: 1.125rem;
           }
           .icon_eye {
             position: absolute;
-            color: hsl(0, 0%, 80%);
             top: 50%;
-            right: 4%;
-            transform: translateY(-50%);
+            right: 5%;
+            transform: translate(-50%, -50%);
+            font-size: 1.125rem;
+            color: var(--grey-color);
           }
           & > input {
-            display: block;
-            height: 50px;
-            width: 88%;
-            border: 1px solid hsl(0, 0%, 80%);
+            box-sizing: border-box;
+            width: 100%;
+            padding: 16px;
+            padding-left: 10%;
             outline: none;
-            padding-left: 12%;
+            border: 1px solid var(--grey-color);
+            font-size: 1.25rem;
+            &:hover {
+              border: 1px solid var(--hover-color);
+            }
             &:focus {
-              border: 1px solid hsl(147, 97%, 40%);
+              border: 1px solid var(--main-color);
             }
           }
         }
@@ -111,7 +66,7 @@
           input {
             border-radius: 6px 6px 0 0;
             &:focus {
-              border: 1px solid hsl(147, 97%, 40%);
+              border: 1px solid var(--border-color);
             }
           }
         }
@@ -125,97 +80,26 @@
             outline: none;
             border-radius: 0 0 6px 6px;
             padding-left: 12%;
-            color: hsl(0, 0%, 50%);
+            color: var(--hover-color);
             &:focus {
-              border: 1px solid hsl(147, 97%, 40%);
+              border: 1px solid var(--border-color);
             }
           }
         }
       }
       .joinBtn {
+        box-sizing: border-box;
+        cursor: pointer;
         width: 100%;
-        height: 50px;
+        padding: 6px;
+        background-color: var(--main-color);
         outline: none;
-        border: 1px solid hsl(147, 97%, 40%);
+        border: none;
+        color: var(--white-color);
+        font-size: 1.875rem;
+        font-weight: 700;
         border-radius: 6px;
-        font-size: 1.5rem;
-        background-color: hsl(147, 97%, 40%);
-        color: hsl(0, 0%, 100%);
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .join_wrapper {
-    width: 500px;
-    margin: auto;
-    .join {
-      .join_detail {
-        margin-bottom: 18px;
-        & > div {
-          position: relative;
-          .icon {
-            position: absolute;
-            color: hsl(0, 0%, 80%);
-            top: 50%;
-            left: 4%;
-            transform: translateY(-50%);
-          }
-          .icon_eye {
-            position: absolute;
-            color: hsl(0, 0%, 80%);
-            top: 50%;
-            right: 4%;
-            transform: translateY(-50%);
-          }
-          & > input {
-            display: block;
-            height: 50px;
-            width: 88%;
-            border: 1px solid hsl(0, 0%, 80%);
-            outline: none;
-            padding-left: 12%;
-            &:focus {
-              border: 1px solid hsl(147, 97%, 40%);
-            }
-          }
-        }
-        .name_wrapper {
-          border-radius: 6px 6px 0 0;
-          input {
-            border-radius: 6px 6px 0 0;
-            &:focus {
-              border: 1px solid hsl(147, 97%, 40%);
-            }
-          }
-        }
-        .gender_wrapper {
-          border-radius: 0 0 6px 6px;
-          select {
-            box-sizing: content-box;
-            width: 88%;
-            height: 50px;
-            border: 1px solid hsl(0, 0%, 80%);
-            outline: none;
-            border-radius: 0 0 6px 6px;
-            padding-left: 12%;
-            color: hsl(0, 0%, 50%);
-            &:focus {
-              border: 1px solid hsl(147, 97%, 40%);
-            }
-          }
-        }
-      }
-      .joinBtn {
-        width: 100%;
-        height: 50px;
-        outline: none;
-        border: 1px solid hsl(147, 97%, 40%);
-        border-radius: 6px;
-        font-size: 1.5rem;
-        background-color: hsl(147, 97%, 40%);
-        color: hsl(0, 0%, 100%);
+        margin-bottom: 12px;
       }
     }
   }
