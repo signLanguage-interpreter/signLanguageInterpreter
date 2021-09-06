@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { RouteComponentProps } from "react-router-dom";
+import Header from "../Header/Header";
 import "./Join.scss";
 
 const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
@@ -60,12 +61,11 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     send();
-    console.log(user);
   };
 
   return (
     <div className="join_wrapper">
-      <header>SLT</header>
+      <Header></Header>
       <form className="join" onSubmit={onSubmit}>
         <div className="join_detail">
           <div className="name_wrapper">
