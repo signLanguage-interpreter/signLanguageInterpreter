@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
 import "./ManagerModify.scss";
 
 const Manager = () => {
@@ -8,7 +9,6 @@ const Manager = () => {
   const img_file = useRef(null);
 
   // state
-  const [loading, setLoading] = useState(false);
   const [manager, setManger] = useState({
     imgPath: "",
     position: "",
@@ -22,7 +22,6 @@ const Manager = () => {
   };
 
   const onImgChange = async (e) => {
-    setLoading(true);
     if (e.target.files != null) {
       const fd = new FormData();
       fd.append("file", e.target.files[0]);
@@ -36,6 +35,35 @@ const Manager = () => {
     });
     console.log(`${[e.target.name]}: ${e.target.value}`);
   };
+
+  // useEffect
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const res = axios.get("http://localhost:5000", {
+          headers: {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          },
+        });
+        setManger({
+          ...manager,
+          imgPath: res.data.imgPath,
+          position: res.data.position,
+          introduce: res.data.introduce,
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetch();
+  }, []);
 
   return (
     <div className="managerModify_wrapper">
