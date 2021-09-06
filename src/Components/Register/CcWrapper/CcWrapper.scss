@@ -12,15 +12,12 @@
         font-weight: 500;
         outline: none;
         border: 1px solid var(--border-color);
-        border-bottom: none;
         border-radius: 6px 6px 0 0;
         &:hover {
-          outline: none;
           border: 1px solid var(--hover-color);
         }
         &:focus {
-          outline: none;
-          border: 2px solid var(--focus-color);
+          border: 1px solid var(--focus-color);
         }
       }
     }
@@ -36,14 +33,10 @@
         font-weight: 500;
         outline: none;
         border: 1px solid var(--border-color);
-
         &:hover {
-          outline: none;
           border: 1px solid var(--hover-color);
         }
-
         &:focus {
-          outline: none;
           border: 1px solid var(--focus-color);
         }
       }
@@ -59,14 +52,11 @@
         border: 1px solid var(--border-color);
         resize: none;
         border-radius: 0 0 6px 6px;
-        border-top: none;
         padding: 8px;
         &:hover {
-          outline: none;
           border: 1px solid var(--hover-color);
         }
         &:focus {
-          outline: none;
           border: 1px solid var(--focus-color);
         }
       }

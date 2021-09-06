@@ -1,8 +1,8 @@
 import "./NpWrapper.scss";
 
-const NpWrapper = ({ id, userNickName, cellPhone, np }) => {
+const NpWrapper = ({ id, userNickName, cellPhone }) => {
   return (
-    <div className="np_wrapper" ref={np}>
+    <div className="np_wrapper">
       <input type="hidden" name="id" value={id}></input>
       <div className="name_wrapper">
         <i className="fas fa-user"></i>

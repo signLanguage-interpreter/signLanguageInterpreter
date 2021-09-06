@@ -1,10 +1,9 @@
 // import axios from "axios";
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import CcWrapper from "./CcWrapper/CcWrapper";
 import DtWrapper from "./DtWrapper/DtWrapper";
-import InterWrapper from "./InterWrapper/InterWrapper";
 import NpWrapper from "./NpWrapper/NpWrapper";
 import "./Register.scss";
 
@@ -16,7 +15,7 @@ interface Regi {
   receptionDate: string;
 }
 
-const Register = ({}) => {
+const Register = () => {
   // state
   const [user, setUser] = useState({
     id: "",
@@ -33,18 +32,9 @@ const Register = ({}) => {
   });
   const { classification, subject, content, interpreter, receptionDate } = regi;
 
-  // ref
-  const np = useRef<HTMLDivElement>(null);
-  const cc = useRef<HTMLDivElement>(null);
-  const inter = useRef<HTMLDivElement>(null);
-  const dt = useRef<HTMLDivElement>(null);
-  const submitBtn = useRef<HTMLButtonElement>(null);
-
   // useEffect
-  /* 
   useEffect(() => {
     const fetch = async () => {
-      setLoading(true);
       try {
         const res = await axios.get("http://localhost:5000/user/reception", {
           headers: {
@@ -63,17 +53,12 @@ const Register = ({}) => {
           userNickName: res.data.userNickName,
           cellPhone: res.data.cellPhone,
         });
-        setLoading(false);
       } catch (e) {
         console.error(e);
       }
     };
     fetch();
   }, [user]);
-
-  if (loading) {
-    return <div>loading</div>;
-  }*/
 
   const send = async () => {
     try {
@@ -115,15 +100,12 @@ const Register = ({}) => {
           id={id}
           userNickName={userNickName}
           cellPhone={cellPhone}
-          np={np}
         ></NpWrapper>
-        <CcWrapper regi={regi} setRegi={setRegi} cc={cc}></CcWrapper>
-        <InterWrapper
-          regi={regi}
-          setRegi={setRegi}
-          inter={inter}
-        ></InterWrapper>
-        <DtWrapper regi={regi} setRegi={setRegi} dt={dt}></DtWrapper>
+        <CcWrapper regi={regi} setRegi={setRegi}></CcWrapper>
+        <DtWrapper regi={regi} setRegi={setRegi}></DtWrapper>
+      </div>
+      <div className="submitBtn">
+        <button type="submit">신청</button>
       </div>
     </form>
   );

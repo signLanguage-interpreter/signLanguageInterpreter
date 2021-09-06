@@ -1,6 +1,6 @@
 import "./CcWrapper.scss";
 
-const CcWrapper = ({ regi, setRegi, cc }) => {
+const CcWrapper = ({ regi, setRegi }) => {
   // event
   const onChange = (e) => {
     setRegi({
@@ -10,7 +10,7 @@ const CcWrapper = ({ regi, setRegi, cc }) => {
   };
 
   return (
-    <div className="cc_wrapper" ref={cc}>
+    <div className="cc_wrapper">
       <div className="classi_subject_wrapper">
         <div className="classi_wrapper">
           <select name="classification" onChange={onChange}>

@@ -1,3 +1,19 @@
 .register_wrapper {
   padding: 8px;
+  .submitBtn {
+    button {
+      width: 100%;
+      outline: none;
+      border: 1px solid var(--main-color);
+      background-color: var(--main-color);
+      color: var(--white-color);
+      font-size: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 }
