@@ -1,8 +1,26 @@
 .main {
-  .logo {
-    img {
-      width: 192px;
-      height: 192px;
+  header {
+    border-bottom: 1px solid var(--border-color);
+    .logo {
+      padding: 12px 15%;
+      img {
+        width: 52px;
+        height: 52px;
+      }
+    }
+  }
+  main {
+    padding: 8px 15%;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 8px;
+    .regi {
+      border: 1px solid var(--black-color);
+      box-shadow: 5px 5px 5px var(--border-color);
+    }
+    .user {
+      border: 1px solid var(--black-color);
+      box-shadow: 5px 5px 5px var(--border-color);
     }
   }
 }

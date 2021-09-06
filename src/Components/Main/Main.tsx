@@ -1,15 +1,21 @@
-import React, { useRef } from "react";
-import { RouteComponentProps } from "react-router-dom";
-import { store } from "../../App";
 import logo from "../img/logo.png";
+import Register from "../Register/Register";
 import "./Main.scss";
 
-const Main: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+const Main = () => {
   return (
     <div className="main">
-      <div className="logo">
-        <img src={logo} alt="logo"></img>
-      </div>
+      <header>
+        <div className="logo">
+          <img src={logo} alt="logo"></img>
+        </div>
+      </header>
+      <main>
+        <section className="regi">
+          <Register></Register>
+        </section>
+        <section className="user"></section>
+      </main>
     </div>
   );
 };
