@@ -1,8 +1,10 @@
 import logo from "../img/logo.png";
+import MyContent from "../MyContent/MyContent";
 import Register from "../Register/Register";
 import "./Main.scss";
 
 const Main = () => {
+  // useEffect
   return (
     <div className="main">
       <header>
@@ -14,7 +16,9 @@ const Main = () => {
         <section className="regi">
           <Register></Register>
         </section>
-        <section className="user"></section>
+        <section className="user">
+          <MyContent></MyContent>
+        </section>
       </main>
     </div>
   );

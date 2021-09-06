@@ -14,11 +14,7 @@
     display: grid;
     grid-template-columns: 7fr 3fr;
     gap: 8px;
-    .regi {
-      border: 1px solid var(--black-color);
-      box-shadow: 5px 5px 5px var(--border-color);
-    }
-    .user {
+    section {
       border: 1px solid var(--black-color);
       box-shadow: 5px 5px 5px var(--border-color);
     }
