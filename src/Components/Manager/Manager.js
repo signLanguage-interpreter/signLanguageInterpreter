@@ -9,7 +9,6 @@ const Manager = () => {
   const img_file = useRef(null);
 
   // state
-  const [loading, setLoading] = useState(false);
   const [manager, setManger] = useState({
     imgPath: "",
     position: "",
@@ -23,7 +22,6 @@ const Manager = () => {
   };
 
   const onImgChange = async (e) => {
-    setLoading(true);
     if (e.target.files != null) {
       const fd = new FormData();
       fd.append("file", e.target.files[0]);
