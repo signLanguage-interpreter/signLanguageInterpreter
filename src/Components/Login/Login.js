@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { store } from "../../App";
-import Header from "../Header/Header";
 import "./Login.scss";
 
 const Login = ({ history }) => {
@@ -83,49 +82,51 @@ const Login = ({ history }) => {
 
   return (
     <div className="login_wrapper">
-      <Header></Header>
-      <form className="login" onSubmit={onSubmit}>
-        <div className="id_pw_wrapper">
-          <div className="id_wrapper">
-            <i className="far fa-user icon"></i>
-            <input
-              name="username"
-              placeholder="아이디"
-              className="input"
-              autoComplete="off"
-              defaultValue={username}
-              onChange={onChange}
-            ></input>
+      <div className="login_img">SLT</div>
+      <div className="form_wrapper">
+        <form className="login" onSubmit={onSubmit}>
+          <div className="id_pw_wrapper">
+            <div className="id_wrapper">
+              <i className="far fa-user icon"></i>
+              <input
+                name="username"
+                placeholder="아이디"
+                className="id_input"
+                autoComplete="off"
+                defaultValue={username}
+                onChange={onChange}
+              ></input>
+            </div>
+            <div className="pw_wrapper">
+              <i className="fas fa-unlock-alt icon"></i>
+              <input
+                type="password"
+                name="password"
+                placeholder="비밀번호"
+                className="pw_input"
+                autoComplete="off"
+                defaultValue={password}
+                onChange={onChange}
+                ref={pw_text}
+              ></input>
+              <i className="fas fa-eye" onClick={onEyeClick}></i>
+            </div>
           </div>
-          <div className="pw_wrapper">
-            <i className="fas fa-unlock-alt icon"></i>
-            <input
-              type="password"
-              name="password"
-              placeholder="비밀번호"
-              className="input"
-              autoComplete="off"
-              defaultValue={password}
-              onChange={onChange}
-              ref={pw_text}
-            ></input>
-            <i className="fas fa-eye icon_eye" onClick={onEyeClick}></i>
-          </div>
+          <button type="submit" className="loginBtn">
+            로그인
+          </button>
+        </form>
+        <div className="find_join_wrapper">
+          <Link to="/find_pw" className="link">
+            비밀번호 찾기
+          </Link>
+          <Link to="/find_id" className="link">
+            아이디 찾기
+          </Link>
+          <Link to="/join" className="link">
+            회원가입
+          </Link>
         </div>
-        <button type="submit" className="loginBtn">
-          로그인
-        </button>
-      </form>
-      <div className="find_join_wrapper">
-        <Link to="/find_pw" className="link">
-          비밀번호 찾기
-        </Link>
-        <Link to="/find_id" className="link">
-          아이디 찾기
-        </Link>
-        <Link to="/join" className="link">
-          회원가입
-        </Link>
       </div>
     </div>
   );

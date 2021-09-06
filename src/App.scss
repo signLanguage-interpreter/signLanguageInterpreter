@@ -6,3 +6,13 @@
 .App {
   width: 100%;
 }
+
+:root {
+  --main-color: hsl(147, 97%, 40%);
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 0%, 0%);
+  --grey-color: hsl(0, 0%, 70%);
+  --border-color: hsl(0, 0%, 80%);
+  --focus-color: hsl(147, 97%, 40%);
+  --hover-color: hsl(0, 0%, 40%);
+}
