@@ -11,7 +11,7 @@ const Modify = loadable(() => import("./Components/Modify/Modify"));
 const Router = () => {
   return (
     <Switch>
-      <Route exact path="/main" component={Main} />
+      <Route exact path="/user/main" component={Main} />
       <Route exact path={["/", "/login"]} component={Login} />
       <Route exact path="/join" component={Join} />
       <Route exact path="/register" component={Register} />

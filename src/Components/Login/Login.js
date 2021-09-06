@@ -32,8 +32,6 @@ const Login = ({ history }) => {
     console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
-<<<<<<< HEAD:src/Components/Login/Login.tsx
-=======
   const login_action = (authorization, logged) => {
     return {
       type: "LOGIN",
@@ -46,27 +44,28 @@ const Login = ({ history }) => {
 
   // regex
 
->>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7:src/Components/Login/Login.js
   const send = async () => {
+    history.push("/user/main");
+    /*
     try {
       const res = await axios.post("http://localhost:5000/login", {
         username,
         password,
       });
+
       // redux 사용
-<<<<<<< HEAD:src/Components/Login/Login.tsx
-      store.dispatch(login_action(res.data, true));
-=======
+      
       if (res.headers.authorization) {
         store.dispatch(login_action(res.headers.authorization, true));
-        history.push("/main");
+       
       } else {
         alert("아이디나 비밀번호가 틀립니다.");
       }
->>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7:src/Components/Login/Login.js
+      
     } catch (e) {
       console.error(e);
     }
+    */
   };
 
   const onSubmit = (e) => {
@@ -74,10 +73,6 @@ const Login = ({ history }) => {
     console.log(user);
     // axios
     send();
-<<<<<<< HEAD:src/Components/Login/Login.tsx
-    history.push("/");
-=======
->>>>>>> f50e77b364567dc7766b5b77d2f3410326d1f1b7:src/Components/Login/Login.js
   };
 
   return (
