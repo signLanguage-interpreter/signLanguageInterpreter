@@ -46,18 +46,15 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   };
 
   const send = async () => {
-    history.push("/login");
-    /* 
     try {
       await axios.post("http://localhost:5000/join", {
         ...user,
         gender: Boolean(gender),
       });
-      
+      history.push("/login");
     } catch (e) {
       console.error(e);
     }
-    */
   };
 
   const onSubmit = (e: React.FormEvent) => {
