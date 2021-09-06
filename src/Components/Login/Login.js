@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { store } from "../../App";
-import Header from "../Header/Header";
 import "./Login.scss";
 
 const Login = ({ history }) => {
@@ -72,9 +71,7 @@ const Login = ({ history }) => {
 
   return (
     <div className="login_wrapper">
-      <div className="login_img">
-        <h2>SLT</h2>
-      </div>
+      <div className="login_img">SLT</div>
       <div className="form_wrapper">
         <form className="login" onSubmit={onSubmit}>
           <div className="id_pw_wrapper">
