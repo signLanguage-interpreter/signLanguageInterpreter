@@ -1,8 +1,7 @@
 // import axios from "axios";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { RouteComponentProps } from "react-router-dom";
-import Header from "../Header/Header";
+
 import CcWrapper from "./CcWrapper/CcWrapper";
 import DtWrapper from "./DtWrapper/DtWrapper";
 import InterWrapper from "./InterWrapper/InterWrapper";
@@ -17,12 +16,8 @@ interface Regi {
   receptionDate: string;
 }
 
-const Register: React.FunctionComponent<RouteComponentProps> = ({
-  history,
-}) => {
+const Register = ({}) => {
   // state
-  const [loading, setLoading] = useState(false);
-
   const [user, setUser] = useState({
     id: "",
     userNickName: "",
@@ -38,17 +33,15 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   });
   const { classification, subject, content, interpreter, receptionDate } = regi;
 
-  const [cnt, setCnt] = useState(1);
-
   // ref
   const np = useRef<HTMLDivElement>(null);
   const cc = useRef<HTMLDivElement>(null);
   const inter = useRef<HTMLDivElement>(null);
   const dt = useRef<HTMLDivElement>(null);
-  const nextBtn = useRef<HTMLButtonElement>(null);
   const submitBtn = useRef<HTMLButtonElement>(null);
 
   // useEffect
+  /* 
   useEffect(() => {
     const fetch = async () => {
       setLoading(true);
@@ -80,46 +73,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
 
   if (loading) {
     return <div>loading</div>;
-  }
-
-  // event
-  const onNextBtnClick = () => {
-    if (cnt === 1) {
-      np.current!.style.display = "none";
-      cc.current!.style.display = "block";
-      setCnt(2);
-    } else if (cnt === 2) {
-      cc.current!.style.display = "none";
-      inter.current!.style.display = "block";
-      setCnt(3);
-    } else if (cnt === 3) {
-      inter.current!.style.display = "none";
-      dt.current!.style.display = "block";
-      nextBtn.current!.style.display = "none";
-      submitBtn.current!.style.display = "block";
-      setCnt(4);
-    }
-  };
-
-  const onPrevBtnClick = () => {
-    if (cnt === 1) {
-      history.push("/");
-    } else if (cnt === 2) {
-      np.current!.style.display = "block";
-      cc.current!.style.display = "none";
-      setCnt(1);
-    } else if (cnt === 3) {
-      cc.current!.style.display = "block";
-      inter.current!.style.display = "none";
-      setCnt(2);
-    } else if (cnt === 4) {
-      inter.current!.style.display = "block";
-      dt.current!.style.display = "none";
-      nextBtn.current!.style.display = "block";
-      submitBtn.current!.style.display = "none";
-      setCnt(3);
-    }
-  };
+  }*/
 
   const send = async () => {
     try {
@@ -143,8 +97,6 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
           },
         }
       );
-      setCnt(1);
-      history.push("/main");
     } catch (e) {
       console.error(e);
     }
@@ -157,7 +109,7 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
   };
   return (
     <form className="register_wrapper" onSubmit={onSubmit}>
-      <Header></Header>
+      <h2>신청</h2>
       <div className="signUp">
         <NpWrapper
           id={id}
@@ -172,26 +124,6 @@ const Register: React.FunctionComponent<RouteComponentProps> = ({
           inter={inter}
         ></InterWrapper>
         <DtWrapper regi={regi} setRegi={setRegi} dt={dt}></DtWrapper>
-        <div className="btn_wrapper">
-          <button
-            type="button"
-            className="prevBtn btn"
-            onClick={onPrevBtnClick}
-          >
-            이전
-          </button>
-          <button
-            type="button"
-            className="nextBtn btn"
-            ref={nextBtn}
-            onClick={onNextBtnClick}
-          >
-            다음
-          </button>
-          <button type="submit" className="submitBtn btn" ref={submitBtn}>
-            신청
-          </button>
-        </div>
       </div>
     </form>
   );
