@@ -45,8 +45,6 @@ const Login = ({ history }) => {
   // regex
 
   const send = async () => {
-    history.push("/user/main");
-    /*
     try {
       const res = await axios.post("http://localhost:5000/login", {
         username,
@@ -54,18 +52,19 @@ const Login = ({ history }) => {
       });
 
       // redux 사용
-      
+
       if (res.headers.authorization) {
         store.dispatch(login_action(res.headers.authorization, true));
-       
+        if (res.data.role === "user") {
+          history.push("/user/main");
+        } else if (res.data.role === "manager") {
+        }
       } else {
         alert("아이디나 비밀번호가 틀립니다.");
       }
-      
     } catch (e) {
       console.error(e);
     }
-    */
   };
 
   const onSubmit = (e) => {
