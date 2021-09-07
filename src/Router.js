@@ -4,7 +4,6 @@ import loadable from "@loadable/component";
 const Main = loadable(() => import("./Components/Main/Main"));
 const Login = loadable(() => import("./Components/Login/Login"));
 const Join = loadable(() => import("./Components/Join/Join"));
-
 const Manager = loadable(() => import("./Components/Manager/Manager"));
 const Modify = loadable(() => import("./Components/Modify/Modify"));
 
