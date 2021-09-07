@@ -50,9 +50,7 @@ const Login = ({ history }) => {
         username,
         password,
       });
-
       // redux 사용
-
       if (res.headers.authorization) {
         store.dispatch(login_action(res.headers.authorization, true));
         if (res.data.role === "user") {
