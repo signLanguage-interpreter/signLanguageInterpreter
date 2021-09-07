@@ -6,6 +6,7 @@
       img {
         width: 52px;
         height: 52px;
+        cursor: pointer;
       }
     }
   }
@@ -13,10 +14,20 @@
     padding: 8px 15%;
     display: grid;
     grid-template-columns: 7fr 3fr;
+    grid-template-rows: repeat(5, 1fr);
     gap: 8px;
     section {
       border: 1px solid var(--black-color);
       box-shadow: 5px 5px 5px var(--border-color);
+    }
+    .regi {
+      grid-row: 1 / 5;
+    }
+    .user {
+      grid-row: 1;
+    }
+    .regi_list {
+      grid-row: 2 / 5;
     }
   }
 }
