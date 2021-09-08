@@ -14,6 +14,7 @@ const Main = () => {
     eMail: "",
   });
   const [regi_list, setRegi_list] = useState([]);
+
   // useEffect
   useEffect(() => {
     const fetch = async () => {
@@ -35,7 +36,7 @@ const Main = () => {
       }
     };
     fetch();
-  });
+  }, []);
 
   return (
     <div className="main">
