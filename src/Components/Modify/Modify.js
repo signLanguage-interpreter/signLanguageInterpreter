@@ -1,27 +1,28 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Header from "../Header/Header";
+import logo from "../img/logo.png";
 import "./Modify.scss";
 
-const Modify = () => {
+const Modify = ({ history }) => {
   // state
-  const [manager, setManager] = useState({
+  const [user, setUser] = useState({
     id: "",
     userNickName: "",
-    username: "",
     password: "",
     cellPhone: "",
     eMail: "",
   });
-  const { id, userNickName, username, password, cellPhone, eMail } = manager;
+  const { id, userNickName, password, cellPhone, eMail } = user;
 
   // useEffect (Mount)
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/manager/modifyInfo");
-        setManager({
-          ...manager,
+        const res = await axios.get(
+          `http://localhost:5000/user/modifyInfo/${id}`
+        );
+        setUser({
+          ...user,
           id: res.data.id,
           userNickName: res.data.userNickName,
           username: res.data.username,
@@ -31,16 +32,16 @@ const Modify = () => {
       }
     };
     fetch();
-  });
+  }, []);
 
-  // post: manager/modifyInfo/{id}
+  // post: user/modifyInfo/{id}
   const onSubmit = (e) => {
     e.preventDefault();
     const send = async () => {
       try {
         axios.post(
           `http://localhost:5000/modifyInfo/${id}`,
-          { manager },
+          { user },
           {
             headers: {
               Authorization: sessionStorage
@@ -52,6 +53,7 @@ const Modify = () => {
             },
           }
         );
+        history.push("/user/main");
       } catch (e) {
         console.error(e);
       }
@@ -60,15 +62,21 @@ const Modify = () => {
   };
 
   const onChange = (e) => {
-    setManager({
-      ...manager,
+    setUser({
+      ...user,
       [e.target.name]: e.target.value,
     });
   };
 
   return (
     <div className="modify_wrapper">
-      <Header></Header>
+      <div className="logo">
+        <img
+          src={logo}
+          alt="logo"
+          onClick={() => window.location.replace("/user/main")}
+        ></img>
+      </div>
       <form className="modify" onSubmit={onSubmit}>
         <div className="modify_detail">
           <div className="name_wrapper">
@@ -87,9 +95,7 @@ const Modify = () => {
             <input
               className="input"
               name="username"
-              value={username}
-              onChange={onChange}
-              autoComplete="off"
+              disabled
               placeholder="아이디"
             ></input>
           </div>
