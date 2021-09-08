@@ -1,6 +1,7 @@
+import { withRouter } from "react-router";
 import "./RegiList.scss";
 
-const RegiList = ({ regi_list }) => {
+const RegiList = ({ regi_list, history }) => {
   return (
     <div className="regi_lsit_wrapper">
       <h4>자신이 신청한 리스트</h4>
@@ -10,16 +11,23 @@ const RegiList = ({ regi_list }) => {
         <span>예약날짜</span>
         <span>상태</span>
         {regi_list.map((cur) => {
-          <>
-            <span>{cur.id}</span>
-            <span>{cur.subject}</span>
-            <span>{cur.receptionDate}</span>
-            <span>{cur.status === "HOLD" ? "X" : "O"}</span>
-          </>;
+          return (
+            <>
+              <span>{cur.id}</span>
+              <span
+                className="regi_subject"
+                onClick={() => history.push(`/user/regist/${cur.receptionId}`)}
+              >
+                {cur.subject}
+              </span>
+              <span>{cur.receptionDate}</span>
+              <span>{cur.status === "HOLD" ? "X" : "O"}</span>
+            </>
+          );
         })}
       </div>
     </div>
   );
 };
 
-export default RegiList;
+export default withRouter(RegiList);

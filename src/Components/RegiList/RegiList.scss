@@ -3,5 +3,8 @@
   .regi_list {
     display: grid;
     grid-template-columns: 1fr 4fr 3fr 1fr;
+    .regi_subject {
+      cursor: pointer;
+    }
   }
 }
