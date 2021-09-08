@@ -1,8 +1,9 @@
+import { withRouter } from "react-router";
 import { store } from "../../App";
 import "./MyContent.scss";
 
 const MyContent = ({ user, history }) => {
-  const { userNickName, cellPhone, eMail } = user;
+  const { id, userNickName, cellPhone, eMail } = user;
 
   const logout_action = (logged) => {
     return {
@@ -12,6 +13,7 @@ const MyContent = ({ user, history }) => {
       },
     };
   };
+
   //event
   const onLogout = () => {
     store.dispatch(logout_action(false));
@@ -24,7 +26,12 @@ const MyContent = ({ user, history }) => {
           <i className="fas fa-user-circle"></i>
         </div>
         <div className="my_info">
-          <span className="userNickName">{userNickName}님</span>
+          <span
+            className="userNickName"
+            onClick={() => history.push(`/user/modifyInfo`)}
+          >
+            {userNickName}님
+          </span>
           <span className="cellPhone">{cellPhone}</span>
           <span className="eMail">{eMail}</span>
         </div>
@@ -34,9 +41,8 @@ const MyContent = ({ user, history }) => {
           </button>
         </div>
       </div>
-      {/* <div className="my_nav"></div> */}
     </div>
   );
 };
 
-export default MyContent;
+export default withRouter(MyContent);
