@@ -1,0 +1,7 @@
+.com_list_wrapper {
+  height: 100%;
+  .comList {
+    display: grid;
+    grid-template-columns: 1fr 4fr 3fr 1fr;
+  }
+}

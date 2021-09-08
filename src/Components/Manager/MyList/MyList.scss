@@ -1,0 +1,7 @@
+.my_list_wrapper {
+  height: 100%;
+  .myList {
+    display: grid;
+    grid-template-columns: 1fr 4fr 3fr 1fr;
+  }
+}

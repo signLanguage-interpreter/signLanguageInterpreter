@@ -1,0 +1,7 @@
+.all_list_wrapper {
+  height: 100%;
+  .allList {
+    display: grid;
+    grid-template-columns: 1fr 4fr 3fr 1fr;
+  }
+}
