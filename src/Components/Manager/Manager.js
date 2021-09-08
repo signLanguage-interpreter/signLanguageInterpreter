@@ -36,7 +36,7 @@ const Manager = ({ history }) => {
       }
     };
     fetch();
-  });
+  }, []);
 
   return (
     <div className="manager_wrapper">
