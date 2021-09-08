@@ -38,6 +38,13 @@ const Register = ({ id, userNickName, cellPhone }) => {
           },
         }
       );
+      setRegi({
+        ...regi,
+        classification: "",
+        subject: "",
+        content: "",
+        receptionDate: "",
+      });
     } catch (e) {
       console.error(e);
     }

@@ -12,6 +12,7 @@ const DtWrapper = ({ regi, setRegi }) => {
           type="datetime-local"
           id="receptionDate"
           name="receptionDate"
+          value={regi.receptionDate}
           onChange={onChange}
         ></input>
       </div>

@@ -13,7 +13,11 @@ const CcWrapper = ({ regi, setRegi }) => {
     <div className="cc_wrapper">
       <div className="classi_subject_wrapper">
         <div className="classi_wrapper">
-          <select name="classification" onChange={onChange}>
+          <select
+            name="classification"
+            onChange={onChange}
+            value={regi.classification}
+          >
             <option value="default">-분류-</option>
             <option value="Medical">의료</option>
             <option value="Education">교육</option>
@@ -25,6 +29,7 @@ const CcWrapper = ({ regi, setRegi }) => {
           <input
             type="text"
             name="subject"
+            value={regi.subject}
             className="subject_input"
             autoComplete="off"
             placeholder="제목"
@@ -35,6 +40,7 @@ const CcWrapper = ({ regi, setRegi }) => {
           <textarea
             rows={7}
             name="content"
+            value={regi.content}
             onChange={onChange}
             placeholder="내용"
           ></textarea>
