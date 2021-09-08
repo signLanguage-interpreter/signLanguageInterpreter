@@ -1,7 +1,22 @@
-import { Link } from "react-router-dom";
+import { store } from "../../App";
 import "./MyContent.scss";
 
-const MyContent = () => {
+const MyContent = ({ user, history }) => {
+  const { userNickName, cellPhone, eMail } = user;
+
+  const logout_action = (logged) => {
+    return {
+      type: "LOGOUT",
+      payload: {
+        logged: logged,
+      },
+    };
+  };
+  //event
+  const onLogout = () => {
+    store.dispatch(logout_action(false));
+    history.push("/login");
+  };
   return (
     <div className="my_cont">
       <div className="my_thumbnail">
@@ -9,17 +24,17 @@ const MyContent = () => {
           <i className="fas fa-user-circle"></i>
         </div>
         <div className="my_info">
-          <span className="userNickName">이름님</span>
-          <span className="cellPhone">핸드폰 번호</span>
-          <span className="eMail">이메일</span>
+          <span className="userNickName">{userNickName}님</span>
+          <span className="cellPhone">{cellPhone}</span>
+          <span className="eMail">{eMail}</span>
         </div>
         <div className="logout">
-          <Link to="/login" className="logout_btn">
+          <button to="/login" className="logout_btn" onClick={onLogout}>
             로그아웃
-          </Link>
+          </button>
         </div>
       </div>
-      <div className="my_nav"></div>
+      {/* <div className="my_nav"></div> */}
     </div>
   );
 };
