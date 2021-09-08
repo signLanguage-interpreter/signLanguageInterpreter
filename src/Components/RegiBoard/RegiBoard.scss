@@ -1,0 +1,34 @@
+.regi_board_wrapper {
+  header {
+    border-bottom: 1px solid var(--border-color);
+    .logo {
+      padding: 12px 15%;
+      img {
+        width: 52px;
+        height: 52px;
+        cursor: pointer;
+      }
+    }
+  }
+  .regi_board {
+    padding: 12px 15%;
+    section {
+      border: 1px solid var(--black-color);
+      box-shadow: 5px 5px 5px var(--border-color);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      .subject_place {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+      .date_place {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+      }
+      .content_place {
+        grid-row: 3 / 5;
+      }
+    }
+  }
+}
