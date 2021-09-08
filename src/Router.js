@@ -6,15 +6,17 @@ const Login = loadable(() => import("./Components/Login/Login"));
 const Join = loadable(() => import("./Components/Join/Join"));
 const Manager = loadable(() => import("./Components/Manager/Manager"));
 const Modify = loadable(() => import("./Components/Modify/Modify"));
+const RegiBoard = loadable(() => import("./Components/RegiBoard/RegiBoard"));
 
 const Router = () => {
   return (
     <Switch>
       <Route exact path="/user/main" component={Main} />
+      <Route exact path="/user/modifyInfo" component={Modify} />
       <Route exact path={["/", "/login"]} component={Login} />
       <Route exact path="/join" component={Join} />
-      <Route exact path="/manager" component={Manager} />
-      <Route exact path="/modifyInfo" component={Modify} />
+      <Route exact path="/manager/main" component={Manager} />
+      <Route exact path="/user/regist/:receptionId" component={RegiBoard} />
     </Switch>
   );
 };
