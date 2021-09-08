@@ -1,64 +1,21 @@
 // import axios from "axios";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import CcWrapper from "./CcWrapper/CcWrapper";
 import DtWrapper from "./DtWrapper/DtWrapper";
 import NpWrapper from "./NpWrapper/NpWrapper";
 import "./Register.scss";
 
-interface Regi {
-  classification: string;
-  subject: string;
-  content: string;
-  interpreter: string;
-  receptionDate: string;
-}
-
-const Register = () => {
+const Register = ({ id, userNickName, cellPhone }) => {
   // state
-  const [user, setUser] = useState({
-    id: "",
-    userNickName: "",
-    cellPhone: "",
-  });
-  const { id, userNickName, cellPhone } = user;
-  const [regi, setRegi] = useState<Regi>({
+  const [regi, setRegi] = useState({
     classification: "",
     subject: "",
     content: "",
-    interpreter: "",
     receptionDate: "",
   });
-  const { classification, subject, content, interpreter, receptionDate } = regi;
-
-  // useEffect
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/user/reception", {
-          headers: {
-            Authorization: sessionStorage
-              .getItem("authorization")
-              ?.substring(
-                1,
-                sessionStorage.getItem("authorization")!.length - 1
-              ),
-          },
-        });
-        console.log(res);
-        setUser({
-          ...user,
-          id: res.data.id,
-          userNickName: res.data.userNickName,
-          cellPhone: res.data.cellPhone,
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    fetch();
-  }, [user]);
+  const { classification, subject, content, receptionDate } = regi;
 
   const send = async () => {
     try {
@@ -68,7 +25,6 @@ const Register = () => {
           classification,
           subject,
           content,
-          interpreter,
           receptionDate,
         },
         {
@@ -77,7 +33,7 @@ const Register = () => {
               .getItem("authorization")
               ?.substring(
                 1,
-                sessionStorage.getItem("authorization")!.length - 1
+                sessionStorage.getItem("authorization").length - 1
               ),
           },
         }
@@ -87,7 +43,7 @@ const Register = () => {
     }
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     console.log(regi);
     send();
