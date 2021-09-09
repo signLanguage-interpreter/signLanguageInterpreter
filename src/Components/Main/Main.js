@@ -29,6 +29,7 @@ const Main = () => {
               ),
           },
         });
+        console.log(res);
         setUser(res.data.user);
         setRegi_list(res.data.regi_list);
       } catch (e) {
