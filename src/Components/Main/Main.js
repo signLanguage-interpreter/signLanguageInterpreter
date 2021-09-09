@@ -8,7 +8,7 @@ import "./Main.scss";
 
 const Main = () => {
   const [user, setUser] = useState({
-    id: "",
+    // id: "",
     userNickName: "",
     cellPhone: "",
     eMail: "",

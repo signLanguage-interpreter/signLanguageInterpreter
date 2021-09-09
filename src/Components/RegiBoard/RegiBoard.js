@@ -8,7 +8,7 @@ const RegiBoard = ({ match }) => {
 
   // state
   const [regi, setRegi] = useState({
-    id: "",
+    // id: "",
     classification: "",
     subject: "",
     content: "",

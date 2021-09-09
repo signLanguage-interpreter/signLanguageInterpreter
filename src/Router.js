@@ -11,11 +11,14 @@ const RegiBoard = loadable(() => import("./Components/RegiBoard/RegiBoard"));
 const Router = () => {
   return (
     <Switch>
-      <Route exact path="/user/main" component={Main} />
-      <Route exact path="/user/modifyInfo" component={Modify} />
       <Route exact path={["/", "/login"]} component={Login} />
       <Route exact path="/join" component={Join} />
+      {/* user */}
+      <Route exact path="/user/main" component={Main} />
+      <Route exact path="/user/modifyInfo" component={Modify} />
+      {/* manager */}
       <Route exact path="/manager/main" component={Manager} />
+      {/* register */}
       <Route exact path="/user/regist/:receptionId" component={RegiBoard} />
     </Switch>
   );
