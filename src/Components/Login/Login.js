@@ -51,11 +51,13 @@ const Login = ({ history }) => {
         password,
       });
       // redux 사용
+      console.log(res);
       if (res.headers.authorization) {
         store.dispatch(login_action(res.headers.authorization, true));
         if (res.data.role === "user") {
           history.push("/user/main");
         } else if (res.data.role === "manager") {
+          history.push("/manager/main");
         }
       } else {
         alert("아이디나 비밀번호가 틀립니다.");
