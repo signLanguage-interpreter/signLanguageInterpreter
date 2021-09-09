@@ -52,7 +52,7 @@ const Main = () => {
       </header>
       <main>
         <section className="regi">
-          <Register></Register>
+          <Register user={user}></Register>
         </section>
         <section className="user">
           <MyContent user={user}></MyContent>

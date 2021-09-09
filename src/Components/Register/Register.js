@@ -7,7 +7,8 @@ import DtWrapper from "./DtWrapper/DtWrapper";
 import NpWrapper from "./NpWrapper/NpWrapper";
 import "./Register.scss";
 
-const Register = ({ id, userNickName, cellPhone }) => {
+const Register = ({ user }) => {
+  const { userNickName, cellPhone } = user;
   // state
   const [regi, setRegi] = useState({
     classification: "",
@@ -59,7 +60,7 @@ const Register = ({ id, userNickName, cellPhone }) => {
       <h2>신청</h2>
       <div className="signUp">
         <NpWrapper
-          id={id}
+          // id={id}
           userNickName={userNickName}
           cellPhone={cellPhone}
         ></NpWrapper>
