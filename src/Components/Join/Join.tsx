@@ -34,7 +34,6 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       ...user,
       [e.currentTarget.name]: e.currentTarget.value,
     });
-    console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
   const onSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
@@ -42,7 +41,6 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       ...user,
       [e.currentTarget.name]: e.currentTarget.value,
     });
-    console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
   const send = async () => {
