@@ -52,7 +52,6 @@ const Register = ({ id, userNickName, cellPhone }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(regi);
     send();
   };
   return (
