@@ -68,7 +68,7 @@ const Modify = ({ history, match }) => {
       const send = async () => {
         try {
           axios.post(
-            `http://localhost:5000/user/modifyInfo/${id}`,
+            `http://localhost:5000/user/modifyMember/${id}`,
             { password, email, cellPhone },
             {
               headers: {
