@@ -3,7 +3,7 @@ import { store } from "../../App";
 import "./MyContent.scss";
 
 const MyContent = ({ user, history }) => {
-  const { userNickName, cellPhone, eMail } = user;
+  const { id, userNickName, username, cellPhone, email } = user;
 
   const logout_action = (logged) => {
     return {
@@ -28,12 +28,12 @@ const MyContent = ({ user, history }) => {
         <div className="my_info">
           <span
             className="userNickName"
-            onClick={() => history.push(`/user/modifyInfo`)}
+            onClick={() => history.push(`/user/modifyMember/${id}`)}
           >
             {userNickName}님
           </span>
           <span className="cellPhone">{cellPhone}</span>
-          <span className="eMail">{eMail}</span>
+          <span className="eMail">{email}</span>
         </div>
         <div className="logout">
           <button to="/login" className="logout_btn" onClick={onLogout}>

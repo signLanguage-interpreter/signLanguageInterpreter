@@ -19,7 +19,7 @@ const Modify = ({ history }) => {
     const fetch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/user/modifyInfo/${id}`
+          `http://localhost:5000/user/modifyMember/${id}`
         );
         setUser({
           ...user,
@@ -32,7 +32,7 @@ const Modify = ({ history }) => {
       }
     };
     fetch();
-  }, []);
+  }, [id, user]);
 
   // post: user/modifyInfo/{id}
   const onSubmit = (e) => {

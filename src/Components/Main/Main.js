@@ -8,10 +8,11 @@ import "./Main.scss";
 
 const Main = () => {
   const [user, setUser] = useState({
-    // id: "",
+    id: "",
     userNickName: "",
+    username: "",
     cellPhone: "",
-    eMail: "",
+    email: "",
   });
   const [regi_list, setRegi_list] = useState([]);
 

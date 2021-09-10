@@ -15,7 +15,7 @@ const Router = () => {
       <Route exact path="/join" component={Join} />
       {/* user */}
       <Route exact path="/user/main" component={Main} />
-      <Route exact path="/user/modifyInfo" component={Modify} />
+      <Route exact path="/user/modifyMember/:id" component={Modify} />
       {/* manager */}
       <Route exact path="/manager/main" component={Manager} />
       {/* register */}
