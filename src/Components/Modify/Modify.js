@@ -19,7 +19,17 @@ const Modify = ({ history, match }) => {
     const fetch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/user/modifyMember/${id}`
+          `http://localhost:5000/user/modifyMember/${id}`,
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
         );
         setUser({
           ...user,

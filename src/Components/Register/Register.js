@@ -39,6 +39,7 @@ const Register = ({ user }) => {
           },
         }
       );
+      alert("신청하였습니다.");
       setRegi({
         ...regi,
         classification: "",
@@ -46,6 +47,7 @@ const Register = ({ user }) => {
         content: "",
         receptionDate: "",
       });
+      window.location.replace("/user/main");
     } catch (e) {
       console.error(e);
     }
