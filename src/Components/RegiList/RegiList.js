@@ -10,10 +10,25 @@ const RegiList = ({ regi_list, history }) => {
         <span>제목</span>
         <span>예약날짜</span>
         <span>상태</span>
-        {regi_list.map((cur) => {
+        {regi_list.map((cur, idx) => {
+          const cur_status = cur.status;
+          let cur_status_icon;
+          switch (cur_status) {
+            case "HOLD":
+              cur_status_icon = "H";
+              break;
+            case "READY":
+              cur_status_icon = "R";
+              break;
+            case "END":
+              cur_status_icon = "E";
+              break;
+            default:
+              console.log("error");
+          }
           return (
             <>
-              <span>{cur.id}</span>
+              <span>{idx}</span>
               <span
                 className="regi_subject"
                 onClick={() =>
@@ -23,8 +38,7 @@ const RegiList = ({ regi_list, history }) => {
                 {cur.subject}
               </span>
               <span>{cur.receptionDate}</span>
-              <span>{cur.status === "HOLD" ? "X" : "O"}</span>
-              {/* HOLD, READY, END */}
+              <span>{cur_status_icon}</span>
             </>
           );
         })}
