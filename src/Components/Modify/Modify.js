@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 import logo from "../img/logo.png";
 import "./Modify.scss";
 
-const Modify = ({ history }) => {
+const Modify = ({ history, match }) => {
+  const { id } = match.params;
   // state
   const [user, setUser] = useState({
-    id: "",
     userNickName: "",
     password: "",
     cellPhone: "",
     eMail: "",
   });
-  const { id, userNickName, password, cellPhone, eMail } = user;
+  const { userNickName, password, cellPhone, eMail } = user;
 
   // useEffect (Mount)
   useEffect(() => {
@@ -23,7 +23,6 @@ const Modify = ({ history }) => {
         );
         setUser({
           ...user,
-          id: res.data.id,
           userNickName: res.data.userNickName,
           username: res.data.username,
         });
