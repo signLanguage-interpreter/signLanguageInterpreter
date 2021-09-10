@@ -51,7 +51,7 @@ const Modify = ({ history, match }) => {
       }
     };
     fetch();
-  }, [id, user]);
+  }, []);
 
   // post: user/modifyInfo/{id}
   const onSubmit = (e) => {
