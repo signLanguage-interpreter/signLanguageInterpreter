@@ -11,13 +11,13 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
-    eMail: "",
+    email: "",
     userNickName: "",
     cellPhone: "",
     birth: "",
     gender: "",
   });
-  const { userNickName, username, password, cellPhone, eMail, birth, gender } =
+  const { userNickName, username, password, cellPhone, email, birth, gender } =
     user;
 
   // event
@@ -117,8 +117,8 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
               <i className="fas fa-at icon"></i>
               <input
                 className="input"
-                name="eMail"
-                value={eMail}
+                name="email"
+                value={email}
                 onChange={onChange}
                 autoComplete="off"
                 placeholder="이메일 예) 123123@abc.com"

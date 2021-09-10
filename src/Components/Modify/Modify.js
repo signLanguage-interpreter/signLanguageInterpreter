@@ -69,7 +69,7 @@ const Modify = ({ history, match }) => {
         try {
           axios.post(
             `http://localhost:5000/user/modifyMember/${id}`,
-            { password, email, cellPhone },
+            { password: password, email: email, cellPhone: cellPhone },
             {
               headers: {
                 Authorization: sessionStorage
@@ -89,6 +89,8 @@ const Modify = ({ history, match }) => {
         }
       };
       send();
+    } else {
+      alert("비밀번호가 다릅니다.");
     }
   };
 
