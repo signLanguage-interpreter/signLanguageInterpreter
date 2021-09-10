@@ -68,7 +68,7 @@ const Modify = ({ history, match }) => {
       const send = async () => {
         try {
           axios.post(
-            `http://localhost:5000/modifyInfo/${id}`,
+            `http://localhost:5000/user/modifyInfo/${id}`,
             { password, email, cellPhone },
             {
               headers: {
@@ -81,6 +81,7 @@ const Modify = ({ history, match }) => {
               },
             }
           );
+          console.log(res);
           alert("개인정보가 수정되었습니다.");
           history.push("/user/main");
         } catch (e) {
