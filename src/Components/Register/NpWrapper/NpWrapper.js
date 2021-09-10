@@ -3,7 +3,7 @@ import "./NpWrapper.scss";
 const NpWrapper = ({ userNickName, cellPhone }) => {
   return (
     <div className="np_wrapper">
-      <input type="hidden" name="id" value={id}></input>
+      {/* <input type="hidden" name="id" value={id}></input> */}
       <div className="name_wrapper">
         <i className="fas fa-user"></i>
         <input

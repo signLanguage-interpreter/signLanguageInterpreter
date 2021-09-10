@@ -54,9 +54,9 @@ const Login = ({ history }) => {
       console.log(res);
       if (res.headers.authorization) {
         store.dispatch(login_action(res.headers.authorization, true));
-        if (res.data.role === "user") {
+        if (res.headers.auth === "user") {
           history.push("/user/main");
-        } else if (res.data.role === "manager") {
+        } else if (res.headers.auth === "manager") {
           history.push("/manager/main");
         }
       } else {
