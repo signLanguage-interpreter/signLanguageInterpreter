@@ -10,13 +10,22 @@ const Modify = ({ history, match }) => {
     username: "",
     userNickName: "",
     password: "",
+    repassword: "",
     cellPhone: "",
     email: "",
     birth: "",
     gender: "",
   });
-  const { username, userNickName, password, cellPhone, email, birth, gender } =
-    user;
+  const {
+    username,
+    userNickName,
+    password,
+    repassword,
+    cellPhone,
+    email,
+    birth,
+    gender,
+  } = user;
 
   // useEffect (Mount)
   useEffect(() => {
@@ -55,29 +64,31 @@ const Modify = ({ history, match }) => {
   // post: user/modifyInfo/{id}
   const onSubmit = (e) => {
     e.preventDefault();
-    const send = async () => {
-      try {
-        axios.post(
-          `http://localhost:5000/modifyInfo/${id}`,
-          { password, eMail, cellPhone },
-          {
-            headers: {
-              Authorization: sessionStorage
-                .getItem("authorization")
-                ?.substring(
-                  1,
-                  sessionStorage.getItem("authorization").length - 1
-                ),
-            },
-          }
-        );
-        alert("개인정보가 수정되었습니다.");
-        history.push("/user/main");
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    send();
+    if (password === repassword) {
+      const send = async () => {
+        try {
+          axios.post(
+            `http://localhost:5000/modifyInfo/${id}`,
+            { password, eMail, cellPhone },
+            {
+              headers: {
+                Authorization: sessionStorage
+                  .getItem("authorization")
+                  ?.substring(
+                    1,
+                    sessionStorage.getItem("authorization").length - 1
+                  ),
+              },
+            }
+          );
+          alert("개인정보가 수정되었습니다.");
+          history.push("/user/main");
+        } catch (e) {
+          console.error(e);
+        }
+      };
+      send();
+    }
   };
 
   const onChange = (e) => {
@@ -129,6 +140,20 @@ const Modify = ({ history, match }) => {
               onChange={onChange}
               autoComplete="off"
               placeholder="비밀번호"
+              required
+            ></input>
+            <i className="fas fa-eye icon_eye"></i>
+          </div>
+          <div className="repw_wrapper">
+            <i className="fas fa-key icon"></i>
+            <input
+              type="password"
+              className="input"
+              name="repassword"
+              value={repassword}
+              onChange={onChange}
+              autoComplete="off"
+              placeholder="비밀번호 확인"
               required
             ></input>
             <i className="fas fa-eye icon_eye"></i>
