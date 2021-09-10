@@ -69,7 +69,7 @@ const Modify = ({ history, match }) => {
         try {
           axios.post(
             `http://localhost:5000/modifyInfo/${id}`,
-            { password, eMail, cellPhone },
+            { password, email, cellPhone },
             {
               headers: {
                 Authorization: sessionStorage
