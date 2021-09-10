@@ -7,12 +7,16 @@ const Modify = ({ history, match }) => {
   const { id } = match.params;
   // state
   const [user, setUser] = useState({
+    username: "",
     userNickName: "",
     password: "",
     cellPhone: "",
     eMail: "",
+    birth: "",
+    gender: "",
   });
-  const { userNickName, password, cellPhone, eMail } = user;
+  const { username, userNickName, password, cellPhone, eMail, birth, gender } =
+    user;
 
   // useEffect (Mount)
   useEffect(() => {
@@ -33,8 +37,13 @@ const Modify = ({ history, match }) => {
         );
         setUser({
           ...user,
-          userNickName: res.data.userNickName,
           username: res.data.username,
+          userNickName: res.data.userNickName,
+          password: res.data.password,
+          cellPhone: res.data.cellPhone,
+          eMail: res.data.eMail,
+          birth: res.data.birth,
+          gender: res.data.gender,
         });
       } catch (e) {
         console.error(e);
@@ -50,7 +59,7 @@ const Modify = ({ history, match }) => {
       try {
         axios.post(
           `http://localhost:5000/modifyInfo/${id}`,
-          { user },
+          { password, eMail, cellPhone },
           {
             headers: {
               Authorization: sessionStorage
@@ -62,6 +71,7 @@ const Modify = ({ history, match }) => {
             },
           }
         );
+        alert("개인정보가 수정되었습니다.");
         history.push("/user/main");
       } catch (e) {
         console.error(e);
@@ -104,6 +114,7 @@ const Modify = ({ history, match }) => {
             <input
               className="input"
               name="username"
+              value={username}
               disabled
               placeholder="아이디"
             ></input>
@@ -148,6 +159,7 @@ const Modify = ({ history, match }) => {
             <input
               className="input"
               name="birth"
+              value={birth}
               autoComplete="off"
               placeholder="생일 예) 0000-00-00"
               disabled
@@ -155,7 +167,7 @@ const Modify = ({ history, match }) => {
           </div>
           <div className="gender_wrapper">
             <i className="fas fa-venus-mars icon"></i>
-            <select name="gender" className="input" disabled>
+            <select name="gender" className="input" value={gender} disabled>
               <option value="default">-선택-</option>
               <option value="true">남성</option>
               <option value="false">여성</option>
