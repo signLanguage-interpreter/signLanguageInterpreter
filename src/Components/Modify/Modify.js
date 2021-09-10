@@ -45,6 +45,7 @@ const Modify = ({ history, match }) => {
           birth: res.data.birth,
           gender: res.data.gender,
         });
+        console.log(user);
       } catch (e) {
         console.error(e);
       }
