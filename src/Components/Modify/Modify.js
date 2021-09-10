@@ -11,11 +11,11 @@ const Modify = ({ history, match }) => {
     userNickName: "",
     password: "",
     cellPhone: "",
-    eMail: "",
+    email: "",
     birth: "",
     gender: "",
   });
-  const { username, userNickName, password, cellPhone, eMail, birth, gender } =
+  const { username, userNickName, password, cellPhone, email, birth, gender } =
     user;
 
   // useEffect (Mount)
@@ -41,7 +41,7 @@ const Modify = ({ history, match }) => {
           userNickName: res.data.userNickName,
           password: res.data.password,
           cellPhone: res.data.cellPhone,
-          eMail: res.data.eMail,
+          email: res.data.email,
           birth: res.data.birth,
           gender: res.data.gender,
         });
@@ -147,8 +147,8 @@ const Modify = ({ history, match }) => {
             <i className="fas fa-at icon"></i>
             <input
               className="input"
-              name="eMail"
-              value={eMail}
+              name="email"
+              value={email}
               onChange={onChange}
               autoComplete="off"
               placeholder="이메일 예) 123123@abc.com"
