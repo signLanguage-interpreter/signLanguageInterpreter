@@ -81,7 +81,7 @@ const Modify = ({ history, match }) => {
               },
             }
           );
-          console.log(res);
+          console.log(`${password}, ${email}, ${cellPhone}`);
           alert("개인정보가 수정되었습니다.");
           history.push("/user/main");
         } catch (e) {
