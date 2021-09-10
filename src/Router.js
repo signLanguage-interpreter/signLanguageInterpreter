@@ -19,7 +19,7 @@ const Router = () => {
       {/* manager */}
       <Route exact path="/manager/main" component={Manager} />
       {/* register */}
-      <Route exact path="/user/regist/:receptionId" component={RegiBoard} />
+      <Route exact path="/user/regist/pk/:receptionId" component={RegiBoard} />
     </Switch>
   );
 };

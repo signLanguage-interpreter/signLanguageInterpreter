@@ -16,12 +16,15 @@ const RegiList = ({ regi_list, history }) => {
               <span>{cur.id}</span>
               <span
                 className="regi_subject"
-                onClick={() => history.push(`/user/regist/${cur.receptionId}`)}
+                onClick={() =>
+                  history.push(`/user/regist/pk/${cur.receptionId}`)
+                }
               >
                 {cur.subject}
               </span>
               <span>{cur.receptionDate}</span>
               <span>{cur.status === "HOLD" ? "X" : "O"}</span>
+              {/* HOLD, READY, END */}
             </>
           );
         })}
