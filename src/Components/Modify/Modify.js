@@ -39,7 +39,6 @@ const Modify = ({ history, match }) => {
           ...user,
           username: res.data.username,
           userNickName: res.data.userNickName,
-          password: res.data.password,
           cellPhone: res.data.cellPhone,
           email: res.data.email,
           birth: res.data.birth,
@@ -130,6 +129,7 @@ const Modify = ({ history, match }) => {
               onChange={onChange}
               autoComplete="off"
               placeholder="비밀번호"
+              required
             ></input>
             <i className="fas fa-eye icon_eye"></i>
           </div>
