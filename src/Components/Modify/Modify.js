@@ -59,7 +59,7 @@ const Modify = ({ history, match }) => {
       }
     };
     fetch();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // post: user/modifyInfo/{id}
   const onSubmit = (e) => {
