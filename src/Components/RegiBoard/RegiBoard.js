@@ -43,11 +43,11 @@ const RegiBoard = ({ match }) => {
         console.log(res);
         setUser({
           ...user,
-          classification: res.data.classification,
-          subject: res.data.subject,
-          content: res.data.content,
-          orderStatus: res.data.orderStatus,
-          receptionDate: res.data.receptionDate,
+          classification: res.data.user.classification,
+          subject: res.data.user.subject,
+          content: res.data.user.content,
+          orderStatus: res.data.user.orderStatus,
+          receptionDate: res.data.user.receptionDate,
         });
         setComments(res.data.regi_list);
       } catch (e) {
