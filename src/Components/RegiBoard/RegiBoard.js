@@ -38,6 +38,7 @@ const RegiBoard = ({ match }) => {
             },
           }
         );
+        console.log(res);
         setUser({
           ...user,
           classification: res.data.classification,
