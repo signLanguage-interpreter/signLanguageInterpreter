@@ -8,7 +8,7 @@ import NpWrapper from "./NpWrapper/NpWrapper";
 import "./Register.scss";
 
 const Register = ({ user }) => {
-  const { id, userNickName, username, cellPhone, email } = user;
+  const { id, userNickName, cellPhone } = user;
   // state
   const [regi, setRegi] = useState({
     classification: "",
