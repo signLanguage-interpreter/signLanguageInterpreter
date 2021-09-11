@@ -7,6 +7,8 @@ const RegiBoard = ({ match }) => {
   const registerPkId = match.params;
   const { pk, receptionId } = registerPkId;
 
+  console.log(match.params);
+
   // state
   const [user, setUser] = useState({
     orderStatus: "",
