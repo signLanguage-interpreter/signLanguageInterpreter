@@ -26,7 +26,17 @@ const RegiBoard = ({ match }) => {
     const fetch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/user/regist/${pk}/${receptionId}`
+          `http://localhost:5000/user/regist/${pk}/${receptionId}`,
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
         );
         setUser({
           ...user,
@@ -64,7 +74,17 @@ const RegiBoard = ({ match }) => {
     const send = async () => {
       try {
         await axios.post(
-          `http://localhost:5000/user/regist/${pk}/${receptionId}`
+          `http://localhost:5000/user/regist/${pk}/${receptionId}`,
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
         );
         window.location.replace(`/user/regist/${pk}/${receptionId}`);
       } catch (e) {
