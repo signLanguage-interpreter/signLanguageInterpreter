@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { withRouter } from "react-router";
 import "./RegiList.scss";
 
@@ -22,7 +23,7 @@ const RegiList = ({ regi_list, history }) => {
           console.log("error");
       }
       return (
-        <>
+        <Fragment key={idx}>
           <span>{idx}</span>
           <span
             className="regi_subject"
@@ -32,7 +33,7 @@ const RegiList = ({ regi_list, history }) => {
           </span>
           <span>{cur.receptionDate}</span>
           <span>{cur_status_icon}</span>
-        </>
+        </Fragment>
       );
     });
   }
