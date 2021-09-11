@@ -59,7 +59,7 @@ const Main = () => {
           <MyContent user={user}></MyContent>
         </section>
         <section className="regi_list">
-          <RegiList regi_list={regi_list}></RegiList>
+          <RegiList regi_list={regi_list} id={user.id}></RegiList>
         </section>
       </main>
     </div>
