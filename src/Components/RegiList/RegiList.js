@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { withRouter } from "react-router";
 import "./RegiList.scss";
 
-const RegiList = ({ regi_list, history }) => {
+const RegiList = ({ regi_list, id, history }) => {
   const regi_bool = regi_list === null ? false : true;
   let regi_res;
   if (regi_bool) {
@@ -27,7 +27,9 @@ const RegiList = ({ regi_list, history }) => {
           <span>{idx}</span>
           <span
             className="regi_subject"
-            onClick={() => history.push(`/user/regist/pk/${cur.receptionId}`)}
+            onClick={() =>
+              history.push(`/user/regist/${id}/${cur.receptionId}`)
+            }
           >
             {cur.subject}
           </span>
