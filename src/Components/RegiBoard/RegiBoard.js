@@ -1,44 +1,83 @@
 import "./RegiBoard.scss";
 import logo from "../img/logo.png";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 
 const RegiBoard = ({ match }) => {
-  const { registerId } = match.params;
+  const registerPkId = match.params;
+  const { pk, receptionId } = registerPkId;
 
   // state
-  const [regi, setRegi] = useState({
-    id: "",
-    classification: "",
+  const [user, setUser] = useState({
+    orderStatus: "",
     subject: "",
     content: "",
-    status: "",
     receptionDate: "",
+    classification: "",
   });
-  const { id, classification, subject, content, status, receptionDate } = regi;
+  const { classification, subject, content, orderStatus, receptionDate } = user;
+
+  const [comments, setComments] = useState([]);
+
+  const [comment, setComment] = useState("");
 
   // useEffect
   useEffect(() => {
     const fetch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/user/register/${registerId}`
+          `http://localhost:5000/user/regist/${pk}/${receptionId}`
         );
-        setRegi({
-          ...regi,
-          id: res.data.id,
+        setUser({
+          ...user,
           classification: res.data.classification,
           subject: res.data.subject,
           content: res.data.content,
-          status: res.data.status,
+          orderStatus: res.data.orderStatus,
           receptionDate: res.data.receptionDate,
         });
+        setComments(res.data.regi_list);
       } catch (e) {
         console.error(e);
       }
     };
     fetch();
-  });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const comments_bool = comments === null ? false : true;
+  let comments_res;
+  if (comments_bool) {
+    comments_res = comments.map((cur) => {
+      return (
+        <Fragment key={cur.id}>
+          <div className="comments_userNickName_time">
+            {cur.userNickName}({cur.registryTime})
+          </div>
+          <div className="comments_content">{cur.content}</div>
+        </Fragment>
+      );
+    });
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const send = async () => {
+      try {
+        await axios.post(
+          `http://localhost:5000/user/regist/${pk}/${receptionId}`
+        );
+        window.location.replace(`/user/regist/${pk}/${receptionId}`);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    send();
+  };
+
+  const onChange = (e) => {
+    setComment(e.target.value);
+  };
+
   return (
     <div className="regi_board_wrapper">
       <header>
@@ -52,11 +91,30 @@ const RegiBoard = ({ match }) => {
       </header>
       <div className="regi_board">
         <section>
-          <div className="subject_place">1{subject}</div>
-          <div className="date_place">2{receptionDate}</div>
-          <div className="class_place">3{classification}</div>
-          <div className="status_place">4{status}</div>
-          <div className="content_place">5{content}</div>
+          <div className="subject_class_place">
+            [{classification}]{subject}
+          </div>
+          <div className="status_date_place">
+            <span className="status_place">{orderStatus}</span>
+            <span className="date_place">{receptionDate}</span>
+          </div>
+          <div className="content_place">{content}</div>
+          <div className="comment_place">
+            <h4>댓글</h4>
+            <div className="comments">{comments_res}</div>
+            <form className="form_comments" onSubmit={onSubmit}>
+              <textarea
+                type="text"
+                className="input_comments"
+                rows={3}
+                value={comment}
+                onChange={onChange}
+              ></textarea>
+              <button type="submit" className="submit_comments">
+                등록
+              </button>
+            </form>
+          </div>
         </section>
       </div>
     </div>
