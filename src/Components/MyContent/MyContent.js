@@ -3,7 +3,7 @@ import { store } from "../../App";
 import "./MyContent.scss";
 
 const MyContent = ({ user, history }) => {
-  const { id, userNickName, username, cellPhone, email } = user;
+  const { id, userNickName, cellPhone, email } = user;
 
   const logout_action = (logged) => {
     return {
