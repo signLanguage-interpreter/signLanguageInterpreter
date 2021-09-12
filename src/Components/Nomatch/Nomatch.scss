@@ -1,0 +1,16 @@
+div {
+  header {
+    border-bottom: 1px solid var(--border-color);
+    .logo {
+      padding: 12px 15%;
+      img {
+        width: 52px;
+        height: 52px;
+        cursor: pointer;
+      }
+    }
+  }
+  section {
+    padding: 12px 15%;
+  }
+}
