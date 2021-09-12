@@ -1,0 +1,28 @@
+div {
+  header {
+    border-bottom: 1px solid var(--border-color);
+    .logo {
+      padding: 12px 15%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      img {
+        width: 52px;
+        height: 52px;
+        cursor: pointer;
+      }
+      span {
+        cursor: pointer;
+        font-size: 0.875rem;
+        &:first-child::after {
+          content: "|";
+          color: var(--grey-color);
+          padding: 0 8px;
+        }
+      }
+    }
+  }
+  section {
+    padding: 12px 15%;
+  }
+}
