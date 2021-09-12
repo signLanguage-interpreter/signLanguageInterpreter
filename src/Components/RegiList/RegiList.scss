@@ -3,6 +3,8 @@
   .regi_list {
     display: grid;
     grid-template-columns: 1fr 4fr 3fr 1fr;
+    font-size: 0.875rem;
+    gap: 4px;
     .regi_subject {
       cursor: pointer;
     }

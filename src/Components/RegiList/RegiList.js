@@ -22,6 +22,11 @@ const RegiList = ({ regi_list, id, history }) => {
         default:
           console.log("error");
       }
+
+      const date = cur.receptionDate
+        .substring(2, 16)
+        .replaceAll("-", ".")
+        .replace("T", " ");
       return (
         <Fragment key={idx}>
           <span>{idx}</span>
@@ -33,7 +38,7 @@ const RegiList = ({ regi_list, id, history }) => {
           >
             {cur.subject}
           </span>
-          <span>{cur.receptionDate}</span>
+          <span>{date}</span>
           <span>{cur_status_icon}</span>
         </Fragment>
       );
