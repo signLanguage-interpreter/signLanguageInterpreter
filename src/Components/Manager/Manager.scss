@@ -14,6 +14,11 @@
       span {
         cursor: pointer;
         font-size: 0.875rem;
+        &:first-child::after {
+          content: "|";
+          color: var(--grey-color);
+          padding: 0 8px;
+        }
       }
     }
   }

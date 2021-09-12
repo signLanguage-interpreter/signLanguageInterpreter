@@ -16,6 +16,8 @@ const Manager = ({ history }) => {
     eMail: "",
   });
 
+  const [registers, setRegisters] = useState([]);
+
   // useEffect
   useEffect(() => {
     const fetch = async () => {
@@ -30,7 +32,9 @@ const Manager = ({ history }) => {
               ),
           },
         });
+        console.log(res);
         setUser(res.data.user);
+        setRegisters(res.data.regi_list);
       } catch (e) {
         console.error(e);
       }
@@ -47,21 +51,26 @@ const Manager = ({ history }) => {
             alt="logo"
             onClick={() => window.location.replace("/manager/main")}
           ></img>
-          <span onClick={() => history.push("/user/main")}>신청하러 가기</span>
+          <div>
+            <span>다른 통역사 접수 보러가기</span>
+            <span onClick={() => history.push("/user/main")}>
+              신청하러 가기
+            </span>
+          </div>
         </div>
       </header>
       <main>
         <section className="all_list">
-          <AllList></AllList>
+          <AllList registers={registers} id={user.id}></AllList>
         </section>
         <section className="my_list">
-          <MyList></MyList>
+          <MyList registers={registers} id={user.id}></MyList>
         </section>
         <section className="user">
           <MyContent user={user}></MyContent>
         </section>
         <section className="complete_list">
-          <CompleteList></CompleteList>
+          <CompleteList registers={registers} id={user.id}></CompleteList>
         </section>
       </main>
     </div>
