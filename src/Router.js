@@ -7,6 +7,8 @@ const Join = loadable(() => import("./Components/Join/Join"));
 const Manager = loadable(() => import("./Components/Manager/Manager"));
 const Modify = loadable(() => import("./Components/Modify/Modify"));
 const RegiBoard = loadable(() => import("./Components/RegiBoard/RegiBoard"));
+const AllRegi = loadable(() => import("./Components/All_Regi/AllRegi"));
+const Nomatch = loadable(() => import("./Components/Nomatch/Nomatch"));
 
 const Router = () => {
   return (
@@ -18,8 +20,10 @@ const Router = () => {
       <Route exact path="/user/modifyMember/:id" component={Modify} />
       {/* manager */}
       <Route exact path="/manager/main" component={Manager} />
+      <Route exact path="/manager/all_register" component={AllRegi} />
       {/* register */}
       <Route exact path="/user/regist/:pk/:receptionId" component={RegiBoard} />
+      <Route component={Nomatch} />
     </Switch>
   );
 };
