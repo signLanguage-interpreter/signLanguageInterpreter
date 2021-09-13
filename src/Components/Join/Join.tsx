@@ -55,9 +55,19 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
     }
   };
 
+  // regex(전화번호, 이메일, 생일)
+  // 전화번호 01000000000 숫자11개 + 앞에 세자리는 01X
+  const cellPhone_regex = /01\d{9}/;
+  const birth_regex = /\d{4}-\d{1,2}-\d{1,2}/;
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    send();
+    if (cellPhone_regex.test(cellPhone) && birth_regex.test(birth)) {
+      console.log("success regex");
+      send();
+    } else {
+      alert("형식이 다릅니다.");
+    }
   };
 
   return (
@@ -75,6 +85,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
                 onChange={onChange}
                 autoComplete="off"
                 placeholder="이름"
+                required
               ></input>
             </div>
             <div className="id_wrapper">
@@ -86,6 +97,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
                 onChange={onChange}
                 autoComplete="off"
                 placeholder="아이디"
+                required
               ></input>
             </div>
             <div className="pw_wrapper">
@@ -99,6 +111,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
                 ref={pw_text}
                 autoComplete="off"
                 placeholder="비밀번호"
+                required
               ></input>
               <i className="fas fa-eye icon_eye" onClick={onEyeClick}></i>
             </div>
@@ -111,6 +124,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
                 onChange={onChange}
                 autoComplete="off"
                 placeholder="전화번호 예)01012345678"
+                required
               ></input>
             </div>
             <div className="email_wrapper">
@@ -122,6 +136,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
                 onChange={onChange}
                 autoComplete="off"
                 placeholder="이메일 예) 123123@abc.com"
+                required
               ></input>
             </div>
             <div className="birth_wrapper">
@@ -133,6 +148,7 @@ const Join: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
                 onChange={onChange}
                 autoComplete="off"
                 placeholder="생일 예) 0000-00-00"
+                required
               ></input>
             </div>
             <div className="gender_wrapper">
