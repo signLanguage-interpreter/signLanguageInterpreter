@@ -54,6 +54,7 @@ const RegiList = ({ regi_list, id, history }) => {
         <span>상태</span>
         {regi_res}
       </div>
+      <div className="pagination">pagination</div>
     </div>
   );
 };
