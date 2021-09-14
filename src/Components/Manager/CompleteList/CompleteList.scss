@@ -5,5 +5,9 @@
     grid-template-columns: 4fr 4fr 1fr 1fr;
     font-size: 0.875rem;
     gap: 4px;
+    height: 85vh;
+  }
+  .pagination {
+    border-top: 1px solid var(--border-color);
   }
 }

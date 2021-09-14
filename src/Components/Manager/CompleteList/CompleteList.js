@@ -1,59 +1,34 @@
 import axios from "axios";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./CompleteList.scss";
 
-const CompleteList = ({ registers, id, history }) => {
-  const regi_bool = registers === null ? false : true;
-  let regi_res;
+const CompleteList = ({ id, history }) => {
+  const [lists, setLists] = useState([]);
 
-  const onClick = () => {
-    const send = async () => {
+  useEffect(() => {
+    const fetch = async () => {
       try {
-        await axios.post("http://localhost:5000", {
-          headers: {
-            Authorization: sessionStorage
-              .getItem("authorization")
-              ?.substring(
-                1,
-                sessionStorage.getItem("authorization").length - 1
-              ),
-          },
-        });
-        window.location.replace("/manager/main");
+        const res = await axios.get(
+          "http://localhost:5000/manager?status=END&page=1",
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
+        );
+        console.log(res);
+        setLists(res.data);
       } catch (e) {
         console.error(e);
       }
     };
-    send();
-  };
-
-  if (regi_bool) {
-    regi_res = registers
-      .filter((register) => register.status === "END")
-      .map((cur, idx) => {
-        const date = cur.receptionDate
-          .substring(2, 16)
-          .replaceAll("-", ".")
-          .replace("T", " ");
-        return (
-          <Fragment key={idx}>
-            <span
-              className="regi_subject"
-              onClick={() =>
-                history.push(`/user/regist/${id}/${cur.receptionId}`)
-              }
-            >
-              {cur.subject}
-            </span>
-            <span>{date}</span>
-            <span>E</span>
-            <span>
-              <button onClick={onClick}>접수</button>
-            </span>
-          </Fragment>
-        );
-      });
-  }
+    fetch();
+  });
   return (
     <div className="com_list_wrapper">
       <h4>완료된 신청 리스트</h4>
@@ -62,8 +37,8 @@ const CompleteList = ({ registers, id, history }) => {
         <span>예약날짜</span>
         <span>상태</span>
         <span>접수</span>
-        {regi_res}
       </div>
+      <div className="pagination">pagination</div>
     </div>
   );
 };
