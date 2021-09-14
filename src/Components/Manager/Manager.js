@@ -3,9 +3,6 @@ import logo from "../img/logo.png";
 import { useEffect, useState } from "react";
 import MyContent from "../MyContent/MyContent";
 import axios from "axios";
-import AllList from "./AllList/AllList";
-import MyList from "./MyList/MyList";
-import CompleteList from "./CompleteList/CompleteList";
 
 const Manager = ({ history }) => {
   // state
@@ -15,9 +12,6 @@ const Manager = ({ history }) => {
     cellPhone: "",
     eMail: "",
   });
-
-  const [registers, setRegisters] = useState([]);
-
   // useEffect
   useEffect(() => {
     const fetch = async () => {
@@ -34,7 +28,6 @@ const Manager = ({ history }) => {
         });
         console.log(res);
         setUser(res.data.user);
-        setRegisters(res.data.regi_list);
       } catch (e) {
         console.error(e);
       }
@@ -63,16 +56,22 @@ const Manager = ({ history }) => {
       </header>
       <main>
         <section className="all_list">
-          <AllList registers={registers} id={user.id}></AllList>
+          <iframe
+            src="http://localhost:3000/manager/all_list"
+            title="HOLD_list"
+          />
         </section>
         <section className="my_list">
-          <MyList registers={registers} id={user.id}></MyList>
+          <iframe src="http://localhost:3000/manager/my_list" title="my_list" />
         </section>
         <section className="user">
           <MyContent user={user}></MyContent>
         </section>
         <section className="complete_list">
-          <CompleteList registers={registers} id={user.id}></CompleteList>
+          <iframe
+            src="http://localhost:3000/manager/complete_list"
+            title="complete_list"
+          />
         </section>
       </main>
     </div>
