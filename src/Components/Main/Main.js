@@ -6,7 +6,7 @@ import MyContent from "../MyContent/MyContent";
 import RegiList from "../RegiList/RegiList";
 import "./Main.scss";
 
-const Main = () => {
+const Main = ({ history }) => {
   const [user, setUser] = useState({
     id: "",
     userNickName: "",
@@ -49,6 +49,12 @@ const Main = () => {
             alt="logo"
             onClick={() => window.location.replace("/user/main")}
           ></img>
+        </div>
+        <div
+          className="managerSign"
+          onClick={() => history.push("/user/managerSignUp")}
+        >
+          매니저 신청하기
         </div>
       </header>
       <main>
