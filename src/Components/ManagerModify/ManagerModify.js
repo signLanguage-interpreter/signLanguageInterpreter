@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import "./ManagerModify.scss";
 
-const Manager = () => {
+const ManagerModify = () => {
   // ref
   const img_input = useRef(null);
   const img_icon = useRef(null);
@@ -62,7 +62,7 @@ const Manager = () => {
         console.error(e);
       }
     };
-    fetch();
+    fetch(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -70,7 +70,7 @@ const Manager = () => {
       <header>
         <h3>SLT</h3>
       </header>
-      <form className="manager_regist_wrapper">
+      <form className="manager_regist_wrapper" encType="multipart/form-data">
         <div className="imgPath_wrapper">
           <div className="img_icon" ref={img_icon} onClick={onImgClick}>
             <i className="fas fa-image"></i>
@@ -111,4 +111,4 @@ const Manager = () => {
   );
 };
 
-export default Manager;
+export default ManagerModify;
