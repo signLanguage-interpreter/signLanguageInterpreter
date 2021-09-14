@@ -22,7 +22,26 @@ div {
       }
     }
   }
-  section {
-    padding: 12px 15%;
+  main {
+    padding: 8px 15%;
+    section {
+      border: 1px solid var(--black-color);
+      box-shadow: 5px 5px 5px var(--border-color);
+      display: grid;
+      grid-template-columns: 7fr 1.5fr 1fr 0.5fr;
+      height: 500px;
+      .fb {
+        padding: 4px 0px;
+        font-weight: 600;
+      }
+      span {
+        text-align: center;
+        &::after {
+          content: "";
+          display: block;
+          border-bottom: 2px solid var(--main-color);
+        }
+      }
+    }
   }
 }
