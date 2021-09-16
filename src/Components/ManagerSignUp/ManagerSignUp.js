@@ -1,12 +1,9 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./ManagerSignUp.scss";
 import logo from "../img/logo.png";
 
 const ManagerSignUp = () => {
-  // ref
-  const img_input = useRef(null);
-
   // state
   const [manager, setManger] = useState({
     imgPath: "",
@@ -15,22 +12,10 @@ const ManagerSignUp = () => {
   });
   const { imgPath } = manager;
 
-  const [loading, setLoading] = useState(false);
-
-  const onImgClick = () => {
-    img_input.current.click();
-  };
-
-  const onImgChange = async (e) => {
-    setLoading(true);
-    const formData = new FormData();
-    formData.append("file", e.target.files[0]);
-
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/user/managerSignUp",
-        formData,
-        {
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/", {
           headers: {
             Authorization: sessionStorage
               .getItem("authorization")
@@ -39,32 +24,73 @@ const ManagerSignUp = () => {
                 sessionStorage.getItem("authorization").length - 1
               ),
           },
-        }
-      );
-      setManger({
-        ...manager,
-        imgPath: res.data,
-      });
-    } catch (e) {
-      console.error(e);
-    }
-    setLoading(false);
-  };
+        });
+        setManger({
+          ...manager,
+          imgPath: res.data.imgPath,
+          position: res.data.position,
+          introduce: res.data.introduce,
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetch();
+  }, []);
 
-  if (loading) {
-    return (
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    );
-  }
+  const onImgChange = (e) => {
+    console.log(e.target.files[0]);
+    if (e.target.files.length) {
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (e) => {
+        setManger({
+          ...manager,
+          imgPath: e.target.result,
+        });
+      };
+    }
+  };
 
   const onChange = (e) => {
     setManger({
       ...manager,
       [e.target.name]: e.target.value,
     });
-    console.log(`${[e.target.name]}: ${e.target.value}`);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const info = JSON.stringify({
+      position: manager.position,
+      introduce: manager.introduce,
+    });
+
+    const formData = new FormData();
+    formData.append("file", manager.imgPath);
+    formData.append("info", info);
+
+    const send = async () => {
+      try {
+        await axios.post("http://localhost:5000", formData, {
+          headers: {
+            Authorization: sessionStorage
+              .getItem("authorization")
+              ?.substring(
+                1,
+                sessionStorage.getItem("authorization").length - 1
+              ),
+          },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    send();
+
+    console.log(formData);
   };
 
   return (
@@ -78,20 +104,21 @@ const ManagerSignUp = () => {
           ></img>
         </div>
       </header>
-      <form className="manager_regist_wrapper" encType="multipart/form-data">
+      <form
+        className="manager_regist_wrapper"
+        encType="multipart/form-data"
+        onSubmit={onSubmit}
+      >
         <div className="imgPath_wrapper">
-          <div className="img_icon" onClick={onImgClick}>
-            <i className="fas fa-image"></i>
-            <img src={imgPath} alt={imgPath} title="img"></img>
-          </div>
           <input
             type="file"
             accept="image/*"
             className="img_file"
-            name="imgPath"
             onChange={onImgChange}
-            ref={img_input}
+            name="imgPath"
+            required
           ></input>
+          {imgPath === "" ? null : <img src={imgPath} alt="img" />}
         </div>
         <div className="manager_detail">
           <div className="position_wrapper">
@@ -102,6 +129,7 @@ const ManagerSignUp = () => {
               onChange={onChange}
               placeholder="직책"
               autoComplete="off"
+              required
             ></input>
           </div>
           <div className="introduce_wrapper">
@@ -112,9 +140,11 @@ const ManagerSignUp = () => {
               onChange={onChange}
               placeholder="소개말"
               autoComplete="off"
+              required
             ></input>
           </div>
         </div>
+        <button>등록</button>
       </form>
     </div>
   );
