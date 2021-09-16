@@ -34,6 +34,12 @@ const MyContent = ({ user, history }) => {
           </span>
           <span className="cellPhone">{cellPhone}</span>
           <span className="eMail">{email}</span>
+          <span
+            className="manager_signup_modify"
+            onClick={() => history.push(`/manager_sign_up`)}
+          >
+            매니저 등록/수정
+          </span>
         </div>
         <div className="logout">
           <button to="/login" className="logout_btn" onClick={onLogout}>

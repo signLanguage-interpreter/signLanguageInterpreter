@@ -31,6 +31,12 @@
         font-weight: 500;
         color: var(--black-color);
       }
+      .manager_signup_modify {
+        cursor: pointer;
+        &:hover {
+          color: var(--hover-color);
+        }
+      }
     }
     .logout {
       .logout_btn {
