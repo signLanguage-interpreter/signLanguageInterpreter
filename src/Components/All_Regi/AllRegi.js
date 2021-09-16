@@ -1,7 +1,20 @@
 import "./AllRegi.scss";
 import logo from "../img/logo.png";
+import { useEffect } from "react";
+import axios from "axios";
 
 const AllRegi = ({ history }) => {
+  // useEffect
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/");
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetch();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div>
       <header>
