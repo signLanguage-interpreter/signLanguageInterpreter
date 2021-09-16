@@ -26,7 +26,7 @@
     padding: 8px 15%;
     display: grid;
     grid-template-columns: 4fr 3fr 3fr;
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     gap: 8px;
     section {
       border: 1px solid var(--black-color);
@@ -37,16 +37,16 @@
       }
     }
     .all_list {
-      grid-row: 1 / 6;
+      grid-row: 1 / 7;
     }
     .user {
       grid-row: 1;
     }
     .my_list {
-      grid-row: 1 / 6;
+      grid-row: 1 / 7;
     }
     .complete_list {
-      grid-row: 2 / 6;
+      grid-row: 2 / 7;
     }
   }
 }
