@@ -12,12 +12,6 @@
         cursor: pointer;
       }
     }
-    .managerSign {
-      cursor: pointer;
-      &:hover {
-        color: var(--main-color);
-      }
-    }
   }
   main {
     padding: 8px 15%;

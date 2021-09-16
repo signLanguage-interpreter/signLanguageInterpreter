@@ -50,12 +50,6 @@ const Main = ({ history }) => {
             onClick={() => window.location.replace("/user/main")}
           ></img>
         </div>
-        <div
-          className="managerSign"
-          onClick={() => history.push("/user/managerSignUp")}
-        >
-          매니저 신청하기
-        </div>
       </header>
       <main>
         <section className="regi">
