@@ -9,9 +9,7 @@ const Modify = loadable(() => import("./Components/Modify/Modify"));
 const RegiBoard = loadable(() => import("./Components/RegiBoard/RegiBoard"));
 const AllRegi = loadable(() => import("./Components/All_Regi/AllRegi"));
 const Nomatch = loadable(() => import("./Components/Nomatch/Nomatch"));
-const ManagerModify = loadable(() =>
-  import("./Components/ManagerModify/ManagerModify")
-);
+
 const ManagerSignUp = loadable(() =>
   import("./Components/ManagerSignUp/ManagerSignUp")
 );
@@ -29,11 +27,10 @@ const Router = () => {
       {/* user */}
       <Route exact path="/user/main" component={Main} />
       <Route exact path="/user/modifyMember/:id" component={Modify} />
-      <Route exact path="/user/managerSignUp" component={ManagerSignUp} />
+      <Route exact path="/manager_sign_up" component={ManagerSignUp} />
       {/* manager */}
       <Route exact path="/manager/main" component={Manager} />
       <Route exact path="/manager/all_register" component={AllRegi} />
-      <Route exact path="/manager/register" component={ManagerModify} />
       {/* 모든 신청 리스트 */}
       <Route exact path="/manager/all_list" component={AllList} />
       {/* 자신에게 온 신청 리스트 */}
