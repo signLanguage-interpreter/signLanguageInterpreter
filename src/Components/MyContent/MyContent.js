@@ -36,7 +36,7 @@ const MyContent = ({ user, history }) => {
           <span className="eMail">{email}</span>
           <span
             className="manager_signup_modify"
-            onClick={() => history.push(`/manager_sign_up`)}
+            onClick={() => history.push(`/manager/managerInfo`)}
           >
             매니저 등록/수정
           </span>

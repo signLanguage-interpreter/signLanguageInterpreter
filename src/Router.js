@@ -27,7 +27,7 @@ const Router = () => {
       {/* user */}
       <Route exact path="/user/main" component={Main} />
       <Route exact path="/user/modifyMember/:id" component={Modify} />
-      <Route exact path="/manager_sign_up" component={ManagerSignUp} />
+      <Route exact path="/manager/managerInfo" component={ManagerSignUp} />
       {/* manager */}
       <Route exact path="/manager/main" component={Manager} />
       <Route exact path="/manager/all_register" component={AllRegi} />

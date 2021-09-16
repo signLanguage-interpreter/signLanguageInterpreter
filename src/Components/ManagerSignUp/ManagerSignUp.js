@@ -15,16 +15,20 @@ const ManagerSignUp = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/", {
-          headers: {
-            Authorization: sessionStorage
-              .getItem("authorization")
-              ?.substring(
-                1,
-                sessionStorage.getItem("authorization").length - 1
-              ),
-          },
-        });
+        const res = await axios.get(
+          "http://localhost:5000/manager/managerInfo",
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
+        );
+        console.log(res);
         setManger({
           ...manager,
           imgPath: res.data.imgPath,
@@ -72,25 +76,28 @@ const ManagerSignUp = () => {
     formData.append("info", info);
 
     const send = async () => {
+      console.log(formData);
       try {
-        await axios.post("http://localhost:5000", formData, {
-          headers: {
-            Authorization: sessionStorage
-              .getItem("authorization")
-              ?.substring(
-                1,
-                sessionStorage.getItem("authorization").length - 1
-              ),
-          },
-        });
+        await axios.post(
+          "http://localhost:5000/manager/managerInfo",
+          formData,
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
+        );
       } catch (e) {
         console.error(e);
       }
     };
 
     send();
-
-    console.log(formData);
   };
 
   return (

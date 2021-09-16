@@ -21,6 +21,7 @@ const AllList = () => {
             },
           }
         );
+        console.log(res);
         setLists(res.data);
       } catch (e) {
         console.error(e);
