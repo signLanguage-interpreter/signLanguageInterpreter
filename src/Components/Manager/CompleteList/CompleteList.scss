@@ -9,5 +9,8 @@
   }
   .pagination {
     border-top: 1px solid var(--border-color);
+    .page {
+      padding: 0 6px;
+    }
   }
 }
