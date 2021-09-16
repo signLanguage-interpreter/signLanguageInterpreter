@@ -40,7 +40,7 @@ const ManagerSignUp = () => {
       }
     };
     fetch();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onImgChange = (e) => {
     console.log(e.target.files[0]);
