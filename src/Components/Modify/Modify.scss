@@ -24,7 +24,7 @@
           position: absolute;
           color: hsl(0, 0%, 80%);
           top: 50%;
-          right: 4%;
+          right: 14%;
           transform: translateY(-50%);
         }
         & > input {
@@ -54,7 +54,7 @@
       .gender_wrapper {
         border-radius: 0 0 6px 6px;
         select {
-          box-sizing: content-box;
+          // box-sizing: content-box;
           width: 88%;
           height: 50px;
           border: 1px solid hsl(0, 0%, 80%);
