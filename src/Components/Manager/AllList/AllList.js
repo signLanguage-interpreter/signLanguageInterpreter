@@ -40,9 +40,13 @@ const AllList = ({ history, location }) => {
 
   // conditional rendering
   const pagination = () => {
-    const res = [];
-    for (let i = page.startPage; i <= page.endPage; i++) {
-      res.push(<span className="page">{i}</span>);
+    if (page === undefined) {
+      return null;
+    } else {
+      const res = [];
+      for (let i = page.startPage; i <= page.endPage; i++) {
+        res.push(<span className="page">{i}</span>);
+      }
     }
   };
 
@@ -74,9 +78,7 @@ const AllList = ({ history, location }) => {
               );
             })}
       </div>
-      <div className="pagination">
-        {page === undefined ? null : pagination()}
-      </div>
+      <div className="pagination">{pagination()}</div>
     </div>
   );
 };
