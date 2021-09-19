@@ -74,7 +74,7 @@ const AllList = ({ history, location }) => {
               );
             })}
       </div>
-      <div className="pagination">{pagination()}</div>
+      <div className="pagination">{page !== null ? pagination() : null}</div>
     </div>
   );
 };
