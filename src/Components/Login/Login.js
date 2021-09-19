@@ -29,7 +29,6 @@ const Login = ({ history }) => {
       ...user,
       [e.currentTarget.name]: e.currentTarget.value,
     });
-    console.log(`${[e.currentTarget.name]}: ${e.currentTarget.value}`);
   };
 
   const login_action = (authorization, logged) => {
