@@ -72,7 +72,7 @@ const ManagerSignUp = () => {
     });
 
     const formData = new FormData();
-    formData.append("file", manager.imgPath);
+    formData.append("imageFile", manager.imgPath);
     formData.append("info", info);
 
     const send = async () => {
@@ -85,6 +85,7 @@ const ManagerSignUp = () => {
           formData,
           {
             headers: {
+              Accept: "*/*",
               Authorization: sessionStorage
                 .getItem("authorization")
                 ?.substring(
