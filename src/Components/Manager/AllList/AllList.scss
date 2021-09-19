@@ -6,6 +6,11 @@
     font-size: 0.875rem;
     gap: 4px;
     height: 88vh;
+    button {
+      height: 50%;
+      border: 1px solid var(--border-color);
+      outline: none;
+    }
   }
   .pagination {
     border-top: 1px solid var(--border-color);

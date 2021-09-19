@@ -59,7 +59,7 @@ const AllList = ({ history, location }) => {
           ? null
           : lists.map((cur) => {
               return (
-                <Fragment key="cur.id">
+                <Fragment key={cur.id}>
                   <span>{cur.subject}</span>
                   <span
                     onClick={() =>
