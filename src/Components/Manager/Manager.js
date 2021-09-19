@@ -39,7 +39,7 @@ const Manager = ({ history }) => {
       }
     };
     fetch();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="manager_wrapper">
@@ -63,13 +63,13 @@ const Manager = ({ history }) => {
       <main>
         <section className="all_list">
           <iframe
-            src="http://localhost:3000/manager/all_list&page=1"
+            src="http://localhost:3000/manager/all_list?page=1"
             title="HOLD_list"
           />
         </section>
         <section className="my_list">
           <iframe
-            src="http://localhost:3000/manager/my_list&page=1"
+            src="http://localhost:3000/manager/my_list?page=1"
             title="my_list"
           />
         </section>
@@ -78,7 +78,7 @@ const Manager = ({ history }) => {
         </section>
         <section className="complete_list">
           <iframe
-            src="http://localhost:3000/manager/complete_list&page=1"
+            src="http://localhost:3000/manager/complete_list?page=1"
             title="complete_list"
           />
         </section>

@@ -1,9 +1,13 @@
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
+import qs from "qs";
 import "./MyList.scss";
 
-const MyList = ({ history, match }) => {
-  const cur_page = match.params.page;
+const MyList = ({ history, location }) => {
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const cur_page = query.page;
   const [page, setPage] = useState({});
   const [lists, setLists] = useState([]);
 
@@ -30,7 +34,7 @@ const MyList = ({ history, match }) => {
       }
     };
     fetch();
-  });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // conditional rendering
   const pagination = () => {

@@ -1,9 +1,13 @@
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
+import qs from "qs";
 import "./CompleteList.scss";
 
-const CompleteList = ({ history, match }) => {
-  const cur_page = match.params.page;
+const CompleteList = ({ history, location }) => {
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const cur_page = query.page;
   const [page, setPage] = useState({});
   const [lists, setLists] = useState([]);
 
@@ -30,7 +34,7 @@ const CompleteList = ({ history, match }) => {
       }
     };
     fetch();
-  });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // conditional rendering
   const pagination = () => {
