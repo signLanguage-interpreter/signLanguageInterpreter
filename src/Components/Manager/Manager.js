@@ -63,19 +63,22 @@ const Manager = ({ history }) => {
       <main>
         <section className="all_list">
           <iframe
-            src="http://localhost:3000/manager/all_list"
+            src="http://localhost:3000/manager/all_list&page=1"
             title="HOLD_list"
           />
         </section>
         <section className="my_list">
-          <iframe src="http://localhost:3000/manager/my_list" title="my_list" />
+          <iframe
+            src="http://localhost:3000/manager/my_list&page=1"
+            title="my_list"
+          />
         </section>
         <section className="user">
           <MyContent user={user}></MyContent>
         </section>
         <section className="complete_list">
           <iframe
-            src="http://localhost:3000/manager/complete_list"
+            src="http://localhost:3000/manager/complete_list&page=1"
             title="complete_list"
           />
         </section>
