@@ -27,7 +27,13 @@ const Manager = ({ history }) => {
           },
         });
         console.log(res);
-        setUser(res.data.user);
+        setUser({
+          ...user,
+          id: res.data.id,
+          userNickName: res.data.userNickName,
+          cellPhone: res.data.cellPhone,
+          eMail: res.data.eMail,
+        });
       } catch (e) {
         console.error(e);
       }

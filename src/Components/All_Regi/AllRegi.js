@@ -15,6 +15,7 @@ const AllRegi = ({ history }) => {
     };
     fetch();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div>
       <header>

@@ -3,7 +3,7 @@ import { store } from "../../App";
 import "./MyContent.scss";
 
 const MyContent = ({ user, history }) => {
-  const { id, userNickName, cellPhone, email } = user;
+  const { id, userNickName, cellPhone, eMail } = user;
 
   const logout_action = (logged) => {
     return {
@@ -33,7 +33,7 @@ const MyContent = ({ user, history }) => {
             {userNickName}님
           </span>
           <span className="cellPhone">{cellPhone}</span>
-          <span className="eMail">{email}</span>
+          <span className="eMail">{eMail}</span>
           <span
             className="manager_signup_modify"
             onClick={() => history.push(`/manager/managerInfo`)}
