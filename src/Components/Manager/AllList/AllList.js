@@ -74,7 +74,9 @@ const AllList = ({ history, location }) => {
               );
             })}
       </div>
-      <div className="pagination">{page !== null ? pagination() : null}</div>
+      <div className="pagination">
+        {page === undefined ? null : pagination()}
+      </div>
     </div>
   );
 };
