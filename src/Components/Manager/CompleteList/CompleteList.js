@@ -28,7 +28,7 @@ const CompleteList = ({ history, location }) => {
           }
         );
         setPage(res.data.paging);
-        setLists(res.data.lists);
+        setLists(res.data.list);
       } catch (e) {
         console.error(e);
       }

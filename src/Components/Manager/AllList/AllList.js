@@ -30,7 +30,7 @@ const AllList = ({ history, location }) => {
         );
         console.log(res);
         setPage(res.data.paging);
-        setLists(res.data.lists);
+        setLists(res.data.list);
       } catch (e) {
         console.error(e);
       }
