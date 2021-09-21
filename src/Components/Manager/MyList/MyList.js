@@ -42,6 +42,7 @@ const MyList = ({ history, location }) => {
     for (let i = page.startPage; i <= page.endPage; i++) {
       res.push(<span className="page">{i}</span>);
     }
+    return res;
   };
 
   const onBtnClick = () => {};
