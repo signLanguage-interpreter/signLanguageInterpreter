@@ -53,7 +53,7 @@ const ManagerSignUp = () => {
       };
       setManger({
         ...manager,
-        imgPath: e.target.files[0].name,
+        imgPath: e.target.files[0],
       });
     }
   };
