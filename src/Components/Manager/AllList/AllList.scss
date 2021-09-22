@@ -2,14 +2,18 @@
   height: 100%;
   .allList {
     display: grid;
-    grid-template-columns: 4fr 4fr 1fr 1fr;
+    grid-template-columns: 1fr 4fr 4fr 1fr;
     font-size: 0.875rem;
     gap: 4px;
     height: 88vh;
+
     button {
       height: 35%;
       border: 1px solid var(--border-color);
       outline: none;
+    }
+    .subject {
+      cursor: pointer;
     }
   }
   .pagination {

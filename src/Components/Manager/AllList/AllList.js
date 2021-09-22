@@ -3,6 +3,37 @@ import { Fragment, useEffect, useState } from "react";
 import qs from "qs";
 import "./AllList.scss";
 
+const asds = [
+  {
+    id: 1,
+    subject: "aaa",
+    status: "HOLD",
+    receptionId: "123",
+    receptionDate: "123",
+  },
+  {
+    id: 1,
+    subject: "aaa",
+    status: "HOLD",
+    receptionId: "123",
+    receptionDate: "123",
+  },
+  {
+    id: 1,
+    subject: "aaa",
+    status: "HOLD",
+    receptionId: "123",
+    receptionDate: "123",
+  },
+  {
+    id: 1,
+    subject: "aaa",
+    status: "HOLD",
+    receptionId: "123",
+    receptionDate: "123",
+  },
+];
+
 const AllList = ({ history, location }) => {
   const query = qs.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -50,33 +81,53 @@ const AllList = ({ history, location }) => {
     }
   };
 
-  const onBtnClick = () => {};
+  const onBtnClick = () => {
+    alert("접수되었습니다.");
+  };
   return (
     <div className="all_list_wrapper">
       <h4>모든 신청 리스트</h4>
       <div className="allList">
+        <span>상태</span>
         <span>제목</span>
         <span>예약날짜</span>
-        <span>상태</span>
         <span>접수</span>
         {lists === null
           ? null
           : lists.map((cur) => {
               return (
                 <Fragment key={cur.id}>
-                  <span>{cur.subject}</span>
+                  <span>{cur.status}</span>
                   <span
                     onClick={() =>
                       history.push(`/user/regist/${cur.id}/${cur.receptionId}`)
                     }
+                    className="subject"
                   >
-                    {cur.receptionDate}
+                    {cur.subject}
                   </span>
-                  <span>{cur.status}</span>
+                  <span>{cur.receptionDate}</span>
                   <button onClick={onBtnClick}>접수</button>
                 </Fragment>
               );
             })}
+        {asds.map((cur) => {
+          return (
+            <Fragment className="frag" key={cur.id}>
+              <span>{cur.status}</span>
+              <span
+                onClick={() =>
+                  history.push(`/user/regist/${cur.id}/${cur.receptionId}`)
+                }
+                className="subject"
+              >
+                {cur.subject}
+              </span>
+              <span>{cur.receptionDate}</span>
+              <button onClick={onBtnClick}>접수</button>
+            </Fragment>
+          );
+        })}
       </div>
       <div className="pagination">{pagination()}</div>
     </div>
