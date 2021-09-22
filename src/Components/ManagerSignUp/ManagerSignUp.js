@@ -10,6 +10,7 @@ const ManagerSignUp = () => {
     position: "",
     introduce: "",
   });
+  const [preview, setPreview] = useState("");
   const { imgPath } = manager;
 
   useEffect(() => {
@@ -48,11 +49,12 @@ const ManagerSignUp = () => {
       const reader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
       reader.onload = (e) => {
-        setManger({
-          ...manager,
-          imgPath: e.target.result,
-        });
+        setPreview(e.target.result);
       };
+      setManger({
+        ...manager,
+        imgPath: e.target.files[0].name,
+      });
     }
   };
 
@@ -66,21 +68,26 @@ const ManagerSignUp = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const info = JSON.stringify({
-      position: manager.position,
-      introduce: manager.introduce,
-    });
+    // const info = JSON.stringify({
+    //   position: manager.position,
+    // });
+
+    const info_position = JSON.stringify({ position: manager.position });
+    const info_introduce = JSON.stringify({ introduce: manager.introduce });
 
     const formData = new FormData();
-    formData.append("imageFile", manager.imgPath);
-    formData.append("info", info);
+    formData.append("imageFile", imgPath);
+    formData.append("position", info_position);
+    formData.append("introduce", info_introduce);
+
+    console.log(formData.get("imageFile"));
 
     const send = async () => {
       for (let pair of formData.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
       }
       try {
-        await axios.post(
+        const res = await axios.post(
           "http://localhost:5000/manager/managerInfo",
           formData,
           {
@@ -95,6 +102,7 @@ const ManagerSignUp = () => {
             },
           }
         );
+        console.log(res);
       } catch (e) {
         console.error(e);
       }
@@ -128,7 +136,7 @@ const ManagerSignUp = () => {
             name="imgPath"
             required
           ></input>
-          {imgPath === "" ? null : <img src={imgPath} alt="img" />}
+          {preview === "" ? null : <img src={preview} alt="img" />}
         </div>
         <div className="manager_detail">
           <div className="position_wrapper">
