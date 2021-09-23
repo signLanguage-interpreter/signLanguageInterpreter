@@ -44,6 +44,19 @@ const RegiList = ({ regi_list, id, history }) => {
       );
     });
   }
+
+  // conditional rendering
+  // const pagination = () => {
+  //   if (page === undefined) {
+  //     return null;
+  //   } else {
+  //     const res = [];
+  //     for (let i = page.startPage; i <= page.endPage; i++) {
+  //       res.push(<span className="page">{i}</span>);
+  //     }
+  //   }
+  // };
+
   return (
     <div className="regi_lsit_wrapper">
       <h4>자신이 신청한 리스트</h4>
@@ -54,7 +67,7 @@ const RegiList = ({ regi_list, id, history }) => {
         <span>상태</span>
         {regi_res}
       </div>
-      <div className="pagination">pagination</div>
+      <div className="pagination"></div>
     </div>
   );
 };

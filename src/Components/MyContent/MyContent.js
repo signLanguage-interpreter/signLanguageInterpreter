@@ -16,6 +16,7 @@ const MyContent = ({ user, history }) => {
 
   //event
   const onLogout = () => {
+    alert("로그아웃되었습니다.");
     store.dispatch(logout_action(false));
     history.push("/login");
   };

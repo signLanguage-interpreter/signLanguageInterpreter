@@ -50,6 +50,7 @@ const Register = ({ user }) => {
       window.location.replace("/user/main");
     } catch (e) {
       console.error(e);
+      alert("항목을 입력해주세요.");
     }
   };
 
