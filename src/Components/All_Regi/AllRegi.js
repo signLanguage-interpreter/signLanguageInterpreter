@@ -1,14 +1,17 @@
 import "./AllRegi.scss";
 import logo from "../img/logo.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const AllRegi = ({ history }) => {
+  const [lists, setLists] = useState([]);
   // useEffect
   useEffect(() => {
     const fetch = async () => {
       try {
         const res = await axios.get("http://localhost:5000/");
+        setLists(res.data.lists);
+        console.log(res);
       } catch (e) {
         console.error(e);
       }
@@ -37,10 +40,39 @@ const AllRegi = ({ history }) => {
       </header>
       <main>
         <section>
-          <span className="fb">제목</span>
-          <span className="fb">신청자</span>
-          <span className="fb">날짜</span>
-          <span className="fb">상태</span>
+          <div className="list_nav">
+            <span className="fb">제목</span>
+            <span className="fb">신청자</span>
+            <span className="fb">날짜</span>
+            <span className="fb">상태</span>
+          </div>
+          <div className="list">
+            {lists === null
+              ? null
+              : lists.map((cur) => {
+                  return (
+                    <div key={cur.id}>
+                      <span
+                        onClick={() =>
+                          history.push(
+                            `/user/regist/${cur.id}/${cur.receptionId}`
+                          )
+                        }
+                        className="subject"
+                      >
+                        {cur.subject}
+                      </span>
+                      <span>{cur.user}</span>
+                      <span>
+                        {cur.receptionDate
+                          .replaceAll("-", ".")
+                          .substring(2, 10)}
+                      </span>
+                      <span>{cur.status}</span>
+                    </div>
+                  );
+                })}
+          </div>
         </section>
       </main>
     </div>
