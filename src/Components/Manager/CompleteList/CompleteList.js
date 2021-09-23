@@ -73,8 +73,12 @@ const CompleteList = ({ history, location }) => {
                     >
                       {cur.subject}
                     </span>
-                    <span>{cur.receptionDate}</span>
-                    <button onClick={onBtnClick}>접수</button>
+                    <span>
+                      {cur.receptionDate.replaceAll("-", ".").substring(2, 10)}
+                    </span>
+                    <button onClick={onBtnClick} disabled>
+                      접수
+                    </button>
                   </div>
                 );
               })}

@@ -9,28 +9,28 @@ const asds = [
     subject: "aaa",
     status: "HOLD",
     receptionId: "123",
-    receptionDate: "123",
+    receptionDate: "2021-09-17T04:00:00",
   },
   {
     id: 2,
     subject: "aaa",
     status: "HOLD",
     receptionId: "456",
-    receptionDate: "456",
+    receptionDate: "2021-09-17T04:00:00",
   },
   {
     id: 3,
     subject: "aaa",
     status: "HOLD",
     receptionId: "567",
-    receptionDate: "567",
+    receptionDate: "2021-09-17T04:00:00",
   },
   {
     id: 4,
     subject: "aaa",
     status: "HOLD",
     receptionId: "891",
-    receptionDate: "891",
+    receptionDate: "2021-09-17T04:00:00",
   },
 ];
 
@@ -111,7 +111,9 @@ const AllList = ({ history, location }) => {
                     >
                       {cur.subject}
                     </span>
-                    <span>{cur.receptionDate}</span>
+                    <span>
+                      {cur.receptionDate.replaceAll("-", ".").substring(2, 10)}
+                    </span>
                     <button onClick={onBtnClick}>접수</button>
                   </div>
                 );
@@ -128,7 +130,9 @@ const AllList = ({ history, location }) => {
                 >
                   {cur.subject}
                 </span>
-                <span>{cur.receptionDate}</span>
+                <span>
+                  {cur.receptionDate.replaceAll("-", ".").substring(2, 10)}
+                </span>
                 <button onClick={onBtnClick}>접수</button>
               </div>
             );
