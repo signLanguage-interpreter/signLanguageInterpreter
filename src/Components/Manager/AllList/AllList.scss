@@ -1,19 +1,31 @@
 .all_list_wrapper {
   height: 100%;
   .allList {
-    display: grid;
-    grid-template-columns: 1fr 4fr 4fr 1fr;
     font-size: 0.875rem;
-    gap: 4px;
-    height: 88vh;
-
-    button {
-      height: 35%;
-      border: 1px solid var(--border-color);
-      outline: none;
+    .all_list_nav {
+      display: grid;
+      grid-template-columns: 1fr 4fr 4fr 1fr;
+      gap: 4px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 2px;
+      text-align: center;
     }
-    .subject {
-      cursor: pointer;
+    .all_list_detail {
+      height: 84vh;
+      div {
+        display: grid;
+        grid-template-columns: 1fr 4fr 4fr 1fr;
+        text-align: center;
+        height: 26px;
+        &:hover {
+          cursor: pointer;
+          background-color: var(--border-color);
+        }
+        button {
+          border: 1px solid var(--border-color);
+          outline: none;
+        }
+      }
     }
   }
   .pagination {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import qs from "qs";
 import "./AllList.scss";
 
@@ -12,25 +12,25 @@ const asds = [
     receptionDate: "123",
   },
   {
-    id: 1,
+    id: 2,
     subject: "aaa",
     status: "HOLD",
-    receptionId: "123",
-    receptionDate: "123",
+    receptionId: "456",
+    receptionDate: "456",
   },
   {
-    id: 1,
+    id: 3,
     subject: "aaa",
     status: "HOLD",
-    receptionId: "123",
-    receptionDate: "123",
+    receptionId: "567",
+    receptionDate: "567",
   },
   {
-    id: 1,
+    id: 4,
     subject: "aaa",
     status: "HOLD",
-    receptionId: "123",
-    receptionDate: "123",
+    receptionId: "891",
+    receptionDate: "891",
   },
 ];
 
@@ -88,46 +88,52 @@ const AllList = ({ history, location }) => {
     <div className="all_list_wrapper">
       <h4>모든 신청 리스트</h4>
       <div className="allList">
-        <span>상태</span>
-        <span>제목</span>
-        <span>예약날짜</span>
-        <span>접수</span>
-        {lists === null
-          ? null
-          : lists.map((cur) => {
-              return (
-                <Fragment key={cur.id}>
-                  <span>{cur.status}</span>
-                  <span
-                    onClick={() =>
-                      history.push(`/user/regist/${cur.id}/${cur.receptionId}`)
-                    }
-                    className="subject"
-                  >
-                    {cur.subject}
-                  </span>
-                  <span>{cur.receptionDate}</span>
-                  <button onClick={onBtnClick}>접수</button>
-                </Fragment>
-              );
-            })}
-        {asds.map((cur) => {
-          return (
-            <Fragment className="frag" key={cur.id}>
-              <span>{cur.status}</span>
-              <span
-                onClick={() =>
-                  history.push(`/user/regist/${cur.id}/${cur.receptionId}`)
-                }
-                className="subject"
-              >
-                {cur.subject}
-              </span>
-              <span>{cur.receptionDate}</span>
-              <button onClick={onBtnClick}>접수</button>
-            </Fragment>
-          );
-        })}
+        <div className="all_list_nav">
+          <span>상태</span>
+          <span>제목</span>
+          <span>예약날짜</span>
+          <span>접수</span>
+        </div>
+        <div className="all_list_detail">
+          {lists === null
+            ? null
+            : lists.map((cur) => {
+                return (
+                  <div key={cur.id}>
+                    <span>{cur.status}</span>
+                    <span
+                      onClick={() =>
+                        history.push(
+                          `/user/regist/${cur.id}/${cur.receptionId}`
+                        )
+                      }
+                      className="subject"
+                    >
+                      {cur.subject}
+                    </span>
+                    <span>{cur.receptionDate}</span>
+                    <button onClick={onBtnClick}>접수</button>
+                  </div>
+                );
+              })}
+          {asds.map((cur) => {
+            return (
+              <div key={cur.id}>
+                <span>{cur.status}</span>
+                <span
+                  onClick={() =>
+                    history.push(`/user/regist/${cur.id}/${cur.receptionId}`)
+                  }
+                  className="subject"
+                >
+                  {cur.subject}
+                </span>
+                <span>{cur.receptionDate}</span>
+                <button onClick={onBtnClick}>접수</button>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <div className="pagination">{pagination()}</div>
     </div>

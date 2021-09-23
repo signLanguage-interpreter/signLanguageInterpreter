@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import qs from "qs";
 import "./MyList.scss";
 
@@ -50,28 +50,35 @@ const MyList = ({ history, location }) => {
     <div className="my_list_wrapper">
       <h4>자신에게 온 신청 리스트</h4>
       <div className="myList">
-        <span>제목</span>
-        <span>예약날짜</span>
-        <span>상태</span>
-        <span>접수</span>
-        {lists === null
-          ? null
-          : lists.map((cur) => {
-              return (
-                <Fragment key={cur.id}>
-                  <span>{cur.subject}</span>
-                  <span
-                    onClick={() =>
-                      history.push(`/user/regist/${cur.id}/${cur.receptionId}`)
-                    }
-                  >
-                    {cur.receptionDate}
-                  </span>
-                  <span>{cur.status}</span>
-                  <button onClick={onBtnClick}>접수</button>
-                </Fragment>
-              );
-            })}
+        <div className="my_list_nav">
+          <span>상태</span>
+          <span>제목</span>
+          <span>예약날짜</span>
+          <span>접수</span>
+        </div>
+        <div className="my_list_detail">
+          {lists === null
+            ? null
+            : lists.map((cur) => {
+                return (
+                  <div key={cur.id}>
+                    <span>{cur.status}</span>
+                    <span
+                      onClick={() =>
+                        history.push(
+                          `/user/regist/${cur.id}/${cur.receptionId}`
+                        )
+                      }
+                      className="subject"
+                    >
+                      {cur.subject}
+                    </span>
+                    <span>{cur.receptionDate}</span>
+                    <button onClick={onBtnClick}>접수</button>
+                  </div>
+                );
+              })}
+        </div>
       </div>
       <div className="pagination">{pagination()}</div>
     </div>
