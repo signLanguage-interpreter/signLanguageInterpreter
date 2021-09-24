@@ -3,7 +3,7 @@ import logo from "../img/logo.png";
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 
-const RegiBoard = ({ match }) => {
+const RegiBoard = ({ match, history }) => {
   const registerPkId = match.params;
   const { pk, receptionId } = registerPkId;
 
@@ -78,6 +78,7 @@ const RegiBoard = ({ match }) => {
       try {
         await axios.post(
           `http://localhost:5000/user/regist/${pk}/${receptionId}`,
+          comment,
           {
             headers: {
               Authorization: sessionStorage
@@ -90,6 +91,7 @@ const RegiBoard = ({ match }) => {
           }
         );
         window.location.replace(`/user/regist/${pk}/${receptionId}`);
+        history.go(0);
       } catch (e) {
         console.error(e);
       }

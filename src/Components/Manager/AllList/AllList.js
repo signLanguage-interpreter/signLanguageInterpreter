@@ -83,6 +83,7 @@ const AllList = ({ history, location }) => {
 
   const onBtnClick = () => {
     alert("접수되었습니다.");
+    history.go(0);
   };
   return (
     <div className="all_list_wrapper">
