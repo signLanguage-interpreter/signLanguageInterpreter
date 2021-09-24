@@ -32,10 +32,11 @@ const ManagerSignUp = () => {
         console.log(res);
         setManger({
           ...manager,
-          imgPath: res.data.imgPath,
+          imgPath: res.data.uploadName.name,
           position: res.data.position,
           introduce: res.data.introduce,
         });
+        setPreview(res.data.uploadName);
       } catch (e) {
         console.error(e);
       }
@@ -67,10 +68,6 @@ const ManagerSignUp = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
-    // const info = JSON.stringify({
-    //   position: manager.position,
-    // });
 
     const info_position = JSON.stringify({ position: manager.position });
     const info_introduce = JSON.stringify({ introduce: manager.introduce });
@@ -109,6 +106,7 @@ const ManagerSignUp = () => {
     };
 
     send();
+    alert("등록되었습니다.");
   };
 
   return (
