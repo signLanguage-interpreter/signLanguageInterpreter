@@ -23,30 +23,23 @@
     }
   }
   main {
-    padding: 8px 15%;
+    padding: 12px 15%;
     display: grid;
-    grid-template-columns: 4fr 3fr 3fr;
-    grid-template-rows: repeat(6, 1fr);
-    gap: 8px;
-    section {
-      border: 1px solid var(--black-color);
-      box-shadow: 5px 5px 5px var(--border-color);
-      iframe {
-        width: calc(100% - 5px);
-        height: calc(100% - 5px);
-      }
-    }
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 4px;
+
     .all_list {
-      grid-row: 1 / 7;
-    }
-    .user {
-      grid-row: 1;
+      grid-row: 1 / 6;
     }
     .my_list {
-      grid-row: 1 / 7;
+      grid-row: 1 / 6;
     }
-    .complete_list {
-      grid-row: 2 / 7;
+    .my_con {
+      grid-row: 1;
+    }
+    .comp_list {
+      grid-row: 2 / 6;
     }
   }
 }
