@@ -11,13 +11,16 @@ div {
         height: 52px;
         cursor: pointer;
       }
-      span {
-        cursor: pointer;
-        font-size: 0.875rem;
-        &:first-child::after {
-          content: "|";
-          color: var(--grey-color);
-          padding: 0 8px;
+      div {
+        a {
+          text-decoration: none;
+          font-size: 0.875rem;
+          color: var(--black-color);
+          &:first-child::after {
+            content: "|";
+            color: var(--grey-color);
+            padding: 0 8px;
+          }
         }
       }
     }
@@ -25,12 +28,11 @@ div {
   main {
     padding: 8px 15%;
     section {
+      border: 1px solid var(--black-color);
+      box-shadow: 5px 5px 5px var(--border-color);
       .list_nav {
-        border: 1px solid var(--black-color);
-        box-shadow: 5px 5px 5px var(--border-color);
         display: grid;
         grid-template-columns: 7fr 1.5fr 1fr 0.5fr;
-        height: 500px;
         .fb {
           padding: 4px 0px;
           font-weight: 600;
@@ -48,8 +50,17 @@ div {
       .list {
         display: grid;
         grid-template-columns: 7fr 1.5fr 1fr 0.5fr;
+        grid-template-rows: repeat(15, 1fr);
         text-align: center;
-        height: 26px;
+        height: 70vh;
+
+        .link {
+          text-decoration: none;
+          color: var(--black-color);
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

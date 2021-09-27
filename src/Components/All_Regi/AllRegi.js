@@ -1,7 +1,38 @@
 import "./AllRegi.scss";
-import logo from "../img/logo.png";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
+import Header from "../Header/Header";
+import { Link } from "react-router-dom";
+
+const dummy_list = [
+  {
+    id: 1,
+    receptionId: "123123",
+    receptionDate: "2021-09-17T04:00:00",
+    status: "HOLD",
+    subject: "통역을 의뢰합니다.",
+    classification: "Education",
+    name: "min",
+  },
+  {
+    id: 2,
+    receptionId: "123123",
+    receptionDate: "2021-09-17T04:00:00",
+    status: "HOLD",
+    subject: "통역을 의뢰합니다2.",
+    classification: "Education",
+    name: "kim",
+  },
+  {
+    id: 3,
+    receptionId: "123123",
+    receptionDate: "2021-09-17T04:00:00",
+    status: "HOLD",
+    subject: "통역을 의뢰합니다3.",
+    classification: "Education",
+    name: "park",
+  },
+];
 
 const AllRegi = ({ history }) => {
   const [lists, setLists] = useState([]);
@@ -21,23 +52,7 @@ const AllRegi = ({ history }) => {
 
   return (
     <div>
-      <header>
-        <div className="logo">
-          <img
-            src={logo}
-            alt="logo"
-            onClick={() => window.location.replace("/manager/main")}
-          ></img>
-          <div>
-            <span onClick={() => window.location.replace("/manager/main")}>
-              통역사 페이지 가기
-            </span>
-            <span onClick={() => history.push("/user/main")}>
-              신청하러 가기
-            </span>
-          </div>
-        </div>
-      </header>
+      <Header></Header>
       <main>
         <section>
           <div className="list_nav">
@@ -47,29 +62,35 @@ const AllRegi = ({ history }) => {
             <span className="fb">상태</span>
           </div>
           <div className="list">
+            {dummy_list.map((cur) => {
+              return (
+                <Fragment key={cur.id}>
+                  <Link
+                    className="link"
+                    to={`/user/regist/${cur.id}/${cur.receptionId}`}
+                  >
+                    {cur.subject}
+                  </Link>
+                  <span>{cur.name}</span>
+                  <span>{cur.receptionDate.substring(2, 10)}</span>
+                  <span>{cur.status}</span>
+                </Fragment>
+              );
+            })}
             {lists === null
               ? null
               : lists.map((cur) => {
                   return (
-                    <div key={cur.id}>
-                      <span
-                        onClick={() =>
-                          history.push(
-                            `/user/regist/${cur.id}/${cur.receptionId}`
-                          )
-                        }
-                        className="subject"
-                      >
-                        {cur.subject}
-                      </span>
-                      <span>{cur.user}</span>
+                    <Fragment key={cur.id}>
+                      <span className="subject">{cur.subject}</span>
+                      <span>{cur.name}</span>
                       <span>
                         {cur.receptionDate
                           .replaceAll("-", ".")
                           .substring(2, 10)}
                       </span>
                       <span>{cur.status}</span>
-                    </div>
+                    </Fragment>
                   );
                 })}
           </div>
