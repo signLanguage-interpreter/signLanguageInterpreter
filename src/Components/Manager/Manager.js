@@ -1,10 +1,11 @@
 import "./Manager.scss";
-import logo from "../img/logo.png";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import MyContent from "../MyContent/MyContent";
 import axios from "axios";
-import ListComponent from "../ListComponent/ListComponent";
 import qs from "qs";
+import { Link, NavLink } from "react-router-dom";
+import Pagination from "../Pagination/Pagination";
+import Header from "../Header/Header";
 
 const dummy_list = [
   {
@@ -14,6 +15,7 @@ const dummy_list = [
     status: "HOLD",
     subject: "통역을 의뢰합니다.",
     classification: "Education",
+    name: "min",
   },
   {
     id: 2,
@@ -22,6 +24,7 @@ const dummy_list = [
     status: "HOLD",
     subject: "통역을 의뢰합니다2.",
     classification: "Education",
+    name: "kim",
   },
   {
     id: 3,
@@ -30,6 +33,7 @@ const dummy_list = [
     status: "HOLD",
     subject: "통역을 의뢰합니다3.",
     classification: "Education",
+    name: "park",
   },
 ];
 
@@ -39,23 +43,17 @@ const Manager = ({ location, history }) => {
     ignoreQueryPrefix: true,
   });
 
-  const { hold, ready, end } = query;
+  const { status, page } = query;
   // state
-  const [user, setUser] = useState({
-    id: "",
-    userNickName: "",
-    cellPhone: "",
-    eMail: "",
-  });
-  const [holdList, setHoldList] = useState([]);
-  const [readyList, setReadyList] = useState([]);
-  const [endList, setEndList] = useState([]);
+  const [user, setUser] = useState([]);
+  const [list, setList] = useState([]);
+
   // useEffect
   useEffect(() => {
     const fetch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/manager/main?hold=${hold}&ready=${ready}&end=${end}`,
+          `http://localhost:5000/manager/main?status=${status}&page=${page}`,
           {
             headers: {
               Authorization: sessionStorage
@@ -68,65 +66,126 @@ const Manager = ({ location, history }) => {
           }
         );
         console.log(res);
-        const [user, holdList, readyList, endList] = res.data;
+        const { user, list } = res.data;
         setUser({
           ...user,
-          id: res.data.id,
-          userNickName: res.data.userNickName,
-          cellPhone: res.data.cellPhone,
-          eMail: res.data.eMail,
+          user,
         });
-        setHoldList({
-          ...holdList,
-          holdList,
+        setList({
+          ...list,
+          list,
         });
       } catch (e) {
         console.error(e);
       }
     };
     fetch();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [status, page]);
+
+  // activeStyle
+  const activeStyle = {
+    background: "var(--main-color)",
+    color: "var(--white-color)",
+  };
+
+  // event
 
   return (
     <div className="manager_wrapper">
-      <header>
-        <div className="logo">
-          <img
-            src={logo}
-            alt="logo"
-            onClick={() => window.location.replace("/manager/main")}
-          ></img>
-          <div>
-            <span onClick={() => history.push("/manager/all_register")}>
-              다른 통역사 접수 보러가기
-            </span>
-            <span onClick={() => history.push("/user/main")}>
-              신청하러 가기
-            </span>
-          </div>
-        </div>
-      </header>
+      <Header first="다른 통역사 보기" second="신청하러 가기"></Header>
       <main>
-        <article className="all_list">
-          <ListComponent
-            title="모든 신청 리스트"
-            lists={dummy_list}
-          ></ListComponent>
-        </article>
-        <article className="my_list">
-          <ListComponent
-            title="내 신청 리스트"
-            lists={dummy_list}
-          ></ListComponent>
+        <article className="lists">
+          <div className="lists_nav">
+            <NavLink
+              to="?status=hold&page=1"
+              activeStyle={activeStyle}
+              isActive={(match, location) => {
+                if (!match) {
+                  return false;
+                }
+                const query = qs.parse(location.search, {
+                  ignoreQueryPrefix: true,
+                });
+                return query.status === "hold" ? true : false;
+              }}
+            >
+              Hold
+            </NavLink>
+            <NavLink
+              to="?status=ready&page=1"
+              activeStyle={activeStyle}
+              isActive={(match, location) => {
+                if (!match) {
+                  return false;
+                }
+                const query = qs.parse(location.search, {
+                  ignoreQueryPrefix: true,
+                });
+                return query.status === "ready" ? true : false;
+              }}
+            >
+              Ready
+            </NavLink>
+            <NavLink
+              to="?status=end&page=1"
+              activeStyle={activeStyle}
+              isActive={(match, location) => {
+                if (!match) {
+                  return false;
+                }
+                const query = qs.parse(location.search, {
+                  ignoreQueryPrefix: true,
+                });
+                return query.status === "end" ? true : false;
+              }}
+            >
+              End
+            </NavLink>
+          </div>
+          <div className="lists_table">
+            <div className="table_head">
+              <span>분류</span>
+              <span>제목</span>
+              <span>예약날짜</span>
+              <span>예약자</span>
+            </div>
+            <div className="table_body">
+              {dummy_list.map((cur) => {
+                return (
+                  <Fragment key={cur.id}>
+                    <span>{cur.classification}</span>
+                    <Link
+                      className="link"
+                      to={`/user/regist/${cur.id}/${cur.receptionId}`}
+                    >
+                      {cur.subject}
+                    </Link>
+                    <span>{cur.receptionDate.substring(2, 10)}</span>
+                    <span>{cur.name}</span>
+                  </Fragment>
+                );
+              })}
+              {list.map((cur) => {
+                return (
+                  <Fragment key={cur.id}>
+                    <span>{cur.classification}</span>
+                    <Link
+                      className="link"
+                      to={`/user/regist/${cur.id}/${cur.receptionId}`}
+                    >
+                      {cur.subject}
+                    </Link>
+                    <span>{cur.receptionDate.substring(2, 10)}</span>
+                    <span>{cur.name}</span>
+                  </Fragment>
+                );
+              })}
+            </div>
+          </div>
+          <Pagination></Pagination>
         </article>
         <article className="my_con">
           <MyContent user={user}></MyContent>
-        </article>
-        <article className="comp_list">
-          <ListComponent
-            title="완료한 신청 리스트"
-            lists={dummy_list}
-          ></ListComponent>
         </article>
       </main>
     </div>
