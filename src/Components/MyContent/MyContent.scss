@@ -3,7 +3,6 @@
     display: flex;
     align-items: center;
     padding: 18px;
-    border-bottom: 1px solid var(--border-color);
     .my_img {
       flex: 1;
       .fa-user-circle {
@@ -13,12 +12,12 @@
     }
     .my_info {
       flex: 2;
-      span {
+      a {
+        text-decoration: none;
         display: block;
         font-size: 0.75rem;
         color: var(--grey-color);
         &:first-child {
-          cursor: pointer;
           font-size: 0.875rem;
           &::after {
             content: "| 내 정보";
