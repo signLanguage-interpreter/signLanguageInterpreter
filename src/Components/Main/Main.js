@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import logo from "../img/logo.png";
 import Register from "../Register/Register";
 import MyContent from "../MyContent/MyContent";
 import RegiList from "../RegiList/RegiList";
 import "./Main.scss";
+import Header from "../Header/Header";
 
 const Main = ({ history }) => {
   const [user, setUser] = useState({
@@ -42,15 +42,7 @@ const Main = ({ history }) => {
 
   return (
     <div className="main">
-      <header>
-        <div className="logo">
-          <img
-            src={logo}
-            alt="logo"
-            onClick={() => window.location.replace("/user/main")}
-          ></img>
-        </div>
-      </header>
+      <Header></Header>
       <main>
         <section className="regi">
           <Register user={user}></Register>
