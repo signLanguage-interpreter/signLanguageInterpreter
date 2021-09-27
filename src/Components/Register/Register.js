@@ -39,7 +39,7 @@ const Register = ({ user }) => {
           },
         }
       );
-      alert("신청하였습니다.");
+      alert("신청되었습니다.");
       setRegi({
         ...regi,
         classification: "",
