@@ -1,18 +1,4 @@
 .managerSignup_wrapper {
-  header {
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15%;
-    .logo {
-      img {
-        width: 52px;
-        height: 52px;
-        cursor: pointer;
-      }
-    }
-  }
   .manager_regist_wrapper {
     padding: 8px 35%;
     .imgPath_wrapper {

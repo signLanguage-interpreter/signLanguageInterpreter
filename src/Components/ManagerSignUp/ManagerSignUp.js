@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./ManagerSignUp.scss";
-import logo from "../img/logo.png";
+import Header from "../Header/Header";
 
 const ManagerSignUp = () => {
   // state
@@ -73,9 +73,9 @@ const ManagerSignUp = () => {
     const info_introduce = JSON.stringify({ introduce: manager.introduce });
 
     const formData = new FormData();
-    formData.append("imageFile", imgPath);
-    formData.append("position", info_position);
-    formData.append("introduce", info_introduce);
+    formData.append("imageFile", imgPath); // obj
+    formData.append("position", info_position); // string
+    formData.append("introduce", info_introduce); // string
 
     console.log(formData.get("imageFile"));
 
@@ -111,15 +111,7 @@ const ManagerSignUp = () => {
 
   return (
     <div className="managerSignup_wrapper">
-      <header>
-        <div className="logo">
-          <img
-            src={logo}
-            alt="logo"
-            onClick={() => window.location.replace("/user/main")}
-          ></img>
-        </div>
-      </header>
+      <Header></Header>
       <form
         className="manager_regist_wrapper"
         encType="multipart/form-data"
