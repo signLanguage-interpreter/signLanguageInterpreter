@@ -56,7 +56,7 @@ const Login = ({ history }) => {
         if (res.headers.auth === "ROLE_USER") {
           history.push("/user/main");
         } else if (res.headers.auth === "ROLE_MANAGER") {
-          history.push("/manager/main");
+          history.push("/manager/main?status=hold&page=1");
         }
       } else {
         alert("아이디나 비밀번호가 틀립니다.");
