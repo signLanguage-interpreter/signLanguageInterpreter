@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+import Pagination from "../Pagination/Pagination";
 import "./RegiList.scss";
 
 const RegiList = ({ regi_list, id, history }) => {
@@ -30,14 +32,9 @@ const RegiList = ({ regi_list, id, history }) => {
       return (
         <Fragment key={idx}>
           <span>{idx}</span>
-          <span
-            className="regi_subject"
-            onClick={() =>
-              history.push(`/user/regist/${id}/${cur.receptionId}`)
-            }
-          >
+          <Link to={`/user/regist/${cur.id}/${cur.receptionId}`}>
             {cur.subject}
-          </span>
+          </Link>
           <span>{date}</span>
           <span>{cur_status_icon}</span>
         </Fragment>
@@ -67,7 +64,7 @@ const RegiList = ({ regi_list, id, history }) => {
         <span>상태</span>
         {regi_res}
       </div>
-      <div className="pagination"></div>
+      <Pagination></Pagination>
     </div>
   );
 };
