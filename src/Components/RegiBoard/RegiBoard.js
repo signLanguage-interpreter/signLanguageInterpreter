@@ -41,13 +41,15 @@ const RegiBoard = ({ match, history }) => {
           }
         );
         console.log(res);
+        const { classification, subject, content, orderStatus, receptionDate } =
+          res.data.user;
         setUser({
           ...user,
-          classification: res.data.user.classification,
-          subject: res.data.user.subject,
-          content: res.data.user.content,
-          orderStatus: res.data.user.orderStatus,
-          receptionDate: res.data.user.receptionDate,
+          classification,
+          subject,
+          content,
+          orderStatus,
+          receptionDate,
         });
         setComments(res.data.regi_list);
       } catch (e) {
