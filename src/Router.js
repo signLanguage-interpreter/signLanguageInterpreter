@@ -13,11 +13,6 @@ const Nomatch = loadable(() => import("./Components/Nomatch/Nomatch"));
 const ManagerSignUp = loadable(() =>
   import("./Components/ManagerSignUp/ManagerSignUp")
 );
-const AllList = loadable(() => import("./Components/Manager/AllList/AllList"));
-const MyList = loadable(() => import("./Components/Manager/MyList/MyList"));
-const CompleteList = loadable(() =>
-  import("./Components/Manager/CompleteList/CompleteList")
-);
 
 const Router = () => {
   return (
@@ -31,12 +26,6 @@ const Router = () => {
       {/* manager */}
       <Route exact path="/manager/main" component={Manager} />
       <Route exact path="/manager/all_register" component={AllRegi} />
-      {/* 모든 신청 리스트 */}
-      <Route exact path="/manager/all_list" component={AllList} />
-      {/* 자신에게 온 신청 리스트 */}
-      <Route exact path="/manager/my_list" component={MyList} />
-      {/* 완료된 신청 리스트 */}
-      <Route exact path="/manager/complete_list" component={CompleteList} />
       {/* register */}
       <Route exact path="/user/regist/:pk/:receptionId" component={RegiBoard} />
       <Route component={Nomatch} />
