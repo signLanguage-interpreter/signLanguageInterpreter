@@ -180,7 +180,7 @@ const Manager = ({ location, history }) => {
                         } catch (e) {
                           console.error(e);
                         }
-                        // history.go(0);
+                        history.go(0);
                       }}
                     >
                       접수
@@ -224,7 +224,7 @@ const Manager = ({ location, history }) => {
                           } catch (e) {
                             console.error(e);
                           }
-                          // history.go(0);
+                          history.go(0);
                         }}
                       >
                         접수
