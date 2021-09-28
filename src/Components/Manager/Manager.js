@@ -206,6 +206,7 @@ const Manager = ({ location, history }) => {
                           try {
                             const res = await axios.post(
                               `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`,
+                              {},
                               {
                                 headers: {
                                   Authorization: sessionStorage
