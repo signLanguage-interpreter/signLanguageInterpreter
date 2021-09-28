@@ -161,9 +161,22 @@ const Manager = ({ location, history }) => {
                     <span>{cur.name}</span>
                     <button
                       onClick={async () => {
+                        let change_status;
+                        switch (status) {
+                          case "hold":
+                            change_status = "ready";
+                            break;
+                          case "ready":
+                            change_status = "end";
+                            break;
+                          case "end":
+                            alert("더이상 바꿀 수 없습니다.");
+                            break;
+                          default:
+                        }
                         try {
                           await axios.post(
-                            `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`,
+                            `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${change_status}`,
                             {
                               headers: {
                                 Authorization: sessionStorage
