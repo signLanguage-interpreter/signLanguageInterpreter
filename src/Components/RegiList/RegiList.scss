@@ -3,14 +3,12 @@
   .regi_list {
     display: grid;
     grid-template-columns: 0.5fr 5fr 3fr 1.5fr;
+    grid-template-rows: repeat(15, 1fr);
     font-size: 0.875rem;
     gap: 4px;
     height: 85%;
-    .regi_subject {
-      cursor: pointer;
+    a {
+      color: var(--black-color);
     }
-  }
-  .pagination {
-    border-top: 1px solid var(--border-color);
   }
 }

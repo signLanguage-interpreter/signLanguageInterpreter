@@ -180,7 +180,7 @@ const Manager = ({ location, history }) => {
                         } catch (e) {
                           console.error(e);
                         }
-                        history.go(0);
+                        // history.go(0);
                       }}
                     >
                       접수
@@ -204,7 +204,7 @@ const Manager = ({ location, history }) => {
                       <button
                         onClick={async () => {
                           try {
-                            await axios.post(
+                            const res = await axios.post(
                               `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`,
                               {
                                 headers: {
@@ -218,11 +218,12 @@ const Manager = ({ location, history }) => {
                                 },
                               }
                             );
+                            console.log(res);
                             alert("접수되었습니다.");
                           } catch (e) {
                             console.error(e);
                           }
-                          history.go(0);
+                          // history.go(0);
                         }}
                       >
                         접수
