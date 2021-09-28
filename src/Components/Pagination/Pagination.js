@@ -9,7 +9,10 @@ const Pagination = ({ status, paging, history }) => {
     const page_list = [];
     for (let i = startPage; i <= endPage; i++) {
       page_list.push(
-        <li onClick={() => history.push(`main?status=${status}&page=${i}`)}>
+        <li
+          key={i}
+          onClick={() => history.push(`main?status=${status}&page=${i}`)}
+        >
           {i}
         </li>
       );
