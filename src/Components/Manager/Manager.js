@@ -160,6 +160,8 @@ const Manager = ({ location, history }) => {
                     <span>{cur.receptionDate.substring(2, 10)}</span>
                     <span>{cur.name}</span>
                     <button
+                      disabled={status === "end" && true}
+                      className={status === "end" && "end"}
                       onClick={async () => {
                         let change_status;
                         switch (status) {
@@ -216,6 +218,7 @@ const Manager = ({ location, history }) => {
                       <span>{cur.receptionDate.substring(2, 10)}</span>
                       <span>{cur.userNickName}</span>
                       <button
+                        disabled={status === "end" && true}
                         onClick={async () => {
                           let change_status;
                           switch (status) {
@@ -225,12 +228,8 @@ const Manager = ({ location, history }) => {
                             case "ready":
                               change_status = "end";
                               break;
-                            case "end":
-                              alert("더이상 바꿀 수 없습니다.");
-                              break;
                             default:
                           }
-                          console.log(change_status);
                           try {
                             await axios.post(
                               `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${change_status}`,
@@ -247,7 +246,6 @@ const Manager = ({ location, history }) => {
                                 },
                               }
                             );
-
                             alert("접수되었습니다.");
                           } catch (e) {
                             console.error(e);
@@ -262,7 +260,7 @@ const Manager = ({ location, history }) => {
                 })}
             </div>
           </div>
-          <Pagination status={status} paging={paging}></Pagination>
+          {paging && <Pagination status={status} paging={paging}></Pagination>}
         </article>
         <article className="my_con">
           <MyContent user={manager}></MyContent>

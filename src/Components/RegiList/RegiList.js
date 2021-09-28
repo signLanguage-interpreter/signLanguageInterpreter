@@ -87,7 +87,7 @@ const RegiList = ({ regi_list, id }) => {
                 {cur.subject}
               </Link>
               <span>
-                {cur.receptionDate.substr(2, 10).replaceAll("-", ".")}
+                {cur.receptionDate.substring(2, 10).replaceAll("-", ".")}
               </span>
               <span>{cur.status.substr(0, 1).toUpperCase()}</span>
             </Fragment>
