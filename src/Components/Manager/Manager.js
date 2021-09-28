@@ -161,7 +161,7 @@ const Manager = ({ location, history }) => {
                     <span>{cur.name}</span>
                     <button
                       disabled={status === "end" && true}
-                      className={status === "end" && "end"}
+                      className={status === "end" ? "end" : undefined}
                       onClick={async () => {
                         let change_status;
                         switch (status) {
@@ -219,6 +219,7 @@ const Manager = ({ location, history }) => {
                       <span>{cur.userNickName}</span>
                       <button
                         disabled={status === "end" && true}
+                        className={status === "end" ? "end" : undefined}
                         onClick={async () => {
                           let change_status;
                           switch (status) {

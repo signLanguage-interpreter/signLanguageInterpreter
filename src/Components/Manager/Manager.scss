@@ -48,9 +48,11 @@
             margin-left: 10px;
             outline: none;
             border: 1px solid var(--border-color);
-            &:hover {
-              background-color: var(--hover-color);
-              color: var(--white-color);
+            &:not(.end) {
+              &:hover {
+                background-color: var(--hover-color);
+                color: var(--white-color);
+              }
             }
           }
 
