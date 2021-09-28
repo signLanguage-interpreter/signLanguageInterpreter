@@ -234,6 +234,7 @@ const Manager = ({ location, history }) => {
                           try {
                             await axios.post(
                               `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${change_status}`,
+                              {},
                               {
                                 headers: {
                                   Authorization: sessionStorage
@@ -246,6 +247,7 @@ const Manager = ({ location, history }) => {
                                 },
                               }
                             );
+
                             alert("접수되었습니다.");
                           } catch (e) {
                             console.error(e);
