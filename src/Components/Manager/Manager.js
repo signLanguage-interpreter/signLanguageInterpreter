@@ -164,7 +164,7 @@ const Manager = ({ location, history }) => {
               {list &&
                 list.map((cur) => {
                   return (
-                    <Fragment key={cur.id}>
+                    <Fragment key={cur.receptionId}>
                       <span>{cur.classification}</span>
                       <Link
                         className="link"
@@ -179,7 +179,7 @@ const Manager = ({ location, history }) => {
                 })}
             </div>
           </div>
-          <Pagination paging={paging}></Pagination>
+          <Pagination status={status} paging={paging}></Pagination>
         </article>
         <article className="my_con">
           <MyContent user={manager}></MyContent>

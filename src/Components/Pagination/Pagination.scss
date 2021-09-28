@@ -1,0 +1,12 @@
+.pagination_wrapper {
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    li {
+      cursor: pointer;
+      margin: 0 6px;
+    }
+  }
+}
