@@ -174,6 +174,7 @@ const Manager = ({ location, history }) => {
                             break;
                           default:
                         }
+                        console.log(change_status);
                         try {
                           await axios.post(
                             `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${change_status}`,
@@ -216,10 +217,23 @@ const Manager = ({ location, history }) => {
                       <span>{cur.userNickName}</span>
                       <button
                         onClick={async () => {
+                          let change_status;
+                          switch (status) {
+                            case "hold":
+                              change_status = "ready";
+                              break;
+                            case "ready":
+                              change_status = "end";
+                              break;
+                            case "end":
+                              alert("더이상 바꿀 수 없습니다.");
+                              break;
+                            default:
+                          }
+                          console.log(change_status);
                           try {
-                            const res = await axios.post(
-                              `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`,
-                              {},
+                            await axios.post(
+                              `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${change_status}`,
                               {
                                 headers: {
                                   Authorization: sessionStorage
@@ -232,7 +246,6 @@ const Manager = ({ location, history }) => {
                                 },
                               }
                             );
-                            console.log(res);
                             alert("접수되었습니다.");
                           } catch (e) {
                             console.error(e);
