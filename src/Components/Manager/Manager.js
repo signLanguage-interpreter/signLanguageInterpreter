@@ -163,7 +163,18 @@ const Manager = ({ location, history }) => {
                       onClick={async () => {
                         try {
                           await axios.post(
-                            `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`
+                            `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`,
+                            {
+                              headers: {
+                                Authorization: sessionStorage
+                                  .getItem("authorization")
+                                  ?.substring(
+                                    1,
+                                    sessionStorage.getItem("authorization")
+                                      .length - 1
+                                  ),
+                              },
+                            }
                           );
                           alert("접수되었습니다.");
                         } catch (e) {
@@ -194,7 +205,18 @@ const Manager = ({ location, history }) => {
                         onClick={async () => {
                           try {
                             await axios.post(
-                              `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`
+                              `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`,
+                              {
+                                headers: {
+                                  Authorization: sessionStorage
+                                    .getItem("authorization")
+                                    ?.substring(
+                                      1,
+                                      sessionStorage.getItem("authorization")
+                                        .length - 1
+                                    ),
+                                },
+                              }
                             );
                             alert("접수되었습니다.");
                           } catch (e) {
