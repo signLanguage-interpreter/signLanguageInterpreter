@@ -45,8 +45,9 @@ const Manager = ({ location, history }) => {
 
   const { status, page } = query;
   // state
-  const [user, setUser] = useState([]);
+  const [manager, setManager] = useState({});
   const [list, setList] = useState([]);
+  const [paging, setPaging] = useState({});
 
   // useEffect
   useEffect(() => {
@@ -66,6 +67,10 @@ const Manager = ({ location, history }) => {
           }
         );
         console.log(res);
+        const { list, manager, paging } = res.data;
+        setList(list);
+        setManager(manager);
+        setPaging(paging);
       } catch (e) {
         console.error(e);
       }
@@ -168,16 +173,16 @@ const Manager = ({ location, history }) => {
                         {cur.subject}
                       </Link>
                       <span>{cur.receptionDate.substring(2, 10)}</span>
-                      <span>{cur.name}</span>
+                      <span>{cur.userNickName}</span>
                     </Fragment>
                   );
                 })}
             </div>
           </div>
-          <Pagination></Pagination>
+          <Pagination paging={paging}></Pagination>
         </article>
         <article className="my_con">
-          <MyContent user={user}></MyContent>
+          <MyContent user={manager}></MyContent>
         </article>
       </main>
     </div>

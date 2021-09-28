@@ -1,6 +1,6 @@
 import "./Pagination.scss";
 
-const Pagination = () => {
+const Pagination = ({ paging }) => {
   return (
     <div>
       <div>Pagination</div>
