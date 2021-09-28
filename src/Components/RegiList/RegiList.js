@@ -1,10 +1,8 @@
 import { Fragment } from "react";
-import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import Pagination from "../Pagination/Pagination";
 import "./RegiList.scss";
 
-const RegiList = ({ regi_list, id, history }) => {
+const RegiList = ({ regi_list, id }) => {
   const regi_bool = regi_list === null ? false : true;
   let regi_res;
   if (regi_bool) {
@@ -42,18 +40,6 @@ const RegiList = ({ regi_list, id, history }) => {
     });
   }
 
-  // conditional rendering
-  // const pagination = () => {
-  //   if (page === undefined) {
-  //     return null;
-  //   } else {
-  //     const res = [];
-  //     for (let i = page.startPage; i <= page.endPage; i++) {
-  //       res.push(<span className="page">{i}</span>);
-  //     }
-  //   }
-  // };
-
   return (
     <div className="regi_lsit_wrapper">
       <h4>자신이 신청한 리스트</h4>
@@ -64,9 +50,8 @@ const RegiList = ({ regi_list, id, history }) => {
         <span>상태</span>
         {regi_res}
       </div>
-      <Pagination></Pagination>
     </div>
   );
 };
 
-export default withRouter(RegiList);
+export default RegiList;

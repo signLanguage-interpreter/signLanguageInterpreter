@@ -144,6 +144,7 @@ const Manager = ({ location, history }) => {
               <span>제목</span>
               <span>예약날짜</span>
               <span>예약자</span>
+              <span>접수</span>
             </div>
             <div className="table_body">
               {dummy_list.map((cur) => {
@@ -158,6 +159,21 @@ const Manager = ({ location, history }) => {
                     </Link>
                     <span>{cur.receptionDate.substring(2, 10)}</span>
                     <span>{cur.name}</span>
+                    <button
+                      onClick={async () => {
+                        try {
+                          await axios.post(
+                            `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`
+                          );
+                          alert("접수되었습니다.");
+                        } catch (e) {
+                          console.error(e);
+                        }
+                        history.go(0);
+                      }}
+                    >
+                      접수
+                    </button>
                   </Fragment>
                 );
               })}
@@ -174,6 +190,21 @@ const Manager = ({ location, history }) => {
                       </Link>
                       <span>{cur.receptionDate.substring(2, 10)}</span>
                       <span>{cur.userNickName}</span>
+                      <button
+                        onClick={async () => {
+                          try {
+                            await axios.post(
+                              `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${status}`
+                            );
+                            alert("접수되었습니다.");
+                          } catch (e) {
+                            console.error(e);
+                          }
+                          history.go(0);
+                        }}
+                      >
+                        접수
+                      </button>
                     </Fragment>
                   );
                 })}

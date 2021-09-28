@@ -30,7 +30,7 @@
           border-top: 2px solid var(--main-color);
           border-bottom: 1px solid var(--border-color);
           display: grid;
-          grid-template-columns: 1.5fr 5fr 2.5fr 1fr;
+          grid-template-columns: 1.5fr 5fr 2.5fr 1fr 1fr;
           text-align: center;
           font-size: 0.875rem;
           padding: 4px 0px;
@@ -38,9 +38,21 @@
         .table_body {
           height: 70vh;
           display: grid;
-          grid-template-columns: 1.5fr 5fr 2.5fr 1fr;
+          grid-template-columns: 1.5fr 5fr 2.5fr 1fr 1fr;
           grid-template-rows: repeat(15, 1fr);
           text-align: center;
+          align-items: center;
+          button {
+            width: 70%;
+            height: 70%;
+            margin-left: 10px;
+            outline: none;
+            border: 1px solid var(--border-color);
+            &:hover {
+              background-color: var(--hover-color);
+              color: var(--white-color);
+            }
+          }
 
           .link {
             text-decoration: none;
