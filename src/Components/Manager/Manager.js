@@ -66,15 +66,6 @@ const Manager = ({ location, history }) => {
           }
         );
         console.log(res);
-        const { user, list } = res.data;
-        setUser({
-          ...user,
-          user,
-        });
-        setList({
-          ...list,
-          list,
-        });
       } catch (e) {
         console.error(e);
       }
@@ -165,23 +156,22 @@ const Manager = ({ location, history }) => {
                   </Fragment>
                 );
               })}
-              {list === null
-                ? null
-                : list.map((cur) => {
-                    return (
-                      <Fragment key={cur.id}>
-                        <span>{cur.classification}</span>
-                        <Link
-                          className="link"
-                          to={`/user/regist/${cur.id}/${cur.receptionId}`}
-                        >
-                          {cur.subject}
-                        </Link>
-                        <span>{cur.receptionDate.substring(2, 10)}</span>
-                        <span>{cur.name}</span>
-                      </Fragment>
-                    );
-                  })}
+              {list &&
+                list.map((cur) => {
+                  return (
+                    <Fragment key={cur.id}>
+                      <span>{cur.classification}</span>
+                      <Link
+                        className="link"
+                        to={`/user/regist/${cur.id}/${cur.receptionId}`}
+                      >
+                        {cur.subject}
+                      </Link>
+                      <span>{cur.receptionDate.substring(2, 10)}</span>
+                      <span>{cur.name}</span>
+                    </Fragment>
+                  );
+                })}
             </div>
           </div>
           <Pagination></Pagination>
