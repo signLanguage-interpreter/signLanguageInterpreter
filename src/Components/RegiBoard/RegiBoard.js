@@ -1,7 +1,7 @@
 import "./RegiBoard.scss";
-import logo from "../img/logo.png";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "../Header/Header";
 
 const RegiBoard = ({ match, history }) => {
   const registerPkId = match.params;
@@ -10,17 +10,8 @@ const RegiBoard = ({ match, history }) => {
   console.log(match.params);
 
   // state
-  const [user, setUser] = useState({
-    orderStatus: "",
-    subject: "",
-    content: "",
-    receptionDate: "",
-    classification: "",
-  });
-  const { classification, subject, content, orderStatus, receptionDate } = user;
-
-  const [comments, setComments] = useState([]);
-
+  const [board, setBoard] = useState({});
+  const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
 
   // useEffect
@@ -41,17 +32,8 @@ const RegiBoard = ({ match, history }) => {
           }
         );
         console.log(res);
-        const { classification, subject, content, orderStatus, receptionDate } =
-          res.data.user;
-        setUser({
-          ...user,
-          classification,
-          subject,
-          content,
-          orderStatus,
-          receptionDate,
-        });
-        setComments(res.data.regi_list);
+        setBoard(res.data.board);
+        setCommentList(res.data.commentList);
       } catch (e) {
         console.error(e);
       }
@@ -59,92 +41,43 @@ const RegiBoard = ({ match, history }) => {
     fetch();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const comments_bool = comments === null ? false : true;
-  let comments_res;
-  if (comments_bool) {
-    comments_res = comments.map((cur) => {
-      return (
-        <Fragment key={cur.id}>
-          <div className="comments_userNickName_time">
-            {cur.userNickName}({cur.registryTime})
-          </div>
-          <div className="comments_content">{cur.content}</div>
-        </Fragment>
-      );
-    });
-  }
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const send = async () => {
-      try {
-        await axios.post(
-          `http://localhost:5000/user/regist/${pk}/${receptionId}`,
-          comment,
-          {
-            headers: {
-              Authorization: sessionStorage
-                .getItem("authorization")
-                ?.substring(
-                  1,
-                  sessionStorage.getItem("authorization").length - 1
-                ),
-            },
-          }
-        );
-        window.location.replace(`/user/regist/${pk}/${receptionId}`);
-        history.go(0);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-    send();
-  };
-
-  const onChange = (e) => {
+  // event
+  const onCommentChange = (e) => {
     setComment(e.target.value);
   };
 
   return (
-    <div className="regi_board_wrapper">
-      <header>
-        <div className="logo">
-          <img
-            src={logo}
-            alt="logo"
-            onClick={() => window.location.replace("/user/main")}
-          ></img>
+    <>
+      <Header></Header>
+      <div className="regi_board_wrapper">
+        <div className="regi_board_header">
+          <h5>
+            [{board.classification}] {board.subject}
+          </h5>
+          <span className="sub_header">
+            {board.userNickName} | {board.receptionDate}
+          </span>
         </div>
-      </header>
-      <div className="regi_board">
-        <section>
-          <div className="subject_class_place">
-            [{classification}]{subject}
-          </div>
-          <div className="status_date_place">
-            <span className="status_place">{orderStatus}</span>
-            <span className="date_place">{receptionDate}</span>
-          </div>
-          <div className="content_place">{content}</div>
-          <div className="comment_place">
-            <h4>댓글</h4>
-            <div className="comments">{comments_res}</div>
-            <form className="form_comments" onSubmit={onSubmit}>
-              <textarea
-                type="text"
-                className="input_comments"
-                rows={3}
-                value={comment}
-                onChange={onChange}
-              ></textarea>
-              <button type="submit" className="submit_comments">
-                등록
-              </button>
-            </form>
-          </div>
-        </section>
+        <div className="regi_board_content">{board.content}</div>
+        <div className="regi_board_comment_list">
+          {commentList &&
+            commentList.map((cur) => {
+              return <div>asd</div>;
+            })}
+          <div>asd</div>
+        </div>
+        <div className="regi_board_comment">
+          <form>
+            <textarea
+              rows={3}
+              value={comment}
+              onChange={onCommentChange}
+            ></textarea>
+            <button>등록</button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

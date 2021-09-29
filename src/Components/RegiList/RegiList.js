@@ -37,34 +37,14 @@ const RegiList = ({ regi_list, id }) => {
   let regi_res;
   if (regi_bool) {
     regi_res = regi_list.map((cur, idx) => {
-      const cur_status = cur.status;
-      let cur_status_icon;
-      switch (cur_status) {
-        case "HOLD":
-          cur_status_icon = "H";
-          break;
-        case "READY":
-          cur_status_icon = "R";
-          break;
-        case "END":
-          cur_status_icon = "E";
-          break;
-        default:
-          console.log("error");
-      }
-
-      const date = cur.receptionDate
-        .substring(2, 16)
-        .replaceAll("-", ".")
-        .replace("T", " ");
       return (
         <Fragment key={idx}>
           <span>{idx}</span>
           <Link to={`/user/regist/${cur.id}/${cur.receptionId}`}>
             {cur.subject}
           </Link>
-          <span>{date}</span>
-          <span>{cur_status_icon}</span>
+          <span>{cur.receptionDate.substring(2, 10).replaceAll("-", ".")}</span>
+          <span>{cur.status}</span>
         </Fragment>
       );
     });
@@ -89,7 +69,7 @@ const RegiList = ({ regi_list, id }) => {
               <span>
                 {cur.receptionDate.substring(2, 10).replaceAll("-", ".")}
               </span>
-              <span>{cur.status.substr(0, 1).toUpperCase()}</span>
+              <span>{cur.status}</span>
             </Fragment>
           );
         })}

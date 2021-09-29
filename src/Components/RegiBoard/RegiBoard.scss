@@ -1,62 +1,37 @@
 .regi_board_wrapper {
-  header {
+  margin: 12px 15%;
+  .regi_board_header {
+    padding: 12px;
     border-bottom: 1px solid var(--border-color);
-    .logo {
-      padding: 12px 15%;
-      img {
-        width: 52px;
-        height: 52px;
-        cursor: pointer;
-      }
+    .sub_header {
+      font-size: 0.875rem;
     }
   }
-  .regi_board {
-    padding: 12px 15%;
-    section {
-      border: 1px solid var(--black-color);
-      box-shadow: 5px 5px 5px var(--border-color);
-      padding: 8px;
-    }
-    .subject_class_place {
-      font-size: 1.5rem;
-    }
-    .status_date_place {
-      &::after {
-        display: block;
-        content: "";
-        padding: 2px;
-        border-bottom: 1px solid var(--grey-color);
+  .regi_board_content {
+    padding: 12px;
+    height: 50vh;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .regi_board_comment_list {
+    padding: 12px;
+    // height: 30vh;
+  }
+  .regi_board_comment {
+    padding: 12px;
+    background-color: hsl(0, 16%, 96%);
+    form {
+      display: grid;
+      grid-template-columns: 9fr 1fr;
+      gap: 8px;
+      textarea {
+        resize: none;
       }
-      .status_place {
-        &::after {
-          content: "|";
-          color: var(--border-color);
-          padding: 0 8px;
-        }
-      }
-    }
-    .content_place {
-      height: 200px;
-    }
-    .comment_place {
-      &::before {
-        display: block;
-        content: "";
-        border-top: 1px solid var(--grey-color);
-      }
-      .form_comments {
-        display: flex;
-        .input_comments {
-          flex: 8.5;
-          padding: 8px;
-          resize: none;
-          font-size: 1rem;
-        }
-        .submit_comments {
-          flex: 1.5;
-          cursor: pointer;
-          font-size: 1.25rem;
-        }
+      button {
+        outline: none;
+        background-color: var(--white-color);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        font-size: 0.875rem;
       }
     }
   }
