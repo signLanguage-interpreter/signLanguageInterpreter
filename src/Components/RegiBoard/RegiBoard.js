@@ -65,6 +65,7 @@ const RegiBoard = ({ match, history }) => {
   // event
   const onCommentChange = (e) => {
     setComment(e.target.value);
+    console.log(comment);
   };
 
   const onSubmitComment = (e) => {
@@ -86,7 +87,7 @@ const RegiBoard = ({ match, history }) => {
           }
         );
         alert("등록하였습니다.");
-        history.go(0);
+        // history.go(0);
       } catch (e) {
         console.error(e);
       }
@@ -115,7 +116,7 @@ const RegiBoard = ({ match, history }) => {
                   <span style={{ color: "#999" }}>{cur.userNickName}</span>
                   <span>{cur.content}</span>
                   <span style={{ color: "#999", fontSize: ".875rem" }}>
-                    {cur.registryTime.substring(5).replace("T", " ")}
+                    {cur.registryTime.substring(5, 19).replace("T", " ")}
                   </span>
                 </div>
               );
