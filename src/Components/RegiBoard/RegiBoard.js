@@ -7,8 +7,6 @@ const RegiBoard = ({ match, history }) => {
   const registerPkId = match.params;
   const { pk, receptionId } = registerPkId;
 
-  console.log(match.params);
-
   // state
   const [board, setBoard] = useState({});
   const [commentList, setCommentList] = useState([]);
