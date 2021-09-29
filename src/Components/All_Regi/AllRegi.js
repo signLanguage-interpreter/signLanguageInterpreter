@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
+import qs from "qs";
 
 const dummy_list = [
   {
@@ -34,14 +35,26 @@ const dummy_list = [
   },
 ];
 
-const AllRegi = ({ history }) => {
+const AllRegi = ({ location }) => {
+  // query
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  console.log(query);
+
+  const { page } = query.page;
+
+  // state
   const [lists, setLists] = useState([]);
+
   // useEffect
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/");
-        setLists(res.data.lists);
+        const res = await axios.get(
+          `http://localhost:5000/manager/all_register?status=ready&page=${page}`
+        );
+        // setLists(res.data.lists);
         console.log(res);
       } catch (e) {
         console.error(e);

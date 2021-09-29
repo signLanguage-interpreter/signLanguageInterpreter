@@ -9,7 +9,7 @@ const Header = ({ history, first = null, second = null }) => {
     return (
       <ul>
         <li>
-          <Link to="/manager/all_register">{first}</Link>
+          <Link to="/manager/all_register?status=ready&page=1">{first}</Link>
         </li>
         <li>
           <Link to="/user/main">{second}</Link>
