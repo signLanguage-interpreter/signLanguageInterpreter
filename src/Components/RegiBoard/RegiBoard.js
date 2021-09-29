@@ -23,9 +23,16 @@ const RegiBoard = ({ match, history }) => {
   const { pk, receptionId } = registerPkId;
 
   // state
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    classification: "",
+    subject: "",
+    orderStatus: "",
+    receptionDate: "",
+  });
   const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
+
+  const { classification, subject, orderStatus, receptionDate, content } = user;
 
   // useEffect
   useEffect(() => {
@@ -65,13 +72,13 @@ const RegiBoard = ({ match, history }) => {
       <div className="regi_board_wrapper">
         <div className="regi_board_header">
           <h5>
-            [{user.classification}] {user.subject}
+            [{classification}] {subject}
           </h5>
           <span className="sub_header">
-            {user.orderStatus} | {user.receptionDate.replace("T", " ")}
+            {orderStatus} | {receptionDate.replace("T", " ")}
           </span>
         </div>
-        <div className="regi_board_content">{user.content}</div>
+        <div className="regi_board_content">{content}</div>
         <div className="regi_board_comment_list">
           {commentList &&
             commentList.map((cur) => {
@@ -91,7 +98,7 @@ const RegiBoard = ({ match, history }) => {
                 <span style={{ color: "#999" }}>{cur.userNickName}</span>
                 <span>{cur.content}</span>
                 <span style={{ color: "#999", fontSize: ".875rem" }}>
-                  {cur.registryTime.substring(2).replace("T", " ")}
+                  {cur.registryTime.substring(5).replace("T", " ")}
                 </span>
               </div>
             );
