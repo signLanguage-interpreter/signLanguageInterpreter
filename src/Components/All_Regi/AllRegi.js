@@ -42,7 +42,7 @@ const AllRegi = ({ location }) => {
   });
   console.log(query);
 
-  const { page } = query.page;
+  const { status, page } = query;
 
   // state
   const [lists, setLists] = useState([]);
@@ -52,7 +52,17 @@ const AllRegi = ({ location }) => {
     const fetch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/manager/all_register?status=ready&page=${page}`
+          `http://localhost:5000/manager/all_register?status=${status}&page=${page}`,
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
         );
         // setLists(res.data.lists);
         console.log(res);
