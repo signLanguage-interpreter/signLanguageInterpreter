@@ -1,13 +1,14 @@
 // import axios from "axios";
 import axios from "axios";
 import React, { useState } from "react";
+import { withRouter } from "react-router";
 
 import CcWrapper from "./CcWrapper/CcWrapper";
 import DtWrapper from "./DtWrapper/DtWrapper";
 import NpWrapper from "./NpWrapper/NpWrapper";
 import "./Register.scss";
 
-const Register = ({ user }) => {
+const Register = ({ history, user }) => {
   const { id, userNickName, cellPhone } = user;
   // state
   const [regi, setRegi] = useState({
@@ -47,7 +48,7 @@ const Register = ({ user }) => {
         content: "",
         receptionDate: "",
       });
-      window.location.replace("/user/main");
+      history.go(0);
     } catch (e) {
       console.error(e);
       alert("항목을 입력해주세요.");
@@ -77,4 +78,4 @@ const Register = ({ user }) => {
   );
 };
 
-export default Register;
+export default withRouter(Register);

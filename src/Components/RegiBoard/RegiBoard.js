@@ -65,14 +65,13 @@ const RegiBoard = ({ match, history }) => {
   // event
   const onCommentChange = (e) => {
     setComment(e.target.value);
-    console.log(comment);
   };
 
   const onSubmitComment = (e) => {
     e.preventDefault();
     const send = async () => {
       try {
-        const res = await axios.post(
+        await axios.post(
           `http://localhost:5000/user/${receptionId}/comment`,
           { content: comment },
           {
@@ -86,9 +85,9 @@ const RegiBoard = ({ match, history }) => {
             },
           }
         );
-        console.log(res);
+
         alert("등록하였습니다.");
-        // history.go(0);
+        history.go(0);
       } catch (e) {
         console.error(e);
       }
