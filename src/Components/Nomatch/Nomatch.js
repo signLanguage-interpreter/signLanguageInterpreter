@@ -1,18 +1,10 @@
+import Header from "../Header/Header";
 import "./Nomatch.scss";
-import logo from "../img/logo.png";
 
-const Nomatch = ({ history }) => {
+const Nomatch = () => {
   return (
     <div>
-      <header>
-        <div className="logo">
-          <img
-            src={logo}
-            alt="logo"
-            onClick={() => history.push("/user/main")}
-          ></img>
-        </div>
-      </header>
+      <Header></Header>
       <section>
         <h2>에러 페이지 입니다.</h2>
         <h3>홈 버튼을 눌러주세요.</h3>
