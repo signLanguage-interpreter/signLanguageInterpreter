@@ -91,7 +91,7 @@ const Manager = ({ location, history }) => {
 
   return (
     <div className="manager_wrapper">
-      <Header first="다른 통역사 보기" second="신청하러 가기"></Header>
+      <Header first="다른 통역사 접수보기" second="신청하러 가기"></Header>
       <main>
         <article className="lists">
           <div className="lists_nav">

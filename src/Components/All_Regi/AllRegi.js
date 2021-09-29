@@ -13,7 +13,6 @@ const dummy_list = [
     status: "HOLD",
     subject: "통역을 의뢰합니다.",
     classification: "Education",
-    name: "min",
   },
   {
     id: 2,
@@ -22,7 +21,6 @@ const dummy_list = [
     status: "HOLD",
     subject: "통역을 의뢰합니다2.",
     classification: "Education",
-    name: "kim",
   },
   {
     id: 3,
@@ -31,7 +29,6 @@ const dummy_list = [
     status: "HOLD",
     subject: "통역을 의뢰합니다3.",
     classification: "Education",
-    name: "park",
   },
 ];
 
@@ -64,7 +61,7 @@ const AllRegi = ({ location }) => {
             },
           }
         );
-        // setLists(res.data.lists);
+        setLists(res.data.list);
         console.log(res);
       } catch (e) {
         console.error(e);
@@ -79,8 +76,8 @@ const AllRegi = ({ location }) => {
       <main>
         <section>
           <div className="list_nav">
+            <span className="fb">분류</span>
             <span className="fb">제목</span>
-            <span className="fb">신청자</span>
             <span className="fb">날짜</span>
             <span className="fb">상태</span>
           </div>
@@ -88,34 +85,34 @@ const AllRegi = ({ location }) => {
             {dummy_list.map((cur) => {
               return (
                 <Fragment key={cur.id}>
+                  <span>{cur.classification}</span>
                   <Link
                     className="link"
                     to={`/user/regist/${cur.id}/${cur.receptionId}`}
                   >
                     {cur.subject}
                   </Link>
-                  <span>{cur.name}</span>
                   <span>{cur.receptionDate.substring(2, 10)}</span>
                   <span>{cur.status}</span>
                 </Fragment>
               );
             })}
-            {lists === null
-              ? null
-              : lists.map((cur) => {
-                  return (
-                    <Fragment key={cur.id}>
-                      <span className="subject">{cur.subject}</span>
-                      <span>{cur.name}</span>
-                      <span>
-                        {cur.receptionDate
-                          .replaceAll("-", ".")
-                          .substring(2, 10)}
-                      </span>
-                      <span>{cur.status}</span>
-                    </Fragment>
-                  );
-                })}
+            {lists &&
+              lists.map((cur) => {
+                return (
+                  <Fragment key={cur.id}>
+                    <span>{cur.classification}</span>
+                    <Link
+                      className="link"
+                      to={`/user/regist/${cur.id}/${cur.receptionId}`}
+                    >
+                      {cur.subject}
+                    </Link>
+                    <span>{cur.receptionDate.substring(2, 10)}</span>
+                    <span>{cur.status}</span>
+                  </Fragment>
+                );
+              })}
           </div>
         </section>
       </main>

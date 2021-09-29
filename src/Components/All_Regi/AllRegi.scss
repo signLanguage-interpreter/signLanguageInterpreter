@@ -1,30 +1,4 @@
 div {
-  header {
-    border-bottom: 1px solid var(--border-color);
-    .logo {
-      padding: 12px 15%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      img {
-        width: 52px;
-        height: 52px;
-        cursor: pointer;
-      }
-      div {
-        a {
-          text-decoration: none;
-          font-size: 0.875rem;
-          color: var(--black-color);
-          &:first-child::after {
-            content: "|";
-            color: var(--grey-color);
-            padding: 0 8px;
-          }
-        }
-      }
-    }
-  }
   main {
     padding: 8px 15%;
     section {
@@ -32,7 +6,7 @@ div {
       box-shadow: 5px 5px 5px var(--border-color);
       .list_nav {
         display: grid;
-        grid-template-columns: 7fr 1.5fr 1fr 0.5fr;
+        grid-template-columns: 1fr 7fr 1.5fr 0.5fr;
         .fb {
           padding: 4px 0px;
           font-weight: 600;
@@ -49,7 +23,7 @@ div {
 
       .list {
         display: grid;
-        grid-template-columns: 7fr 1.5fr 1fr 0.5fr;
+        grid-template-columns: 1fr 7fr 1.5fr 0.5fr;
         grid-template-rows: repeat(15, 1fr);
         text-align: center;
         height: 70vh;
