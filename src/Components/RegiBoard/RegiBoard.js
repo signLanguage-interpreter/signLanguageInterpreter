@@ -79,7 +79,9 @@ const RegiBoard = ({ match, history }) => {
                 <div className="comment" key={cur.commentId}>
                   <span style={{ color: "#999" }}>{cur.userNickName}</span>
                   <span>{cur.content}</span>
-                  <span style={{ color: "#999" }}>{cur.registryTime}</span>
+                  <span style={{ color: "#999", fontSize: ".875rem" }}>
+                    {cur.registryTime.substring(2)}
+                  </span>
                 </div>
               );
             })}
