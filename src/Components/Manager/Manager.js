@@ -267,7 +267,10 @@ const Manager = ({ location, history }) => {
           {paging && <Pagination status={status} paging={paging}></Pagination>}
         </article>
         <article className="my_con">
-          <MyContent user={manager}></MyContent>
+          <MyContent
+            user={manager}
+            signupModify="매니저 등록 / 수정"
+          ></MyContent>
         </article>
       </main>
     </div>

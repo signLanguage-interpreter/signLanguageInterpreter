@@ -11,7 +11,7 @@ const ManagerSignUp = () => {
     introduce: "",
   });
   const [preview, setPreview] = useState("");
-  const { imgPath } = manager;
+  const { imgPath, position, introduce } = manager;
 
   useEffect(() => {
     const fetch = async () => {
@@ -133,6 +133,7 @@ const ManagerSignUp = () => {
             <input
               type="text"
               name="position"
+              value={position}
               className="position"
               onChange={onChange}
               placeholder="직책"
@@ -144,6 +145,7 @@ const ManagerSignUp = () => {
             <input
               type="text"
               name="introduce"
+              value={introduce}
               className="introduce"
               onChange={onChange}
               placeholder="소개말"

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { store } from "../../App";
 import "./MyContent.scss";
 
-const MyContent = ({ user, history }) => {
+const MyContent = ({ user, history, signupModify = null }) => {
   const { id, userNickName, cellPhone, eMail } = user;
 
   const logout_action = (logged) => {
@@ -32,7 +32,7 @@ const MyContent = ({ user, history }) => {
           <Link to={`/user/modifyMember/${id}`}>{userNickName}님</Link>
           <span className="cellPhone">{cellPhone}</span>
           <span className="eMail">{eMail}</span>
-          <Link to="/manager/managerInfo">매니저 등록/수정</Link>
+          <Link to="/manager/managerInfo">{signupModify}</Link>
         </div>
         <div className="logout">
           <button to="/login" className="logout_btn" onClick={onLogout}>
