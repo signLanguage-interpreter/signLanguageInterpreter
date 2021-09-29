@@ -44,6 +44,7 @@ const Manager = ({ location, history }) => {
   });
 
   const { status, page } = query;
+
   // state
   const [manager, setManager] = useState({});
   const [list, setList] = useState([]);
@@ -54,7 +55,9 @@ const Manager = ({ location, history }) => {
     const fetch = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/manager/main?status=${status}&page=${page}`,
+          `http://localhost:5000/manager/main?status=${
+            status === undefined ? "hold" : status
+          }&page=${page === undefined ? 1 : page}`,
           {
             headers: {
               Authorization: sessionStorage
