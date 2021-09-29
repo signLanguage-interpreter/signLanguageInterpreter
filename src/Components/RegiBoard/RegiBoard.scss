@@ -14,7 +14,12 @@
   }
   .regi_board_comment_list {
     padding: 12px;
-    // height: 30vh;
+    .comment {
+      display: grid;
+      grid-template-columns: 1.5fr 7fr 1.5fr;
+      border-bottom: 1px solid var(--border-color);
+      padding: 6px 0;
+    }
   }
   .regi_board_comment {
     padding: 12px;
