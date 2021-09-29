@@ -72,7 +72,7 @@ const RegiBoard = ({ match, history }) => {
     e.preventDefault();
     const send = async () => {
       try {
-        await axios.post(
+        const res = await axios.post(
           `http://localhost:5000/user/${receptionId}/comment`,
           { content: comment },
           {
@@ -86,6 +86,7 @@ const RegiBoard = ({ match, history }) => {
             },
           }
         );
+        console.log(res);
         alert("등록하였습니다.");
         // history.go(0);
       } catch (e) {
