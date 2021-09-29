@@ -7,36 +7,6 @@ import { Link, NavLink } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
 import Header from "../Header/Header";
 
-const dummy_list = [
-  {
-    id: 1,
-    receptionId: "123123",
-    receptionDate: "2021-09-17T04:00:00",
-    status: "HOLD",
-    subject: "통역을 의뢰합니다.",
-    classification: "Education",
-    name: "min",
-  },
-  {
-    id: 2,
-    receptionId: "123123",
-    receptionDate: "2021-09-17T04:00:00",
-    status: "HOLD",
-    subject: "통역을 의뢰합니다2.",
-    classification: "Education",
-    name: "kim",
-  },
-  {
-    id: 3,
-    receptionId: "123123",
-    receptionDate: "2021-09-17T04:00:00",
-    status: "HOLD",
-    subject: "통역을 의뢰합니다3.",
-    classification: "Education",
-    name: "park",
-  },
-];
-
 const Manager = ({ location, history }) => {
   // query
   const query = qs.parse(location.search, {
@@ -150,63 +120,6 @@ const Manager = ({ location, history }) => {
               <span>접수</span>
             </div>
             <div className="table_body">
-              {dummy_list.map((cur) => {
-                return (
-                  <Fragment key={cur.id}>
-                    <span>{cur.classification}</span>
-                    <Link
-                      className="link"
-                      to={`/user/regist/${cur.id}/${cur.receptionId}`}
-                    >
-                      {cur.subject}
-                    </Link>
-                    <span>{cur.receptionDate.substring(2, 10)}</span>
-                    <span>{cur.name}</span>
-                    <button
-                      disabled={status === "end" && true}
-                      className={status === "end" ? "end" : undefined}
-                      onClick={async () => {
-                        let change_status;
-                        switch (status) {
-                          case "hold":
-                            change_status = "ready";
-                            break;
-                          case "ready":
-                            change_status = "end";
-                            break;
-                          case "end":
-                            alert("더이상 바꿀 수 없습니다.");
-                            break;
-                          default:
-                        }
-                        console.log(change_status);
-                        try {
-                          await axios.post(
-                            `http://localhost:5000/manager/receipt/${cur.receptionId}?status=${change_status}`,
-                            {
-                              headers: {
-                                Authorization: sessionStorage
-                                  .getItem("authorization")
-                                  ?.substring(
-                                    1,
-                                    sessionStorage.getItem("authorization")
-                                      .length - 1
-                                  ),
-                              },
-                            }
-                          );
-                          alert("접수되었습니다.");
-                        } catch (e) {
-                          console.error(e);
-                        }
-                        history.go(0);
-                      }}
-                    >
-                      접수
-                    </button>
-                  </Fragment>
-                );
-              })}
               {list &&
                 list.map((cur) => {
                   return (

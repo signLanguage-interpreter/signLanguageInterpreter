@@ -3,21 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../Header/Header";
 
-const dummy_comment = [
-  {
-    commentId: 1,
-    content: "123123123",
-    userNickName: "민경호",
-    registryTime: "2021-09-29T14:00:00",
-  },
-  {
-    commentId: 2,
-    content: "qweqweqwe",
-    userNickName: "rlarlarla",
-    registryTime: "2021-09-29T14:00:00",
-  },
-];
-
 const RegiBoard = ({ match, history }) => {
   const registerPkId = match.params;
   const { pk, receptionId } = registerPkId;
@@ -121,17 +106,6 @@ const RegiBoard = ({ match, history }) => {
                 </div>
               );
             })}
-          {dummy_comment.map((cur) => {
-            return (
-              <div className="comment" key={cur.commentId}>
-                <span style={{ color: "#999" }}>{cur.userNickName}</span>
-                <span>{cur.content}</span>
-                <span style={{ color: "#999", fontSize: ".875rem" }}>
-                  {cur.registryTime.substring(5).replace("T", " ")}
-                </span>
-              </div>
-            );
-          })}
         </div>
         <div className="regi_board_comment">
           <form onSubmit={onSubmitComment}>

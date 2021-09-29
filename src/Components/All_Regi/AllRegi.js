@@ -5,33 +5,6 @@ import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import qs from "qs";
 
-const dummy_list = [
-  {
-    id: 1,
-    receptionId: "123123",
-    receptionDate: "2021-09-17T04:00:00",
-    status: "HOLD",
-    subject: "통역을 의뢰합니다.",
-    classification: "Education",
-  },
-  {
-    id: 2,
-    receptionId: "123123",
-    receptionDate: "2021-09-17T04:00:00",
-    status: "HOLD",
-    subject: "통역을 의뢰합니다2.",
-    classification: "Education",
-  },
-  {
-    id: 3,
-    receptionId: "123123",
-    receptionDate: "2021-09-17T04:00:00",
-    status: "HOLD",
-    subject: "통역을 의뢰합니다3.",
-    classification: "Education",
-  },
-];
-
 const AllRegi = ({ location }) => {
   // query
   const query = qs.parse(location.search, {
@@ -82,21 +55,6 @@ const AllRegi = ({ location }) => {
             <span className="fb">상태</span>
           </div>
           <div className="list">
-            {dummy_list.map((cur) => {
-              return (
-                <Fragment key={cur.id}>
-                  <span>{cur.classification}</span>
-                  <Link
-                    className="link"
-                    to={`/user/regist/${cur.id}/${cur.receptionId}`}
-                  >
-                    {cur.subject}
-                  </Link>
-                  <span>{cur.receptionDate.substring(2, 10)}</span>
-                  <span>{cur.status}</span>
-                </Fragment>
-              );
-            })}
             {lists &&
               lists.map((cur) => {
                 return (
