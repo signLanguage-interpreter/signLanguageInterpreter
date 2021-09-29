@@ -68,7 +68,7 @@ const RegiBoard = ({ match, history }) => {
             [{user.classification}] {user.subject}
           </h5>
           <span className="sub_header">
-            {user.userNickName} | {user.receptionDate}
+            {user.orderStatus} | {user.receptionDate.replace("T", " ")}
           </span>
         </div>
         <div className="regi_board_content">{user.content}</div>
@@ -80,7 +80,7 @@ const RegiBoard = ({ match, history }) => {
                   <span style={{ color: "#999" }}>{cur.userNickName}</span>
                   <span>{cur.content}</span>
                   <span style={{ color: "#999", fontSize: ".875rem" }}>
-                    {cur.registryTime.substring(2)}
+                    {cur.registryTime.substring(5).replace("T", " ")}
                   </span>
                 </div>
               );
@@ -91,7 +91,7 @@ const RegiBoard = ({ match, history }) => {
                 <span style={{ color: "#999" }}>{cur.userNickName}</span>
                 <span>{cur.content}</span>
                 <span style={{ color: "#999", fontSize: ".875rem" }}>
-                  {cur.registryTime.substring(2)}
+                  {cur.registryTime.substring(2).replace("T", " ")}
                 </span>
               </div>
             );
