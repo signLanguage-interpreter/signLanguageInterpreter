@@ -8,7 +8,7 @@ const RegiBoard = ({ match, history }) => {
   const { pk, receptionId } = registerPkId;
 
   // state
-  const [board, setBoard] = useState({});
+  const [user, setUser] = useState({});
   const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
 
@@ -30,8 +30,8 @@ const RegiBoard = ({ match, history }) => {
           }
         );
         console.log(res);
-        setBoard(res.data.board);
-        setCommentList(res.data.commentList);
+        setUser(res.data.user);
+        setCommentList(res.data.regi_list);
       } catch (e) {
         console.error(e);
       }
@@ -50,17 +50,17 @@ const RegiBoard = ({ match, history }) => {
       <div className="regi_board_wrapper">
         <div className="regi_board_header">
           <h5>
-            [{board.classification}] {board.subject}
+            [{user.classification}] {user.subject}
           </h5>
           <span className="sub_header">
-            {board.userNickName} | {board.receptionDate}
+            {user.userNickName} | {user.receptionDate}
           </span>
         </div>
-        <div className="regi_board_content">{board.content}</div>
+        <div className="regi_board_content">{user.content}</div>
         <div className="regi_board_comment_list">
           {commentList &&
             commentList.map((cur) => {
-              return <div>asd</div>;
+              return <div key={cur.id}>asd</div>;
             })}
           <div>asd</div>
         </div>
