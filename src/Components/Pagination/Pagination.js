@@ -2,8 +2,7 @@ import "./Pagination.scss";
 import { withRouter } from "react-router";
 
 const Pagination = ({ status, paging, history }) => {
-  const { startPage, endPage, startPageExist, endPageExist, realEndPage } =
-    paging;
+  const { startPage, endPage } = paging;
 
   const page = (startPage, endPage) => {
     const page_list = [];
