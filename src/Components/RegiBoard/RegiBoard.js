@@ -73,7 +73,7 @@ const RegiBoard = ({ match, history }) => {
       try {
         await axios.post(
           `http://localhost:5000/user/${receptionId}/comment`,
-          { comment },
+          { content: comment },
           {
             headers: {
               Authorization: sessionStorage

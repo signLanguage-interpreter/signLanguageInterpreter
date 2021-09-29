@@ -1,7 +1,7 @@
 import "./Nomatch.scss";
 import logo from "../img/logo.png";
 
-const Nomatch = () => {
+const Nomatch = ({ history }) => {
   return (
     <div>
       <header>
@@ -9,7 +9,7 @@ const Nomatch = () => {
           <img
             src={logo}
             alt="logo"
-            onClick={() => window.location.replace("/user/main")}
+            onClick={() => history.push("/user/main")}
           ></img>
         </div>
       </header>
