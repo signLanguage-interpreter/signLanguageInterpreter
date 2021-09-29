@@ -28,6 +28,7 @@ const RegiBoard = ({ match, history }) => {
     subject: "",
     orderStatus: "",
     receptionDate: "",
+    content: "",
   });
   const [commentList, setCommentList] = useState([]);
   const [comment, setComment] = useState("");
@@ -64,6 +65,33 @@ const RegiBoard = ({ match, history }) => {
   // event
   const onCommentChange = (e) => {
     setComment(e.target.value);
+  };
+
+  const onSubmitComment = (e) => {
+    e.preventDefault();
+    const send = async () => {
+      try {
+        await axios.post(
+          `http://localhost:5000/user/${receptionId}/comment`,
+          { comment },
+          {
+            headers: {
+              Authorization: sessionStorage
+                .getItem("authorization")
+                ?.substring(
+                  1,
+                  sessionStorage.getItem("authorization").length - 1
+                ),
+            },
+          }
+        );
+        alert("등록하였습니다.");
+        history.go(0);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    send();
   };
 
   return (
@@ -105,13 +133,13 @@ const RegiBoard = ({ match, history }) => {
           })}
         </div>
         <div className="regi_board_comment">
-          <form>
+          <form onSubmit={onSubmitComment}>
             <textarea
               rows={3}
               value={comment}
               onChange={onCommentChange}
             ></textarea>
-            <button>등록</button>
+            <button type="submit">등록</button>
           </form>
         </div>
       </div>
