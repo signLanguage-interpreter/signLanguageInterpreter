@@ -2,7 +2,7 @@
 
 - 위 프로젝트는 농아인이 보다 쉽게 통역을 접수하고 접수한 통역을 볼 수 있는 프로젝트입니다.
 - 사용한 Stack
-  > HTML, CSS, JS, TS, SCSS, React
+  > HTML, CSS, JS, TS, SCSS, React, react-router-dom, Redux
 
 # How...
 
@@ -21,3 +21,5 @@
      > - ![image](https://user-images.githubusercontent.com/57670160/134324849-34aa5635-a421-40ec-9add-872ff09c2f00.png)
 
 # Detail...
+
+# Realization...
