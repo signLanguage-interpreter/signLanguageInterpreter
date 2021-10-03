@@ -43,7 +43,7 @@ const RegiBoard = ({ match, history }) => {
           classification: res.data.classification,
           orderStatus: res.data.orderStatus,
           content: res.data.content,
-          receptionDate: res.data.receptionDate,
+          receptionDate: res.data.receptionDate.replace("T", " "),
           subject: res.data.subject,
         });
         setCommentList(res.data.commentList);
@@ -95,7 +95,7 @@ const RegiBoard = ({ match, history }) => {
             [{classification}] {subject}
           </h5>
           <span className="sub_header">
-            {orderStatus} | {receptionDate.replace("T", " ")}
+            {orderStatus} | {receptionDate}
           </span>
         </div>
         <div className="regi_board_content">{content}</div>
