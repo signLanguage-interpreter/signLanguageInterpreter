@@ -40,13 +40,13 @@ const RegiBoard = ({ match, history }) => {
         console.log(res);
         setUser({
           ...user,
-          classification: res.data.classification,
-          orderStatus: res.data.orderStatus,
-          content: res.data.content,
-          receptionDate: res.data.receptionDate,
-          subject: res.data.subject,
+          classification: res.data[0].classification,
+          orderStatus: res.data[0].orderStatus,
+          content: res.data[0].content,
+          receptionDate: res.data[0].receptionDate,
+          subject: res.data[0].subject,
         });
-        setCommentList(res.data.commentList);
+        setCommentList(res.data[0].commentList);
       } catch (e) {
         console.error(e);
       }
