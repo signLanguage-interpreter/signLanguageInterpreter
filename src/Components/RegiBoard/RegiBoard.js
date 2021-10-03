@@ -43,7 +43,7 @@ const RegiBoard = ({ match, history }) => {
           classification: res.data[0].classification,
           orderStatus: res.data[0].orderStatus,
           content: res.data[0].content,
-          receptionDate: res.data[0].receptionDate,
+          receptionDate: res.data[0].receptionDate.replace("T", " "),
           subject: res.data[0].subject,
         });
         setCommentList(res.data[0].commentList);
